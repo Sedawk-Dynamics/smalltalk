@@ -1,0 +1,158 @@
+[
+  {
+    "slug": "essential-tee",
+    "name": "Essential Tee",
+    "category": "Tees",
+    "price": 799,
+    "compareAtPrice": 1199,
+    "currency": "INR",
+    "badge": "Bestseller",
+    "shortDescription": "The everyday hero. Mid-weight cotton, clean drape, zero fuss.",
+    "description": "Our Essential Tee is the staple your wardrobe keeps reaching for. Cut from breathable mid-weight cotton with a tailored-but-relaxed fit, it carries you from coffee runs to calls without missing a beat. Pre-shrunk, colour-locked, and built to keep its shape wash after wash.",
+    "colors": ["navy", "white", "cream"],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "fabric": "100% combed cotton, 180 GSM",
+    "fit": "Regular",
+    "featured": true,
+    "rating": 4.8,
+    "reviews": 214,
+    "photos": [
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1622445275576-721325763afe?auto=format&fit=crop&w=900&q=80"
+    ],
+    "images": [
+      "/products/essential-tee-1.svg",
+      "/products/essential-tee-2.svg"
+    ]
+  },
+  {
+    "slug": "premium-polo",
+    "name": "Premium Polo",
+    "category": "Polos",
+    "price": 1299,
+    "compareAtPrice": 1799,
+    "currency": "INR",
+    "badge": "New",
+    "shortDescription": "Casual yet formal. The collar that means business.",
+    "description": "The Premium Polo bridges casual and formal effortlessly. A structured ribbed collar, mother-of-pearl-style buttons and a refined piqué knit give it a quietly elevated finish. Dress it up under a blazer or keep it easy with denim — either way you look like you mean business.",
+    "colors": ["navy", "white", "cream"],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "fabric": "Cotton piqué, 220 GSM",
+    "fit": "Tailored",
+    "featured": true,
+    "rating": 4.9,
+    "reviews": 168,
+    "photos": [
+      "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=900&q=80"
+    ],
+    "images": [
+      "/products/premium-polo-1.svg",
+      "/products/premium-polo-2.svg"
+    ]
+  },
+  {
+    "slug": "heavyweight-tee",
+    "name": "Heavyweight Tee",
+    "category": "Tees",
+    "price": 999,
+    "compareAtPrice": 1399,
+    "currency": "INR",
+    "badge": "Premium",
+    "shortDescription": "Boxy, substantial, structured. Streetwear-grade weight.",
+    "description": "For those who like their tees with presence. The Heavyweight Tee is a 240 GSM boxy cut with structured shoulders and a premium hand-feel that drapes beautifully. It is the kind of basic that quietly signals you don't compromise.",
+    "colors": ["navy", "white", "cream"],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "fabric": "100% cotton, 240 GSM",
+    "fit": "Boxy / Oversized",
+    "featured": true,
+    "rating": 4.7,
+    "reviews": 132,
+    "photos": [
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=80"
+    ],
+    "images": [
+      "/products/heavyweight-tee-1.svg",
+      "/products/heavyweight-tee-2.svg"
+    ]
+  },
+  {
+    "slug": "classic-crew",
+    "name": "Classic Crew",
+    "category": "Tees",
+    "price": 899,
+    "compareAtPrice": 1299,
+    "currency": "INR",
+    "badge": "",
+    "shortDescription": "Timeless crew neck. Soft, durable, endlessly wearable.",
+    "description": "The Classic Crew is exactly what it promises — a perfectly proportioned crew neck in soft, durable cotton. Reinforced neckline, clean side seams and a fit that flatters without trying too hard. The reliable backbone of any rotation.",
+    "colors": ["navy", "white", "cream"],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "fabric": "100% combed cotton, 190 GSM",
+    "fit": "Regular",
+    "featured": true,
+    "rating": 4.8,
+    "reviews": 97,
+    "photos": [
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=900&q=80"
+    ],
+    "images": [
+      "/products/classic-crew-1.svg",
+      "/products/classic-crew-2.svg"
+    ]
+  },
+  {
+    "slug": "signature-polo",
+    "name": "Signature Polo",
+    "category": "Polos",
+    "price": 1499,
+    "compareAtPrice": 1999,
+    "currency": "INR",
+    "badge": "",
+    "shortDescription": "Our most refined collar. Subtle tonal branding.",
+    "description": "The Signature Polo is our most considered collar yet — a slightly heavier piqué, tonal stitched detailing and a clean placket. It reads boardroom or brunch with equal confidence.",
+    "colors": ["navy", "cream"],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "fabric": "Cotton piqué, 240 GSM",
+    "fit": "Tailored",
+    "featured": false,
+    "rating": 4.9,
+    "reviews": 64,
+    "photos": [
+      "https://images.unsplash.com/photo-1571945153237-4929e783af4a?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1503341960582-b45751874cf0?auto=format&fit=crop&w=900&q=80"
+    ],
+    "images": [
+      "/products/premium-polo-1.svg",
+      "/products/premium-polo-2.svg"
+    ]
+  },
+  {
+    "slug": "everyday-pocket-tee",
+    "name": "Everyday Pocket Tee",
+    "category": "Tees",
+    "price": 849,
+    "compareAtPrice": 1249,
+    "currency": "INR",
+    "badge": "",
+    "shortDescription": "A clean chest pocket on our signature soft cotton.",
+    "description": "Same beloved Essential cotton, now with a neatly proportioned chest pocket for a touch of utility. A small detail that makes a simple tee feel intentional.",
+    "colors": ["navy", "white", "cream"],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "fabric": "100% combed cotton, 180 GSM",
+    "fit": "Regular",
+    "featured": false,
+    "rating": 4.6,
+    "reviews": 51,
+    "photos": [
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=80"
+    ],
+    "images": [
+      "/products/essential-tee-1.svg",
+      "/products/essential-tee-2.svg"
+    ]
+  }
+]

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" width="600" height="760">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EDEDF2"/>
+      <stop offset="1" stop-color="#d1d1d5"/>
+    </linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#ebebeb"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.35" r="0.6">
+      <stop offset="0" stop-color="#5B5BF0" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#5B5BF0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="760" fill="url(#bg)"/>
+  <rect width="600" height="760" fill="url(#glow)"/>
+  <g transform="rotate(0 300 380)">
+    <path d="
+  M150 150
+  L70 220
+  L120 310
+  L190 270
+  L190 620
+  Q190 640 210 640
+  L390 640
+  Q410 640 410 620
+  L410 270
+  L480 310
+  L530 220
+  L450 150
+  C410 220 340 242 300 242
+  C260 242 190 220 150 150
+  Z" fill="url(#g)" stroke="#d1d1d1" stroke-width="2"/>
+    <path d="M222 156 C250 220 284 236 300 236 C316 236 350 220 378 156" fill="none" stroke="#c7c7c7" stroke-width="3"/>
+    
+  </g>
+  <text x="300" y="710" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="22" letter-spacing="3" fill="#21215A" fill-opacity="0.55">CLASSIC CREW</text>
+</svg>

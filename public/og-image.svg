@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#21215A"/><stop offset="0.6" stop-color="#15153B"/><stop offset="1" stop-color="#2b2b8a"/>
+  </linearGradient></defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <text x="80" y="300" font-family="Inter, system-ui, sans-serif" font-size="72" font-weight="800" fill="#fff">The Small Talk Store</text>
+  <text x="80" y="370" font-family="Inter, system-ui, sans-serif" font-size="34" fill="#b9b9ff">Wear confidence. Feel in control.</text>
+  <text x="80" y="420" font-family="Inter, system-ui, sans-serif" font-size="26" fill="#ffffff" fill-opacity="0.7">Premium everyday apparel — without the premium price.</text>
+</svg>
