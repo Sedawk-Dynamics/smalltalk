@@ -1,0 +1,8 @@
+<!-- TODO: Replace with the real brand motif (the t-shirt-collar "a" from the logo files). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <!-- T-shirt / collar silhouette acting as the brand "a" motif -->
+  <path d="M22 8 L12 14 L7 26 L16 30 L18 24 L18 54 A2 2 0 0 0 20 56 L44 56 A2 2 0 0 0 46 54 L46 24 L48 30 L57 26 L52 14 L42 8 C40 14 34 16 32 16 C30 16 24 14 22 8 Z"
+        fill="currentColor"/>
+  <!-- collar notch -->
+  <path d="M26 9 C28 14 31 15 32 15 C33 15 36 14 38 9" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.85"/>
+</svg>

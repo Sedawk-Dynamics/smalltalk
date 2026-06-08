@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760" width="600" height="760">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#21215A"/>
+      <stop offset="1" stop-color="#1d1d4f"/>
+    </linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b2b6e"/>
+      <stop offset="1" stop-color="#282865"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.35" r="0.6">
+      <stop offset="0" stop-color="#3DD6D0" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#3DD6D0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="760" fill="url(#bg)"/>
+  <rect width="600" height="760" fill="url(#glow)"/>
+  <g transform="rotate(0 300 380)">
+    <path d="
+  M150 150
+  L70 220
+  L120 310
+  L190 270
+  L190 620
+  Q190 640 210 640
+  L390 640
+  Q410 640 410 620
+  L410 270
+  L480 310
+  L530 220
+  L450 150
+  C410 220 340 242 300 242
+  C260 242 190 220 150 150
+  Z" fill="url(#g)" stroke="#23235a" stroke-width="2"/>
+    <!-- structured collar -->
+    <path d="M252 236 L300 280 L262 250 Z" fill="#24245c"/>
+    <path d="M348 236 L300 280 L338 250 Z" fill="#24245c"/>
+    <path d="M222 232 L300 236 L300 300 Z" fill="none" stroke="#222258" stroke-width="3"/>
+    <path d="M378 232 L300 236 L300 300 Z" fill="none" stroke="#222258" stroke-width="3"/>
+    <!-- placket -->
+    <line x1="300" y1="280" x2="300" y2="360" stroke="#222256" stroke-width="3"/>
+    <circle cx="300" cy="305" r="4" fill="#202053"/>
+    <circle cx="300" cy="335" r="4" fill="#202053"/>
+  </g>
+  <text x="300" y="710" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="22" letter-spacing="3" fill="#FFFFFF" fill-opacity="0.55">PREMIUM POLO</text>
+</svg>

@@ -1,0 +1,72 @@
+"use client";
+
+/**
+ * Kinetic headline: words mask up one after another.
+ * Robust trigger: uses useInView, but ALSO force-shows shortly after mount so
+ * the text can never get stuck hidden if the in-view callback misfires
+ * (e.g. behind the preloader / under Lenis).
+ */
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "@/lib/hooks";
+import { cn } from "@/lib/utils";
+
+export default function SplitText({
+  text,
+  words,
+  className,
+  delay = 0,
+  stagger = 0.08,
+  highlight = [],
+  highlightClass = "text-gradient",
+}: {
+  text?: string;
+  words?: string[];
+  className?: string;
+  delay?: number;
+  stagger?: number;
+  /** indexes of words to paint with the accent gradient */
+  highlight?: number[];
+  /** gradient class for highlighted words ("text-gradient" on dark, "text-gradient-ink" on light) */
+  highlightClass?: string;
+}) {
+  const reduced = useReducedMotion();
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.15 });
+  const [forceShow, setForceShow] = useState(false);
+
+  // Safety net: never let the text stay hidden.
+  useEffect(() => {
+    const t = setTimeout(() => setForceShow(true), 900);
+    return () => clearTimeout(t);
+  }, []);
+
+  const tokens = words ?? text?.split(" ") ?? [];
+  const show = reduced || inView || forceShow;
+
+  return (
+    <span ref={ref} className={cn("inline", className)} aria-label={tokens.join(" ")}>
+      {tokens.map((w, i) => (
+        <span
+          key={i}
+          aria-hidden
+          className="inline-block overflow-hidden align-bottom"
+        >
+          <motion.span
+            className={cn("inline-block", highlight.includes(i) && highlightClass)}
+            initial={{ y: "110%" }}
+            animate={show ? { y: "0%" } : { y: "110%" }}
+            transition={{
+              duration: reduced ? 0 : 0.7,
+              delay: reduced ? 0 : delay + i * stagger,
+              ease: [0.33, 1, 0.68, 1],
+            }}
+          >
+            {w}
+          </motion.span>
+          {i < tokens.length - 1 ? " " : ""}
+        </span>
+      ))}
+    </span>
+  );
+}

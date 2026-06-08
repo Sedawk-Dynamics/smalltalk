@@ -1,0 +1,242 @@
+"use client";
+
+/**
+ * Product detail: image gallery (thumbnail switcher) + buy box with
+ * color/size selectors, qty stepper, add-to-cart, and trust badges.
+ */
+import { useState } from "react";
+import SmartImage from "@/components/ui/SmartImage";
+import {
+  Minus,
+  Plus,
+  RefreshCw,
+  ShieldCheck,
+  Star,
+  Truck,
+} from "lucide-react";
+import type { Product } from "@/data/content";
+import { formatINR } from "@/data/content";
+import { useCart } from "@/components/providers/CartProvider";
+import { useToast } from "@/components/providers/ToastProvider";
+import MagneticButton from "@/components/ui/MagneticButton";
+import { cn } from "@/lib/utils";
+
+const colorSwatch: Record<string, string> = {
+  navy: "#21215A",
+  white: "#FFFFFF",
+  cream: "#F7F6F2",
+};
+
+export default function ProductDetail({ product }: { product: Product }) {
+  const { addItem } = useCart();
+  const { toast } = useToast();
+  const [active, setActive] = useState(0);
+  const [size, setSize] = useState<string | null>(null);
+  const [color, setColor] = useState(product.colors[0]);
+  const [qty, setQty] = useState(1);
+  const [err, setErr] = useState(false);
+
+  const add = () => {
+    if (!size) {
+      setErr(true);
+      return;
+    }
+    addItem(product, { size, color, qty });
+    toast(`${product.name} (${size}) added to cart`);
+  };
+
+  const discount = product.compareAtPrice
+    ? Math.round(
+        ((product.compareAtPrice - product.price) / product.compareAtPrice) *
+          100
+      )
+    : 0;
+
+  return (
+    <div className="container-st grid gap-10 py-12 lg:grid-cols-2 lg:gap-16 lg:py-16">
+      {/* Gallery */}
+      <div className="flex flex-col-reverse gap-4 sm:flex-row">
+        <div className="flex gap-3 sm:flex-col">
+          {product.images.map((img, i) => (
+            <button
+              key={img + i}
+              onClick={() => setActive(i)}
+              className={cn(
+                "relative h-20 w-16 shrink-0 overflow-hidden rounded-xl border-2 transition",
+                active === i ? "border-navy" : "border-transparent opacity-70"
+              )}
+            >
+              <SmartImage
+                src={product.photos?.[i]}
+                fallbackSrc={img}
+                alt={`${product.name} view ${i + 1}`}
+                sizes="64px"
+              />
+            </button>
+          ))}
+        </div>
+        <div className="relative aspect-[4/5] flex-1 overflow-hidden rounded-3xl bg-cream">
+          <SmartImage
+            src={product.photos?.[active]}
+            fallbackSrc={product.images[active]}
+            alt={product.name}
+            priority
+            sizes="(max-width:1024px) 100vw, 50vw"
+          />
+          {discount > 0 && (
+            <span className="absolute left-4 top-4 rounded-full bg-glow px-3 py-1 text-xs font-bold text-white">
+              -{discount}%
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Buy box */}
+      <div className="lg:py-4">
+        <p className="text-xs uppercase tracking-widest text-mist">
+          {product.category}
+        </p>
+        <h1 className="mt-1 font-display text-3xl font-bold tracking-tighter text-ink sm:text-4xl">
+          {product.name}
+        </h1>
+
+        <div className="mt-3 flex items-center gap-3">
+          <div className="flex items-center gap-1 text-cyan">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star
+                key={i}
+                className={cn(
+                  "h-4 w-4",
+                  i < Math.round(product.rating) && "fill-current"
+                )}
+              />
+            ))}
+          </div>
+          <span className="text-sm text-mist">
+            {product.rating} · {product.reviews} reviews
+          </span>
+        </div>
+
+        <div className="mt-5 flex items-baseline gap-3">
+          <span className="font-display text-3xl font-bold text-navy">
+            {formatINR(product.price)}
+          </span>
+          {product.compareAtPrice && (
+            <span className="text-lg text-mist line-through">
+              {formatINR(product.compareAtPrice)}
+            </span>
+          )}
+          {discount > 0 && (
+            <span className="rounded-full bg-glow/10 px-2.5 py-1 text-xs font-semibold text-glow">
+              Save {discount}%
+            </span>
+          )}
+        </div>
+
+        <p className="mt-5 leading-relaxed text-mist">{product.description}</p>
+
+        {/* Color */}
+        <div className="mt-7">
+          <p className="mb-2 text-sm font-semibold text-ink">
+            Color: <span className="capitalize text-mist">{color}</span>
+          </p>
+          <div className="flex gap-2">
+            {product.colors.map((c) => (
+              <button
+                key={c}
+                onClick={() => setColor(c)}
+                aria-label={c}
+                className={cn(
+                  "h-9 w-9 rounded-full border-2 transition",
+                  color === c
+                    ? "border-navy ring-2 ring-navy/20"
+                    : "border-navy/15"
+                )}
+                style={{ background: colorSwatch[c] ?? "#ddd" }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Size */}
+        <div className="mt-6">
+          <div className="mb-2 flex items-center justify-between">
+            <p className="text-sm font-semibold text-ink">Size</p>
+            <button className="text-xs text-mist underline-offset-2 hover:underline">
+              Size guide
+            </button>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {product.sizes.map((s) => (
+              <button
+                key={s}
+                onClick={() => {
+                  setSize(s);
+                  setErr(false);
+                }}
+                className={cn(
+                  "h-11 min-w-[3rem] rounded-lg border px-3 text-sm font-medium transition",
+                  size === s
+                    ? "border-navy bg-navy text-white"
+                    : "border-navy/20 text-ink hover:border-navy"
+                )}
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+          {err && <p className="mt-2 text-xs text-glow">Please select a size.</p>}
+        </div>
+
+        {/* Qty + add */}
+        <div className="mt-7 flex flex-wrap items-center gap-4">
+          <div className="flex items-center rounded-full border border-navy/20">
+            <button
+              aria-label="Decrease quantity"
+              onClick={() => setQty((q) => Math.max(1, q - 1))}
+              className="p-3 text-navy transition hover:text-glow"
+            >
+              <Minus className="h-4 w-4" />
+            </button>
+            <span className="w-8 text-center font-medium">{qty}</span>
+            <button
+              aria-label="Increase quantity"
+              onClick={() => setQty((q) => q + 1)}
+              className="p-3 text-navy transition hover:text-glow"
+            >
+              <Plus className="h-4 w-4" />
+            </button>
+          </div>
+          <MagneticButton onClick={add} withArrow={false} className="flex-1">
+            Add to Cart · {formatINR(product.price * qty)}
+          </MagneticButton>
+        </div>
+
+        {/* Trust badges */}
+        <ul className="mt-8 grid gap-3 border-t border-navy/10 pt-6 text-sm text-mist sm:grid-cols-3">
+          <li className="flex items-center gap-2">
+            <Truck className="h-5 w-5 text-navy" /> Free shipping ₹1499+
+          </li>
+          <li className="flex items-center gap-2">
+            <RefreshCw className="h-5 w-5 text-navy" /> 7-day easy returns
+          </li>
+          <li className="flex items-center gap-2">
+            <ShieldCheck className="h-5 w-5 text-navy" /> Secure checkout
+          </li>
+        </ul>
+
+        {/* Specs */}
+        <dl className="mt-6 grid grid-cols-2 gap-3 rounded-2xl bg-cream p-5 text-sm">
+          <div>
+            <dt className="text-mist">Fabric</dt>
+            <dd className="font-medium text-ink">{product.fabric}</dd>
+          </div>
+          <div>
+            <dt className="text-mist">Fit</dt>
+            <dd className="font-medium text-ink">{product.fit}</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  );
+}

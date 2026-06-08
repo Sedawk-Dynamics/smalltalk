@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   THE SMALL TALK STORE — global styles
+   Brand tokens live in tailwind.config.ts
+   ============================================================ */
+
+:root {
+  --navy: #21215a;
+  --ink: #15153b;
+  --cream: #f7f6f2;
+  --glow: #5b5bf0;
+  --cyan: #3dd6d0;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-cream text-ink font-body antialiased;
+    overflow-x: hidden;
+    /* Subtle cool-tinted base so light sections never read as flat paper. */
+    background-image:
+      radial-gradient(60rem 40rem at 100% -10%, rgba(91, 91, 240, 0.08), transparent 60%),
+      radial-gradient(50rem 40rem at -10% 20%, rgba(61, 214, 208, 0.06), transparent 55%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tighter;
+  }
+
+  /* Hide native cursor on devices that support a custom one (desktop/fine pointer). */
+  @media (pointer: fine) {
+    body.has-custom-cursor,
+    body.has-custom-cursor * {
+      cursor: none;
+    }
+  }
+
+  /* Accessible focus ring using the electric accent. */
+  :focus-visible {
+    outline: 2px solid var(--glow);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--glow);
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* Section container */
+  .container-st {
+    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Glassmorphism card */
+  .glass {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-dark {
+    background: rgba(21, 21, 59, 0.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Gradient text (on dark) */
+  .text-gradient {
+    background: linear-gradient(120deg, #ffffff 0%, #b9b9ff 45%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Gradient text (on light) — electric indigo → cyan */
+  .text-gradient-ink {
+    background: linear-gradient(120deg, var(--navy) 0%, var(--glow) 55%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Glowing eyebrow chip */
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em];
+    border-color: rgba(91, 91, 240, 0.25);
+    background: rgba(91, 91, 240, 0.06);
+    color: var(--glow);
+    box-shadow: inset 0 0 18px rgba(91, 91, 240, 0.12);
+  }
+
+  /* Card with an animated gradient border + lift/glow on hover.
+     Wrap any surface: <div class="card-glow"> ... </div> */
+  .card-glow {
+    position: relative;
+    isolation: isolate;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.5s ease;
+  }
+  .card-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+      135deg,
+      rgba(91, 91, 240, 0.7),
+      rgba(61, 214, 208, 0.45) 40%,
+      transparent 70%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .card-glow:hover::before {
+    opacity: 1;
+  }
+  .card-glow:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 34px 80px -34px rgba(91, 91, 240, 0.55);
+  }
+
+  /* Always-on gradient hairline border (no hover needed). */
+  .gradient-border {
+    position: relative;
+  }
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(91, 91, 240, 0.5),
+      rgba(61, 214, 208, 0.3) 45%,
+      rgba(255, 255, 255, 0.08) 80%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Shimmer sweep — add `.shimmer` to a relatively-positioned element. */
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      110deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 70%
+    );
+    transform: translateX(-120%);
+    transition: transform 0.7s ease;
+    pointer-events: none;
+  }
+  .group:hover .shimmer::after,
+  .shimmer:hover::after {
+    transform: translateX(120%);
+  }
+}
+
+@layer utilities {
+  /* Global film grain overlay (applied via .grain::after in layout). */
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Clip-reveal mask used by scroll reveals. */
+  .clip-hidden {
+    clip-path: inset(0 0 100% 0);
+  }
+  .clip-shown {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* ---- Smooth scroll (Lenis) ---- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---- Custom scrollbar ---- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--glow), var(--cyan));
+  border-radius: 99px;
+  border: 2px solid var(--cream);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(var(--navy), var(--glow));
+}
+
+/* ============================================================
+   prefers-reduced-motion — disable all motion & custom cursor
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  body.has-custom-cursor,
+  body.has-custom-cursor * {
+    cursor: auto !important;
+  }
+}
