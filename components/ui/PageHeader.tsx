@@ -18,7 +18,7 @@ export default function PageHeader({
   highlight?: number[];
 }) {
   return (
-    <section className="relative overflow-hidden bg-navy pb-16 pt-28 text-white lg:pb-20 lg:pt-36">
+    <section className="relative -mt-20 overflow-hidden bg-navy pb-16 pt-32 text-white lg:pb-20 lg:pt-40">
       <GradientMesh />
       <div className="container-st relative">
         {breadcrumb && (
