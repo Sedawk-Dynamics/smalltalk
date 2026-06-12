@@ -30,7 +30,7 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative flex min-h-[100svh] items-center overflow-hidden bg-navy text-white"
+      className="relative -mt-20 flex min-h-[100svh] items-center overflow-hidden bg-navy pt-20 text-white"
     >
       <GradientMesh />
       {/* canvas particle constellation */}

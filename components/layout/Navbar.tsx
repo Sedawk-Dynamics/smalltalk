@@ -41,9 +41,12 @@ export default function Navbar() {
     return () => document.documentElement.classList.remove("lenis-stopped");
   }, [menuOpen]);
 
-  // Over-hero pages render a light logo until scrolled.
-  const lightTop = pathname === "/";
-  const onLight = scrolled || !lightTop;
+  // Pages whose first section is DARK (navy) and bleeds up behind the navbar →
+  // use a light (white) logo at the top. Light-hero pages keep the dark logo.
+  const isProductPage = /^\/shop\/[^/]+$/.test(pathname);
+  const lightHero = pathname === "/v2" || isProductPage;
+  const darkHero = !lightHero;
+  const onLight = scrolled || !darkHero;
 
   return (
     <>
