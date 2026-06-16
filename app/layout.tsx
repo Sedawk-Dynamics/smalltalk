@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/providers/Providers";
 import Navbar from "@/components/layout/Navbar";
@@ -8,19 +8,22 @@ import AnnouncementBar from "@/components/layout/AnnouncementBar";
 import { brand } from "@/data/content";
 
 /**
- * Fonts via next/font (self-hosted, no layout shift).
- * Headings → Space Grotesk (geometric grotesque matching the logo).
- * Body → Inter.
- * To use Clash Display / Satoshi instead, add them from Fontshare and
- * swap the --font-display variable.
+ * Typography — single source of truth (next/font → CSS vars → Tailwind
+ * `font-display` / `font-body`). Change the pairing here and it updates
+ * everywhere.
+ *   Headings → Bricolage Grotesque (characterful, confident display)
+ *   Body     → Inter Tight (clean, modern, legible)
+ *
+ * NOTE(client-confirm): Typeface direction — confirm or replace with the
+ * brand's chosen fonts (swap the two imports below; nothing else changes).
  */
-const display = Space_Grotesk({
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  weight: ["500", "600", "700"],
+  // variable font — full weight range loaded; no `weight` needed
 });
-const body = Inter({
+const body = Inter_Tight({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
@@ -29,7 +32,7 @@ const body = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(brand.url),
   title: {
-    default: `${brand.name} — Wear confidence. Feel in control.`,
+    default: `${brand.name} — Wear confidence. Look like you mean business.`,
     template: `%s · ${brand.name}`,
   },
   description: brand.tagline + " Premium everyday apparel — without the premium price.",
@@ -44,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: brand.url,
-    title: `${brand.name} — Wear confidence. Feel in control.`,
+    title: `${brand.name} — Wear confidence. Look like you mean business.`,
     description: "Premium everyday apparel — without the premium price.",
     siteName: brand.name,
     images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: brand.name }],

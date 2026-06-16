@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Eye, Mail, Target } from "lucide-react";
+import { Eye, Target } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
 import { Reveal, ClipReveal, RevealItem, RevealStagger } from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -12,7 +12,6 @@ import {
   about,
   brand,
   founder,
-  team,
   marqueeItems,
   media,
   founderHighlights,
@@ -165,66 +164,18 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="container-st py-14 lg:py-20">
+      {/* Closing CTA
+          NOTE(client-feedback): the "Meet the team" roster was removed — it
+          belongs on the company site, not the brand site. */}
+      <section className="container-st py-14 text-center lg:py-20">
         <SectionHeading
           align="center"
-          eyebrow="The people"
-          title="Meet the team."
-          highlight={[2]}
+          eyebrow="Everyday, elevated"
+          title="Built for the way you actually live."
+          highlight={[5]}
           className="mx-auto"
         />
-        <RevealStagger className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
-          {team.map((m) => (
-            <RevealItem key={m.email}>
-              <div className="card-glow group h-full overflow-hidden rounded-3xl border border-navy/10 bg-white p-7">
-                {/* top accent */}
-                <div className="flex items-start justify-between">
-                  <span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-navy via-glow to-cyan font-display text-xl font-bold text-white shadow-card">
-                    {m.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </span>
-                  <a
-                    href={`mailto:${m.email}`}
-                    aria-label={`Email ${m.name}`}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-navy/15 text-navy transition hover:bg-navy hover:text-white"
-                  >
-                    <Mail className="h-4 w-4" />
-                  </a>
-                </div>
-
-                <p className="mt-5 font-display text-xl font-bold text-ink">
-                  {m.name}
-                </p>
-                <p className="text-sm font-medium text-glow">{m.role}</p>
-                <p className="mt-3 text-sm leading-relaxed text-mist">{m.bio}</p>
-
-                {/* focus tags */}
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {m.focus.map((f) => (
-                    <span
-                      key={f}
-                      className="rounded-full bg-navy/5 px-3 py-1 text-xs font-medium text-navy"
-                    >
-                      {f}
-                    </span>
-                  ))}
-                </div>
-
-                <a
-                  href={`mailto:${m.email}`}
-                  className="mt-5 inline-flex items-center gap-1.5 border-t border-navy/10 pt-4 text-sm text-navy transition hover:text-glow"
-                >
-                  <Mail className="h-3.5 w-3.5" /> {m.email}
-                </a>
-              </div>
-            </RevealItem>
-          ))}
-        </RevealStagger>
-
-        <div className="mt-12 flex justify-center">
+        <div className="mt-8 flex justify-center">
           <MagneticButton href="/shop" variant="primary">
             Explore the Collection
           </MagneticButton>

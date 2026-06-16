@@ -62,7 +62,7 @@ export default function Hero() {
           <h1 className="font-display text-[2.6rem] font-bold leading-[1.02] tracking-tightest sm:text-6xl lg:text-7xl">
             <SplitText
               words={hero.headlineWords}
-              highlight={[1, 4]}
+              highlight={[1, 6]}
               stagger={0.06}
             />
           </h1>

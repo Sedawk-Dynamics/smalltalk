@@ -58,12 +58,3 @@ export function useCountUp(target: number, durationMs = 1600) {
 
   return { ref, value };
 }
-
-/** Detect if pointer is fine (desktop) — for enabling the custom cursor. */
-export function useFinePointer() {
-  const [fine, setFine] = useState(false);
-  useEffect(() => {
-    setFine(window.matchMedia("(pointer: fine)").matches);
-  }, []);
-  return fine;
-}

@@ -32,13 +32,12 @@ export default function Footer() {
         <span className="h-px flex-1 bg-white/20" />
       </div>
 
-      <div className="container-st grid gap-12 pb-12 pt-6 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.4fr]">
+      <div className="container-st grid gap-x-8 gap-y-12 pb-12 pt-6 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr_1.3fr]">
         {/* Brand + newsletter */}
         <div className="space-y-5">
           <Logo variant="light" className="text-2xl" />
           <p className="max-w-xs text-sm leading-relaxed text-white/60">
-            Premium everyday apparel — without the premium price. Wear
-            confidence. Feel in control.
+            Premium everyday apparel — honest pricing, no compromise.
           </p>
           <Newsletter dark className="max-w-sm" />
         </div>
@@ -133,15 +132,15 @@ export default function Footer() {
               </span>
             ))}
           </div>
-          <div className="flex gap-4">
-            <Link href="/support/faq" className="hover:text-white">
-              FAQ
+          <div className="flex flex-wrap gap-x-4 gap-y-1">
+            <Link href="/terms" className="hover:text-white">
+              Terms
             </Link>
-            <Link href="/support/returns" className="hover:text-white">
-              Returns
+            <Link href="/privacy" className="hover:text-white">
+              Privacy
             </Link>
-            <Link href="/support/shipping" className="hover:text-white">
-              Shipping
+            <Link href="/refund" className="hover:text-white">
+              Refund
             </Link>
           </div>
         </div>

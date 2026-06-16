@@ -4,13 +4,14 @@
 import { CartProvider } from "./CartProvider";
 import { ToastProvider } from "./ToastProvider";
 import SmoothScroll from "./SmoothScroll";
-import CustomCursor from "@/components/ui/CustomCursor";
 import Preloader from "@/components/ui/Preloader";
 import CartDrawer from "@/components/layout/CartDrawer";
 import FloatingButtons from "@/components/ui/FloatingButtons";
 import PageTransition from "@/components/ui/PageTransition";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 
+// NOTE(client-feedback): custom cursor removed — native OS cursor restored
+// site-wide for simpler, more accessible navigation.
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <CartProvider>
@@ -18,7 +19,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         <SmoothScroll>
           <Preloader />
           <ScrollProgress />
-          <CustomCursor />
           <PageTransition>{children}</PageTransition>
           <CartDrawer />
           <FloatingButtons />

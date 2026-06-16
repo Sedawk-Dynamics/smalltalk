@@ -36,13 +36,78 @@ export const getProduct = (slug: string) =>
 
 export const featuredProducts = products.filter((p) => p.featured);
 
+/* ============================================================
+   PRODUCT SPECIFICATIONS · SIZE GUIDE · CARE  (Item 6)
+   Data-driven from confirmed facts already on the site
+   (100% cotton, GSM from `fabric`, Made in India / Delhi) plus
+   observable garment features. Anything not yet confirmed by the
+   client is marked "TBD — confirm with client".
+   ============================================================ */
+
+/** Build a consistent spec list for any product from confirmed/derived data. */
+export function getProductSpecs(p: Product): { label: string; value: string }[] {
+  const gsm = p.fabric.match(/(\d+)\s*GSM/i)?.[1] ?? null;
+  const composition = p.fabric.split(",")[0].trim();
+  const isPolo = p.category === "Polos";
+  return [
+    { label: "Composition", value: composition }, // confirmed (from product fabric)
+    ...(gsm ? [{ label: "Fabric weight", value: `${gsm} GSM` }] : []),
+    { label: "Knit", value: isPolo ? "Cotton piqué" : "Single jersey" },
+    { label: "Fit", value: p.fit },
+    {
+      label: isPolo ? "Collar" : "Neckline",
+      value: isPolo ? "Ribbed collar · 2-button placket" : "Ribbed crew neck",
+    },
+    { label: "Sleeve", value: "Short sleeve" },
+    { label: "Finish", value: "Pre-shrunk · colourfast" }, // already claimed in product copy
+    { label: "Country of origin", value: "Made in India · New Delhi" }, // confirmed
+    { label: "Wash care", value: "Machine wash cold, inside-out" },
+  ];
+}
+
+/** Size guide (garment measurements, inches).
+ *  TBD — confirm exact measurements with client before publishing. */
+export const sizeChartByCategory: Record<
+  string,
+  { sizes: string[]; rows: { label: string; values: number[] }[] }
+> = {
+  Tees: {
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    rows: [
+      { label: "Chest", values: [38, 40, 42, 44, 46] },
+      { label: "Length", values: [27, 28, 29, 30, 31] },
+      { label: "Shoulder", values: [16.5, 17.5, 18.5, 19.5, 20.5] },
+    ],
+  },
+  Polos: {
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    rows: [
+      { label: "Chest", values: [38, 40, 42, 44, 46] },
+      { label: "Length", values: [27.5, 28.5, 29.5, 30.5, 31.5] },
+      { label: "Shoulder", values: [16.5, 17.5, 18.5, 19.5, 20.5] },
+    ],
+  },
+};
+
+export const getSizeChart = (p: Product) =>
+  sizeChartByCategory[p.category] ?? sizeChartByCategory.Tees;
+
+/** Care instructions (cotton). Same across the cotton range. */
+export const careInstructions = [
+  "Machine wash cold (max 30°C) with similar colours.",
+  "Turn inside-out before washing to protect the surface.",
+  "Do not bleach. Use a mild detergent.",
+  "Tumble dry low or line dry in shade.",
+  "Warm iron if needed; avoid ironing over any print.",
+];
+
 /* ---------------- BRAND ---------------- */
 export const brand = {
   name: "The Small Talk Store",
   legalEntity: "Small Talk Garment LLP",
   domain: "thesmalltalkstore.com",
   url: "https://thesmalltalkstore.com",
-  tagline: "Wear confidence. Feel in control. Look like you mean business.",
+  tagline: "Wear confidence. Look like you mean business.",
   positioning:
     "Quality is not just about price — it's about how it makes you feel.",
   // Contact
@@ -58,16 +123,15 @@ export const brand = {
     "https://www.google.com/maps?q=Pushpanjali+Enclave+Pitampura+New+Delhi+110034&output=embed",
 };
 
-/* ---------------- HERO ---------------- */
+/* ---------------- HERO ----------------
+   The brand message lives HERE and nowhere else — one bold headline + one
+   supporting line. (Client feedback: state it once, prominently.) */
 export const hero = {
-  headline: "Wear confidence. Feel in control. Look like you mean business.",
-  // Split into words for the kinetic reveal.
+  headline: "Wear confidence. Look like you mean business.",
+  // Split into words for the kinetic reveal. Highlights: indexes 1 & 6.
   headlineWords: [
     "Wear",
     "confidence.",
-    "Feel",
-    "in",
-    "control.",
     "Look",
     "like",
     "you",
@@ -76,7 +140,7 @@ export const hero = {
   ],
   sub: "Premium everyday apparel — without the premium price.",
   longSub:
-    "We're building a modern apparel brand for people who value quality and smart spending — sharp looks, real confidence, no premium price tag.",
+    "Premium everyday apparel — honest pricing, real confidence, no compromise.",
   ctaPrimary: { label: "Shop Now", href: "/shop" },
   ctaSecondary: { label: "Our Story", href: "/about" },
 };
@@ -131,44 +195,49 @@ export const valuePillars = [
 ];
 
 /* ---------------- LOOKBOOK (horizontal pinned) ----------------
-   `photo` = real CDN image; `image` = local SVG fallback (SmartImage). */
+   `photo` = real CDN image; `image` = local SVG fallback (SmartImage).
+   TODO(client-asset): Replace with brand creative (casual, everyday — NOT
+   formal/boardroom). These are casual lifestyle placeholders. */
 export const lookbook = [
   {
-    title: "The Boardroom",
-    caption: "Polos that read formal.",
-    photo: "https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?auto=format&fit=crop&w=900&q=80",
+    title: "Off-Duty",
+    caption: "Easy layers, zero effort.",
+    photo: "https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?auto=format&fit=crop&w=900&q=80",
     image: "/lookbook/look-1.svg",
   },
   {
     title: "The Weekend",
     caption: "Tees built for ease.",
-    photo: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=900&q=80",
+    photo: "https://images.unsplash.com/photo-1496346651646-50b4ca7d0f31?auto=format&fit=crop&w=900&q=80",
     image: "/lookbook/look-2.svg",
   },
   {
-    title: "The Commute",
-    caption: "From desk to dinner.",
-    photo: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80",
+    title: "Out & About",
+    caption: "Made for moving.",
+    photo: "https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=900&q=80",
     image: "/lookbook/look-3.svg",
   },
   {
     title: "The Off-Day",
     caption: "Comfort, elevated.",
-    photo: "https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=900&q=80",
+    photo: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=900&q=80",
     image: "/lookbook/look-4.svg",
   },
 ];
 
-/* ---------------- EDITORIAL MEDIA (real photos + SVG fallbacks) ---------------- */
+/* ---------------- EDITORIAL MEDIA (real photos + SVG fallbacks) ----------------
+   TODO(client-asset): Replace every `*Photo` with casual, everyday brand
+   photography (relaxed-but-sharp — no business-formal / corporate framing).
+   SVG fallbacks are brand tee/polo mockups and are safe to keep. */
 export const media = {
   heroPhoto:
-    "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=800&q=80",
-  heroFallback: "/products/premium-polo-1.svg",
+    "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
+  heroFallback: "/products/essential-tee-1.svg",
   brandIntroPhoto:
-    "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1492447166138-50c3889fccb1?auto=format&fit=crop&w=900&q=80",
   brandIntroFallback: "/lookbook/look-1.svg",
   aboutStoryPhoto:
-    "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1400&q=80",
+    "https://images.unsplash.com/photo-1496346651646-50b4ca7d0f31?auto=format&fit=crop&w=1400&q=80",
   aboutStoryFallback: "/lookbook/look-2.svg",
   founderPhoto:
     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80",
@@ -230,10 +299,10 @@ export const promos = [
 export const collections = [
   {
     title: "The Polo Edit",
-    caption: "Collars that command the room.",
+    caption: "Collars, done casually.",
     href: "/shop?category=Polos",
     span: "lg:col-span-2 lg:row-span-2",
-    photo: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=1100&q=80",
+    photo: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=1100&q=80",
     image: "/lookbook/look-1.svg",
   },
   {
@@ -253,11 +322,11 @@ export const collections = [
     image: "/lookbook/look-3.svg",
   },
   {
-    title: "Workwear Ready",
-    caption: "Desk to dinner, sorted.",
+    title: "Everyday Ready",
+    caption: "Sorted for any day.",
     href: "/shop",
     span: "lg:col-span-2",
-    photo: "https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?auto=format&fit=crop&w=1100&q=80",
+    photo: "https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1100&q=80",
     image: "/lookbook/look-4.svg",
   },
 ];
@@ -280,8 +349,9 @@ export const about = {
 export const founder = {
   name: "Chirag Sethi",
   role: "Founder & Director",
+  // Founder voice only — the brand headline lives once, in the hero.
   message:
-    "We're not just building clothing — we're building a mindset. Wear confidence. Feel in control. Look like you mean business.",
+    "We're not just building clothing — we're building a mindset. Quality everyone deserves, made honestly and priced fairly.",
 };
 
 /* ---------------- TEAM (About page) ---------------- */
@@ -332,10 +402,11 @@ export const testimonials = [
   },
 ];
 
-/* ---------------- CTA BANNER ---------------- */
+/* ---------------- CTA BANNER ----------------
+   Product-action focused (the brand message is carried once, by the hero). */
 export const ctaBanner = {
-  heading: "Look like you mean business.",
-  sub: "Premium everyday apparel, priced honestly. Start with the staples.",
+  heading: "Start with the staples.",
+  sub: "Premium tees and polos, priced honestly — built for every day.",
   cta: { label: "Shop Now", href: "/shop" },
 };
 
@@ -365,6 +436,11 @@ export const footerColumns = {
     { label: "Shipping", href: "/support/shipping" },
     { label: "Returns", href: "/support/returns" },
     { label: "FAQ", href: "/support/faq" },
+  ],
+  Legal: [
+    { label: "Terms & Conditions", href: "/terms" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Refund & Cancellation", href: "/refund" },
   ],
 };
 
