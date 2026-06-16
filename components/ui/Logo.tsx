@@ -1,10 +1,14 @@
 "use client";
 
 /**
- * Brand wordmark. The "a" in "Small" is rendered as the t-shirt-collar
- * motif — the recurring brand device.
- * Use variant="light" on navy backgrounds, "dark" on light backgrounds.
- * TODO: swap this for the official logo SVG/asset when provided.
+ * SINGLE SOURCE OF TRUTH for the brand logo — used in the header, footer and
+ * mobile menu. The favicon (app/icon.svg) and OG image (public/og-image.svg)
+ * use the same t-shirt-collar motif so the mark is consistent everywhere.
+ *
+ * TODO(client-asset): Replace with the finalized logo. Drop the file at
+ * /public/logo.svg, render it here (swap the wordmark below for an <Image>/<svg>),
+ * and update the favicon (app/icon.svg) + OG image (public/og-image.svg) to match.
+ * This is the only component to edit — every usage flows through here.
  */
 import { cn } from "@/lib/utils";
 

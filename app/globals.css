@@ -38,13 +38,7 @@
     @apply font-display tracking-tighter;
   }
 
-  /* Hide native cursor on devices that support a custom one (desktop/fine pointer). */
-  @media (pointer: fine) {
-    body.has-custom-cursor,
-    body.has-custom-cursor * {
-      cursor: none;
-    }
-  }
+  /* Native OS cursor is used site-wide (custom cursor removed per client). */
 
   /* Accessible focus ring using the electric accent. */
   :focus-visible {
@@ -250,9 +244,5 @@ html.lenis body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
-  }
-  body.has-custom-cursor,
-  body.has-custom-cursor * {
-    cursor: auto !important;
   }
 }

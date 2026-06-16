@@ -2,14 +2,12 @@ import Hero from "@/components/home/Hero";
 import Marquee from "@/components/ui/Marquee";
 import CategoryTiles from "@/components/home/CategoryTiles";
 import PromoBanners from "@/components/home/PromoBanners";
-import BrandIntro from "@/components/home/BrandIntro";
 import TrendingRail from "@/components/home/TrendingRail";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import CollectionGrid from "@/components/home/CollectionGrid";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import ValuesStrip from "@/components/home/ValuesStrip";
 import Lookbook from "@/components/home/Lookbook";
-import FounderMessage from "@/components/home/FounderMessage";
 import Testimonials from "@/components/home/Testimonials";
 import NewsletterBand from "@/components/home/NewsletterBand";
 import CTABanner from "@/components/home/CTABanner";
@@ -28,14 +26,12 @@ export default function HomePage() {
       <Marquee items={marqueeItems} />
       <CategoryTiles />
       <PromoBanners />
-      <BrandIntro />
       <TrendingRail />
       <FeaturedProducts />
       <CollectionGrid />
       <WhyChooseUs />
       <ValuesStrip />
       <Lookbook />
-      <FounderMessage />
       <Testimonials />
       <NewsletterBand />
       <CTABanner />

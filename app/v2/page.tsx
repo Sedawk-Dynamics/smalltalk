@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import HeroBento from "@/components/home2/HeroBento";
 import Marquee from "@/components/ui/Marquee";
-import Manifesto from "@/components/home2/Manifesto";
 import ProductSpotlight from "@/components/home2/ProductSpotlight";
 import StickyFeatures from "@/components/home2/StickyFeatures";
 import CollectionMosaic from "@/components/home2/CollectionMosaic";
@@ -26,7 +25,6 @@ export default function HomeV2() {
     <>
       <HeroBento />
       <Marquee items={marqueeItems} />
-      <Manifesto />
       <ProductSpotlight />
       <StickyFeatures />
       <CollectionMosaic />
