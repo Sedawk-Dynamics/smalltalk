@@ -68,10 +68,10 @@ export default function Navbar() {
           <Link href="/" aria-label="The Small Talk Store — home">
             <Logo
               variant={onLight ? "dark" : "light"}
-              compact
+              priority
               className={cn(
-                "transition-all duration-500",
-                scrolled ? "text-xl" : "text-2xl"
+                "w-auto transition-all duration-500",
+                scrolled ? "h-7" : "h-9"
               )}
             />
           </Link>
@@ -179,7 +179,7 @@ export default function Navbar() {
             transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
           >
             <div className="container-st flex items-center justify-between py-5">
-              <Logo variant="light" compact className="text-2xl" />
+              <Logo variant="light" className="h-9 w-auto" />
               <button
                 aria-label="Close menu"
                 onClick={() => setMenuOpen(false)}

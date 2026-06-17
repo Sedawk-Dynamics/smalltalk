@@ -35,7 +35,7 @@ export default function Footer() {
       <div className="container-st grid gap-x-8 gap-y-12 pb-12 pt-6 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr_1.3fr]">
         {/* Brand + newsletter */}
         <div className="space-y-5">
-          <Logo variant="light" className="text-2xl" />
+          <Logo variant="light" className="h-10 w-auto" />
           <p className="max-w-xs text-sm leading-relaxed text-white/60">
             Premium everyday apparel — honest pricing, no compromise.
           </p>
