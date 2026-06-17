@@ -8,6 +8,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useReducedMotion } from "@/lib/hooks";
+import Logo from "./Logo";
 
 export default function Preloader() {
   const reduced = useReducedMotion();
@@ -92,9 +93,7 @@ export default function Preloader() {
             />
           </motion.svg>
 
-          <div className="relative mt-8 font-display text-sm uppercase tracking-[0.4em] text-white/70">
-            The Small Talk Store
-          </div>
+          <Logo variant="light" className="relative mt-8 h-7 w-auto opacity-90" />
           <div className="relative mt-3 font-display text-5xl font-bold tabular-nums">
             {pct}
             <span className="text-glow">%</span>

@@ -2,15 +2,25 @@
 
 /**
  * SINGLE SOURCE OF TRUTH for the brand logo — used in the header, footer and
- * mobile menu. The favicon (app/icon.svg) and OG image (public/og-image.svg)
- * use the same t-shirt-collar motif so the mark is consistent everywhere.
+ * mobile menu. Renders the finalized brand artwork:
+ *   variant="light" → white logo  (/public/logo-white.png)  — for dark backgrounds
+ *   variant="dark"  → blue logo   (/public/logo-blue.png)   — for light backgrounds
+ * Size it with a height class on `className` (e.g. "h-7 w-auto"); the width
+ * scales automatically to the artwork's 3087×962 ratio.
  *
- * TODO(client-asset): Replace with the finalized logo. Drop the file at
- * /public/logo.svg, render it here (swap the wordmark below for an <Image>/<svg>),
- * and update the favicon (app/icon.svg) + OG image (public/og-image.svg) to match.
- * This is the only component to edit — every usage flows through here.
+ * To swap the logo later, replace those two PNGs (keep the filenames) — every
+ * usage across the site flows through this component.
  */
+import Image from "next/image";
 import { cn } from "@/lib/utils";
+
+const LOGOS = {
+  light: "/logo-white.png", // white artwork — for navy/dark surfaces
+  dark: "/logo-blue.png", // blue artwork — for light/cream surfaces
+} as const;
+
+// Intrinsic dimensions of the supplied artwork (transparent PNG).
+const INTRINSIC = { width: 3087, height: 962 };
 
 export function TeeMotif({
   className,
@@ -46,31 +56,22 @@ export function TeeMotif({
 export default function Logo({
   variant = "dark",
   className,
-  compact = false,
+  priority = false,
 }: {
   variant?: "light" | "dark";
+  /** Pass a height class, e.g. "h-7 w-auto". */
   className?: string;
-  compact?: boolean;
+  priority?: boolean;
 }) {
-  const color = variant === "light" ? "text-white" : "text-navy";
   return (
-    <span
-      className={cn(
-        "inline-flex select-none items-baseline font-display font-bold tracking-tighter",
-        color,
-        className
-      )}
-    >
-      <span className="text-[1.05em] leading-none">Sm</span>
-      {/* the motif stands in for the lowercase "a" */}
-      <TeeMotif className="mx-[0.02em] inline-block h-[0.92em] w-[0.92em] translate-y-[0.1em]" />
-      <span className="text-[1.05em] leading-none">ll</span>
-      <span className="ml-[0.18em] text-[1.05em] leading-none">Talk</span>
-      {!compact && (
-        <span className="ml-[0.35em] text-[0.62em] font-medium uppercase tracking-[0.32em] opacity-70">
-          Store
-        </span>
-      )}
-    </span>
+    <Image
+      src={variant === "light" ? LOGOS.light : LOGOS.dark}
+      alt="The Small Talk Store"
+      width={INTRINSIC.width}
+      height={INTRINSIC.height}
+      priority={priority}
+      sizes="200px"
+      className={cn("w-auto select-none", className)}
+    />
   );
 }
