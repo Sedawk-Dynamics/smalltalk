@@ -1,6 +1,6 @@
 "use client";
 
-/** Site footer: brand-motif divider, 4 columns, newsletter, socials, legal. */
+/** Site footer: brand-motif divider, link columns, socials, payment + legal. */
 import Link from "next/link";
 import {
   Facebook,
@@ -12,7 +12,7 @@ import {
   Youtube,
 } from "lucide-react";
 import Logo, { TeeMotif } from "@/components/ui/Logo";
-import Newsletter from "@/components/ui/Newsletter";
+import PaymentBadges from "@/components/ui/PaymentBadges";
 import { brand, footerColumns, socials } from "@/data/content";
 
 const socialIcon: Record<string, React.ElementType> = {
@@ -39,7 +39,6 @@ export default function Footer() {
           <p className="max-w-xs text-sm leading-relaxed text-white/60">
             Premium everyday apparel — honest pricing, no compromise.
           </p>
-          <Newsletter dark className="max-w-sm" />
         </div>
 
         {/* Link columns */}
@@ -122,16 +121,7 @@ export default function Footer() {
             © 2026 {brand.legalEntity}. All rights reserved.{" "}
             <span className="text-white/30">GSTIN: {brand.gstin}</span>
           </p>
-          <div className="flex items-center gap-2" aria-label="Accepted payments">
-            {["VISA", "MC", "UPI", "RuPay", "AmEx"].map((p) => (
-              <span
-                key={p}
-                className="rounded-md border border-white/15 px-2 py-1 text-[10px] font-semibold tracking-wide text-white/60"
-              >
-                {p}
-              </span>
-            ))}
-          </div>
+          <PaymentBadges />
           <div className="flex flex-wrap gap-x-4 gap-y-1">
             <Link href="/terms" className="hover:text-white">
               Terms
