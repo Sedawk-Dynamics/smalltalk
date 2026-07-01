@@ -12,6 +12,10 @@ const nextConfig = {
       { protocol: "https", hostname: "picsum.photos" },
     ],
   },
+  // The second home variation was retired — send any old /v2 links to the home page.
+  async redirects() {
+    return [{ source: "/v2", destination: "/", permanent: true }];
+  },
 };
 
 export default nextConfig;

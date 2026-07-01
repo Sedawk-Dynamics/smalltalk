@@ -13,7 +13,7 @@ export default function DecorGrid({
   className?: string;
   dark?: boolean;
 }) {
-  const dot = dark ? "rgba(255,255,255,0.10)" : "rgba(33,33,90,0.10)";
+  const dot = dark ? "rgba(255,255,255,0.10)" : "rgba(21,21,60,0.10)";
   const ring = dark ? "border-white/10" : "border-navy/10";
   return (
     <div

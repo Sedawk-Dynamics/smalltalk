@@ -13,8 +13,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: "#21215A", // primary — backgrounds, headings, primary buttons
-        ink: "#15153B", // deep sections, footer
+        navy: "#15153C", // primary — backgrounds, headings, primary buttons (client main color)
+        ink: "#0E0E2A", // deeper shade for footer / deep sections
         cream: "#F7F6F2", // light section backgrounds
         mist: "#6B6B7B", // muted body text
         glow: "#5B5BF0", // electric accent — use sparingly

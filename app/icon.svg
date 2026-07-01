@@ -1,7 +1,7 @@
 <!-- Favicon built from the t-shirt-collar "a" brand motif.
      TODO(client-asset): replace with the finalized logo mark (keep this filename). -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#21215A"/>
+  <rect width="64" height="64" rx="14" fill="#15153C"/>
   <path d="M24 12 L15 17 L11 27 L18 30 L20 25 L20 50 A2 2 0 0 0 22 52 L42 52 A2 2 0 0 0 44 50 L44 25 L46 30 L53 27 L49 17 L40 12 C38 17 33 19 32 19 C31 19 26 17 24 12 Z" fill="#fff"/>
-  <path d="M27 13 C29 17 31 18 32 18 C33 18 35 17 37 13" stroke="#21215A" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M27 13 C29 17 31 18 32 18 C33 18 35 17 37 13" stroke="#15153C" stroke-width="2" fill="none" stroke-linecap="round"/>
 </svg>

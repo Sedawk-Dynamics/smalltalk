@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Inter_Tight } from "next/font/google";
+import { Syne, Manrope } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/providers/Providers";
 import Navbar from "@/components/layout/Navbar";
@@ -11,19 +11,19 @@ import { brand } from "@/data/content";
  * Typography — single source of truth (next/font → CSS vars → Tailwind
  * `font-display` / `font-body`). Change the pairing here and it updates
  * everywhere.
- *   Headings → Bricolage Grotesque (characterful, confident display)
- *   Body     → Inter Tight (clean, modern, legible)
+ *   Headings → Syne (distinctive, editorial, fashion-forward display)
+ *   Body     → Manrope (clean, modern, highly legible)
  *
  * NOTE(client-confirm): Typeface direction — confirm or replace with the
  * brand's chosen fonts (swap the two imports below; nothing else changes).
  */
-const display = Bricolage_Grotesque({
+const display = Syne({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
   // variable font — full weight range loaded; no `weight` needed
 });
-const body = Inter_Tight({
+const body = Manrope({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#21215A",
+  themeColor: "#15153C",
   width: "device-width",
   initialScale: 1,
 };

@@ -412,8 +412,7 @@ export const ctaBanner = {
 
 /* ---------------- NAV + FOOTER ---------------- */
 export const navLinks = [
-  { label: "Home 1", href: "/" },
-  { label: "Home 2", href: "/v2" },
+  { label: "Home", href: "/" },
   { label: "Shop", href: "/shop" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },

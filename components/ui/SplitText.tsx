@@ -50,7 +50,12 @@ export default function SplitText({
         <span
           key={i}
           aria-hidden
-          className="inline-block overflow-hidden align-bottom"
+          className={cn(
+            "inline-block overflow-hidden align-bottom",
+            // real gap between words — a trailing space would be clipped by
+            // the overflow-hidden box, so use margin instead.
+            i < tokens.length - 1 && "mr-[0.25em]"
+          )}
         >
           <motion.span
             className={cn("inline-block", highlight.includes(i) && highlightClass)}
@@ -64,7 +69,6 @@ export default function SplitText({
           >
             {w}
           </motion.span>
-          {i < tokens.length - 1 ? " " : ""}
         </span>
       ))}
     </span>
