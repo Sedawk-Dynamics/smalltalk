@@ -17,17 +17,15 @@ export default function SplitText({
   className,
   delay = 0,
   stagger = 0.08,
-  highlight = [],
-  highlightClass = "text-gradient",
 }: {
   text?: string;
   words?: string[];
   className?: string;
   delay?: number;
   stagger?: number;
-  /** indexes of words to paint with the accent gradient */
+  // `highlight` / `highlightClass` are accepted for backwards-compat but no
+  // longer render coloured words — headings are a single solid colour now.
   highlight?: number[];
-  /** gradient class for highlighted words ("text-gradient" on dark, "text-gradient-ink" on light) */
   highlightClass?: string;
 }) {
   const reduced = useReducedMotion();
@@ -58,7 +56,7 @@ export default function SplitText({
           )}
         >
           <motion.span
-            className={cn("inline-block", highlight.includes(i) && highlightClass)}
+            className="inline-block"
             initial={{ y: "110%" }}
             animate={show ? { y: "0%" } : { y: "110%" }}
             transition={{
