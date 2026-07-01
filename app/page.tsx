@@ -11,7 +11,6 @@ import Lookbook from "@/components/home/Lookbook";
 import Testimonials from "@/components/home/Testimonials";
 import NewsletterBand from "@/components/home/NewsletterBand";
 import CTABanner from "@/components/home/CTABanner";
-import HomeVariantSwitch from "@/components/ui/HomeVariantSwitch";
 import { marqueeItems } from "@/data/content";
 
 /**
@@ -35,7 +34,6 @@ export default function HomePage() {
       <Testimonials />
       <NewsletterBand />
       <CTABanner />
-      <HomeVariantSwitch />
     </>
   );
 }

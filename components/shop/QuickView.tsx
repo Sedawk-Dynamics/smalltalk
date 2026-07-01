@@ -14,7 +14,7 @@ import MagneticButton from "@/components/ui/MagneticButton";
 import { cn } from "@/lib/utils";
 
 const colorSwatch: Record<string, string> = {
-  navy: "#21215A",
+  navy: "#15153C",
   white: "#FFFFFF",
   cream: "#F7F6F2",
 };

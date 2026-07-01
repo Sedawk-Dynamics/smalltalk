@@ -18,7 +18,7 @@ import { useReducedMotion } from "@/lib/hooks";
 import { cn } from "@/lib/utils";
 
 const SWATCH: Record<string, string> = {
-  navy: "#21215A",
+  navy: "#15153C",
   white: "#FFFFFF",
   cream: "#F7F6F2",
 };
