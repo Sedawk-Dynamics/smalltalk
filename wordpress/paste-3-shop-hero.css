@@ -1,0 +1,85 @@
+/*
+   PASTE #3 — SHOP PAGE HERO ("The Collection")
+   Append BELOW paste #2 in Theme Settings → Custom CSS → Global CSS.
+
+   Replaces WoodMart's shop page title (plain "Shop" + demo category links)
+   with the exact Next.js PageHeader: navy band with drifting indigo/cyan
+   mesh washes, "The Collection" title, subtitle. (No breadcrumb.)
+   Verified against the staging DOM: .page-title > .container > .wd-title-wrapp
+   > h1.entry-title.title, plus ul.wd-nav-product-cat (hidden below).
+*/
+
+/* Kill the demo category links + mobile "Categories" toggle in the title,
+   and any breadcrumbs inside the hero band */
+.page-title .wd-nav-product-cat,
+.page-title .wd-btn-show-cat,
+.page-title .wd-breadcrumbs,
+.page-title .woocommerce-breadcrumb {
+	display: none !important;
+}
+
+/* The band — navy + the GradientMesh blobs (glow/30, cyan/20, indigo/20) */
+.woocommerce-page .page-title,
+.page-title.page-title-default {
+	background-color: var(--st-navy) !important;
+	background-image:
+		radial-gradient(40rem 40rem at -5% 0%, rgba(91, 91, 240, 0.3), transparent 60%),
+		radial-gradient(34rem 34rem at 100% 45%, rgba(61, 214, 208, 0.2), transparent 60%),
+		radial-gradient(30rem 30rem at 33% 100%, rgba(99, 102, 241, 0.2), transparent 60%) !important;
+	overflow: hidden;
+	padding: 72px 0 88px !important;
+	margin-bottom: 0 !important;
+	text-align: left !important;
+}
+.page-title .container,
+.page-title .wd-title-wrapp {
+	text-align: left !important;
+}
+
+/* Title — hide the page's own "Shop" text, render "The Collection".
+   (If you rename the WooCommerce Shop page to "The Collection" in WP admin,
+   delete this block and just keep the styling on the h1.) */
+.page-title .entry-title.title {
+	font-size: 0 !important;
+	line-height: 0 !important;
+	color: transparent !important;
+	margin: 0 !important;
+}
+.page-title .entry-title.title::before {
+	content: "The Collection";
+	display: block;
+	font-family: var(--st-font-display);
+	font-size: clamp(38px, 5.2vw, 60px);
+	font-weight: 700;
+	letter-spacing: -0.06em;
+	line-height: 1.05;
+	color: #ffffff;
+	max-width: 48rem;
+}
+
+/* Subtitle — white/70 Manrope, max-w-xl, mt-5 */
+.page-title .entry-title.title::after {
+	content: "Premium everyday staples — tees and polos built to feel as good as they look.";
+	display: block;
+	margin-top: 20px;
+	font-family: var(--st-font-body);
+	font-size: 17px;
+	font-weight: 400;
+	letter-spacing: 0;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.7);
+	max-width: 36rem;
+	text-transform: none;
+}
+
+/* Breathing room between the hero band and the product grid */
+.woocommerce-page .page-title + * ,
+.page-title ~ .main-page-wrapper .site-content {
+	scroll-margin-top: 0;
+}
+.woocommerce-page .main-page-wrapper {
+	padding-top: 0;
+}
+.woocommerce-page .site-content {
+	padding-top: 40px;
+}

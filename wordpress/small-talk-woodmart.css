@@ -1,0 +1,1175 @@
+/*
+   THE SMALL TALK STORE — WoodMart shop skin
+   Paste the whole file into: WP Admin → Theme Settings → Custom CSS → Global CSS
+   (Alternative: Appearance → Customize → Additional CSS.)
+
+   Verified against staging.smalltalks.sedawk.cloud (WoodMart 8.2.6,
+   woodmart-child active). The imported demo ships generated CSS (Nunito font,
+   coral #EB7A61) that loads late — every brand-critical rule below therefore
+   uses !important so the demo can never win.
+
+   Brand source of truth: tailwind.config.ts of the Next.js site.
+*/
+
+/* Fonts safety net — the child theme already enqueues these; keep as backup. */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap");
+
+/* ============================================================
+   1. BRAND TOKENS — declared on body so they beat any :root
+      declarations coming from demo stylesheets.
+   ============================================================ */
+body {
+	--st-navy: #15153c;   /* primary — headings, primary buttons */
+	--st-ink: #0e0e2a;    /* announcement bar, footer, deep sections */
+	--st-cream: #f7f6f2;  /* page background */
+	--st-mist: #6b6b7b;   /* muted body text */
+	--st-glow: #5b5bf0;   /* electric indigo accent */
+	--st-cyan: #3dd6d0;   /* alt accent */
+	--st-font-display: "Syne", system-ui, sans-serif;
+	--st-font-body: "Manrope", system-ui, sans-serif;
+
+	/* WoodMart variable overrides */
+	--wd-primary-color: var(--st-glow);
+	--wd-alternative-color: var(--st-cyan);
+	--wd-link-color: var(--st-navy);
+	--wd-link-color-hover: var(--st-glow);
+	--wd-text-color: var(--st-mist);
+	--wd-text-font: var(--st-font-body);
+	--wd-title-color: var(--st-navy);
+	--wd-title-font: var(--st-font-display);
+	--wd-title-font-weight: 700;
+	--wd-entities-title-color: var(--st-navy);
+	--wd-entities-title-color-hover: var(--st-glow);
+	--wd-entities-title-font: var(--st-font-display);
+	--wd-entities-title-font-weight: 700;
+	--wd-widget-title-font: var(--st-font-body);
+	--wd-widget-title-color: var(--st-navy);
+	--btn-default-bgcolor: var(--st-navy);
+	--btn-default-bgcolor-hover: var(--st-glow);
+	--btn-default-color: #fff;
+	--btn-default-color-hover: #fff;
+	--btn-accented-bgcolor: var(--st-glow);
+	--btn-accented-bgcolor-hover: var(--st-navy);
+	--btn-accented-color: #fff;
+	--btn-accented-color-hover: #fff;
+	--wd-form-brd-radius: 14px;
+	--wd-form-brd-color: rgba(21, 21, 59, 0.15);
+	--wd-form-brd-color-focus: var(--st-glow);
+}
+
+/* ============================================================
+   2. TYPOGRAPHY — Syne display / Manrope body (kills demo Nunito)
+   ============================================================ */
+body,
+p,
+.woocommerce-breadcrumb,
+.wd-breadcrumbs {
+	font-family: var(--st-font-body) !important;
+	color: var(--st-mist);
+}
+
+h1, h2, h3, h4, h5,
+.title,
+.entry-title,
+.page-title .entry-title,
+.wd-entities-title,
+.wd-entities-title a,
+.product-grid-item .wd-entities-title a {
+	font-family: var(--st-font-display) !important;
+	color: var(--st-navy) !important;
+	letter-spacing: -0.03em;
+	font-weight: 700;
+}
+.wd-entities-title a:hover {
+	color: var(--st-glow) !important;
+}
+
+.widget-title,
+.wd-widget-title,
+.woodmart-widget-title {
+	font-family: var(--st-font-body) !important;
+	font-size: 12px !important;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--st-navy) !important;
+}
+
+::selection {
+	background: var(--st-glow);
+	color: #fff;
+}
+:focus-visible {
+	outline: 2px solid var(--st-glow);
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+
+/* ============================================================
+   3. PAGE CANVAS — cream + the same cool radial washes + film
+      grain as the Next.js site (demo forces plain white)
+   ============================================================ */
+body,
+.website-wrapper,
+.main-page-wrapper {
+	background-color: var(--st-cream) !important;
+}
+body {
+	background-image:
+		radial-gradient(60rem 40rem at 100% -10%, rgba(91, 91, 240, 0.08), transparent 60%),
+		radial-gradient(50rem 40rem at -10% 20%, rgba(61, 214, 208, 0.06), transparent 55%) !important;
+	background-attachment: fixed;
+}
+/* Film-grain overlay — identical to the Next.js `.grain::after` */
+body::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: 60;
+	pointer-events: none;
+	opacity: 0.05;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	mix-blend-mode: overlay;
+}
+/* Helper for Elementor sections that need the washes locally */
+.st-wash {
+	background-image:
+		radial-gradient(40rem 26rem at 90% 0%, rgba(91, 91, 240, 0.1), transparent 60%),
+		radial-gradient(34rem 26rem at 0% 60%, rgba(61, 214, 208, 0.08), transparent 55%);
+}
+
+/* ============================================================
+   4. SHOP PAGE TITLE — clean navy-on-cream (demo uses a dark strip)
+   ============================================================ */
+.page-title,
+.page-title-default,
+.woocommerce-page .page-title {
+	background: transparent !important;
+	background-image: none !important;
+	margin-bottom: 10px;
+}
+.page-title .entry-title,
+.page-title .title,
+.page-title h1 {
+	color: var(--st-navy) !important;
+	font-size: clamp(32px, 5vw, 48px) !important;
+	text-transform: none !important;
+}
+/* Category links inside the page title — pill chips like the Next.js filters */
+.wd-nav-shop-cat > li > a,
+.page-title .wd-nav > li > a {
+	font-family: var(--st-font-body) !important;
+	font-size: 13px !important;
+	font-weight: 600;
+	color: var(--st-navy) !important;
+	background: rgba(21, 21, 59, 0.06);
+	border-radius: 999px;
+	padding: 8px 18px;
+	text-transform: none !important;
+	transition: background 0.25s ease, color 0.25s ease;
+}
+.wd-nav-shop-cat > li > a:hover,
+.wd-nav-shop-cat > li.current-cat > a {
+	background: var(--st-navy);
+	color: #fff !important;
+}
+.wd-breadcrumbs,
+.woocommerce-breadcrumb {
+	color: var(--st-mist) !important;
+}
+
+/* ============================================================
+   5. PRODUCT CARDS — rounded-3xl glass, indigo glow hover,
+      matches components/shop/ProductCard.tsx
+   ============================================================ */
+.wd-product .product-wrapper,
+.product-grid-item .product-wrapper {
+	border-radius: 24px !important;
+	overflow: hidden;
+	background: rgba(255, 255, 255, 0.6) !important;
+	transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease !important;
+}
+.wd-product:hover .product-wrapper,
+.product-grid-item:hover .product-wrapper {
+	transform: translateY(-6px);
+	box-shadow: 0 34px 80px -34px rgba(91, 91, 240, 0.55) !important;
+}
+.wd-product .product-element-top,
+.product-grid-item .product-element-top {
+	border-radius: 20px !important;
+	overflow: hidden;
+}
+/* Slow zoom on the product image, like the Next.js hover scale-105 */
+.product-element-top img {
+	transition: transform 0.7s ease !important;
+}
+.wd-product:hover .product-element-top img,
+.product-grid-item:hover .product-element-top img {
+	transform: scale(1.05);
+}
+.wd-entities-title {
+	font-size: 15px !important;
+}
+
+/* Price — navy, Manrope bold (demo paints it coral) */
+.price,
+.price .amount,
+.woocommerce-Price-amount,
+.product-grid-item .price {
+	font-family: var(--st-font-body) !important;
+	color: var(--st-navy) !important;
+	font-weight: 700;
+}
+.price del,
+.price del .amount {
+	color: var(--st-mist) !important;
+	opacity: 0.6;
+	font-weight: 500;
+}
+.price ins,
+.price ins .amount {
+	color: var(--st-glow) !important;
+	text-decoration: none;
+}
+
+/* ============================================================
+   6. BUTTONS — full pills, navy→indigo animated gradient + glow
+      (same as the Next.js MagneticButton primary)
+   ============================================================ */
+.btn,
+.button,
+button.button,
+a.button,
+input[type="submit"],
+.woocommerce .button,
+.wd-button {
+	border-radius: 999px !important;
+	font-family: var(--st-font-body) !important;
+	font-weight: 600;
+	text-transform: none !important;
+	letter-spacing: 0.02em;
+}
+
+.btn.btn-color-primary,
+.button.checkout,
+.single_add_to_cart_button,
+.woocommerce .button.alt,
+.woocommerce-cart .checkout-button,
+.add_to_cart_button,
+.wd-add-btn a {
+	background-color: var(--st-navy) !important;
+	background-image: linear-gradient(90deg, var(--st-navy), var(--st-glow), var(--st-navy)) !important;
+	background-size: 200% 100% !important;
+	background-position: 0% 50%;
+	color: #fff !important;
+	box-shadow: 0 10px 30px -10px rgba(91, 91, 240, 0.7);
+	transition: background-position 0.4s ease, box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+.btn.btn-color-primary:hover,
+.button.checkout:hover,
+.single_add_to_cart_button:hover,
+.woocommerce .button.alt:hover,
+.woocommerce-cart .checkout-button:hover,
+.add_to_cart_button:hover,
+.wd-add-btn a:hover {
+	background-position: 100% 50% !important;
+	box-shadow: 0 16px 44px -12px rgba(91, 91, 240, 0.9);
+	transform: translateY(-1px);
+}
+
+/* ============================================================
+   7. LABELS / RATINGS / PAGINATION
+   ============================================================ */
+.product-label,
+.product-labels .product-label,
+.onsale {
+	border-radius: 999px !important;
+	font-family: var(--st-font-body) !important;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	font-size: 10px !important;
+}
+.product-label.onsale,
+.onsale {
+	background-color: var(--st-glow) !important;
+	color: #fff !important;
+}
+.product-label.new {
+	background-color: var(--st-cyan) !important;
+	color: var(--st-ink) !important;
+}
+.star-rating,
+.star-rating span::before {
+	color: var(--st-glow) !important;
+}
+.wd-pagination a,
+.wd-pagination span,
+.woocommerce-pagination a,
+.woocommerce-pagination span {
+	border-radius: 999px !important;
+	font-family: var(--st-font-body) !important;
+	font-weight: 600;
+}
+
+/* ============================================================
+   8. FORMS — 14px radius, white fills (matches Next.js inputs)
+   ============================================================ */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+select,
+textarea {
+	border-radius: 14px !important;
+	font-family: var(--st-font-body) !important;
+	background-color: #fff;
+}
+.quantity {
+	border-radius: 999px;
+	overflow: hidden;
+}
+
+/* ============================================================
+   9. SHOP SIDEBAR — mirrors the Next.js filter panel
+   ============================================================ */
+.sidebar-container .widget {
+	margin-bottom: 34px;
+}
+.sidebar-container a {
+	font-family: var(--st-font-body) !important;
+	color: var(--st-mist) !important;
+}
+.sidebar-container a:hover {
+	color: var(--st-navy) !important;
+}
+/* Category list as pill chips */
+.sidebar-container .widget_product_categories li a,
+.sidebar-container .wd-nav-product-cat li a {
+	display: inline-block;
+	background: rgba(21, 21, 59, 0.05);
+	border: 1px solid rgba(21, 21, 59, 0.12);
+	border-radius: 999px;
+	padding: 6px 16px;
+	margin: 3px 0;
+	font-size: 13px;
+	transition: all 0.25s ease;
+}
+.sidebar-container .widget_product_categories li a:hover,
+.sidebar-container .widget_product_categories li.current-cat > a {
+	background: var(--st-navy);
+	border-color: var(--st-navy);
+	color: #fff !important;
+}
+/* Price filter slider in brand colors */
+.widget_price_filter .ui-slider .ui-slider-range {
+	background-color: var(--st-glow) !important;
+}
+.widget_price_filter .ui-slider .ui-slider-handle {
+	background-color: var(--st-navy) !important;
+	border-radius: 999px;
+}
+
+/* ============================================================
+   10. HEADER — Manrope nav, frosted cream sticky bar (matches
+       the Next.js scrolled navbar), indigo cart bubble
+   ============================================================ */
+.whb-header .wd-nav-main > li > a,
+.whb-header .navigation-wrap .wd-nav > li > a,
+.whb-header .wd-nav > li > a {
+	font-family: var(--st-font-body) !important;
+	font-weight: 500;
+	font-size: 14px !important;
+	text-transform: none !important;
+	color: rgba(21, 21, 59, 0.8) !important;
+}
+.whb-header .wd-nav-main > li > a:hover,
+.whb-header .wd-nav > li.current-menu-item > a {
+	color: var(--st-navy) !important;
+}
+.whb-header .wd-nav-main > li.current-menu-item > a::after {
+	background-color: var(--st-glow);
+}
+.wd-header-cart .wd-cart-number {
+	background-color: var(--st-glow) !important;
+	color: #fff !important;
+}
+/* Sticky state: cream glass + blur + soft shadow */
+.whb-sticked .whb-general-header,
+.whb-sticked.whb-scroll-slide .whb-general-header,
+.whb-sticked.whb-scroll-stick .whb-general-header {
+	background-color: rgba(247, 246, 242, 0.72) !important;
+	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
+	box-shadow: 0 18px 50px -24px rgba(21, 21, 59, 0.5);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+/* Top bar (announcement) — deep ink like the Next.js AnnouncementBar */
+.whb-top-bar,
+.whb-top-bar .whb-flex-row {
+	background-color: var(--st-ink) !important;
+	color: #fff !important;
+}
+.whb-top-bar,
+.whb-top-bar a {
+	font-family: var(--st-font-body) !important;
+	font-size: 13px !important;
+	color: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* ============================================================
+   11. FOOTER — deep ink, matches the Next.js footer
+   ============================================================ */
+.footer-container,
+.wd-footer,
+.copyrights-wrapper {
+	background-color: var(--st-ink) !important;
+	color: rgba(255, 255, 255, 0.55);
+}
+.footer-container .widget-title,
+.footer-container .wd-widget-title,
+.wd-footer .widget-title {
+	font-family: var(--st-font-body) !important;
+	font-size: 13px !important;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.9) !important;
+}
+.footer-container a,
+.wd-footer a,
+.copyrights-wrapper a {
+	color: rgba(255, 255, 255, 0.55) !important;
+}
+.footer-container a:hover,
+.wd-footer a:hover,
+.copyrights-wrapper a:hover {
+	color: #fff !important;
+}
+.copyrights-wrapper {
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	font-size: 12px;
+}
+/* Footer social icons — bordered circles that fill indigo on hover */
+.footer-container .wd-social-icon,
+.wd-footer .wd-social-icon {
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 999px;
+	background: transparent;
+	transition: background 0.3s ease, border-color 0.3s ease;
+}
+.footer-container .wd-social-icon:hover,
+.wd-footer .wd-social-icon:hover {
+	background: var(--st-glow);
+	border-color: var(--st-glow);
+}
+
+/* ============================================================
+   12. NOTICES / CART DRAWER / TABS
+   ============================================================ */
+.woocommerce-message,
+.woocommerce-info {
+	border-top-color: var(--st-glow) !important;
+	border-radius: 14px;
+	font-family: var(--st-font-body) !important;
+}
+.cart-widget-side,
+.wd-side-hidden {
+	background-color: var(--st-cream) !important;
+}
+.wd-nav-tabs li a,
+.tabs-layout-tabs .wd-nav-tabs li a {
+	font-family: var(--st-font-display) !important;
+	letter-spacing: -0.02em;
+	color: var(--st-mist);
+}
+.wd-nav-tabs li.wd-active a {
+	color: var(--st-navy) !important;
+}
+
+/* ============================================================
+   13. REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+/*
+   PASTE #2 — EXACT HEADER + FOOTER MATCH
+   Append this BELOW the CSS you already pasted in
+   Theme Settings → Custom CSS → Global CSS.
+
+   Header: turns the WoodMart header into the Next.js floating cream
+   glass pill (rounded-full, blur, soft shadow) with the indigo
+   active-link underline and the "Shop Now →" gradient pill.
+   Footer: styles the st-footer HTML widget (see footer.html).
+*/
+
+/* ============================================================
+   14. HEADER — floating cream glass pill (matches Navbar.tsx)
+   ============================================================ */
+/* The row itself goes transparent; the inner container becomes the pill.
+   transition:none is required — the earlier skin transitions the row's
+   background-color, which can freeze the repaint and leave the row white. */
+.whb-header .whb-row.whb-general-header,
+.whb-general-header.whb-general-header {
+	background: transparent !important;
+	background-color: transparent !important;
+	box-shadow: none !important;
+	border: 0 !important;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	transition: none !important;
+}
+.whb-general-header > .container {
+	max-width: 1340px;
+	margin-inline: auto;
+	background: rgba(247, 246, 242, 0.72) !important;
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	border-radius: 999px;
+	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
+	box-shadow: 0 18px 50px -24px rgba(21, 21, 59, 0.5);
+	padding-left: 28px !important;
+	padding-right: 28px !important;
+	transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+/* Same pill when sticky (overrides the earlier full-bar sticky style) */
+.whb-sticked .whb-general-header,
+.whb-sticked.whb-scroll-slide .whb-general-header,
+.whb-sticked.whb-scroll-stick .whb-general-header {
+	background: transparent !important;
+	background-color: transparent !important;
+	box-shadow: none !important;
+	transition: none !important;
+}
+.whb-sticked .whb-general-header > .container {
+	background: rgba(247, 246, 242, 0.85) !important;
+}
+/* On phones keep a soft rounded bar, not a tight pill */
+@media (max-width: 768px) {
+	.whb-general-header > .container {
+		border-radius: 24px;
+		padding-left: 16px !important;
+		padding-right: 16px !important;
+	}
+}
+
+/* Active menu item — indigo underline bar (Navbar.tsx nav-active) */
+.whb-header .wd-nav-main > li > a {
+	position: relative;
+}
+.whb-header .wd-nav-main > li.current-menu-item > a::before,
+.whb-header .wd-nav-main > li.current_page_item > a::before {
+	content: "";
+	position: absolute;
+	left: 14px;
+	right: 14px;
+	bottom: 2px;
+	height: 2px;
+	border-radius: 999px;
+	background: var(--st-glow);
+}
+/* Kill WoodMart's own underline effect so it doesn't double up */
+.whb-header .wd-nav-main > li > a::after {
+	display: none !important;
+}
+
+/* Header icons (search / cart) — navy, soft circle hover */
+.whb-header .wd-header-search a,
+.whb-header .wd-header-cart a,
+.whb-header .wd-tools-element a {
+	color: var(--st-navy) !important;
+	border-radius: 999px;
+	transition: background 0.25s ease;
+}
+.whb-header .wd-tools-element a:hover {
+	background: rgba(21, 21, 59, 0.05);
+}
+
+/* "Shop Now →" — give the Header Builder button the CSS class
+   st-shop-btn; the arrow is added automatically */
+.st-shop-btn a,
+.st-shop-btn .wd-button {
+	background-image: linear-gradient(90deg, var(--st-navy), var(--st-glow)) !important;
+	background-color: var(--st-navy) !important;
+	color: #fff !important;
+	border-radius: 999px !important;
+	font-family: var(--st-font-body) !important;
+	font-weight: 600;
+	font-size: 13px !important;
+	padding: 10px 22px !important;
+	box-shadow: 0 10px 30px -10px rgba(91, 91, 240, 0.7);
+	transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.st-shop-btn a::after {
+	content: "\00a0\2192";
+}
+.st-shop-btn a:hover {
+	box-shadow: 0 16px 44px -12px rgba(91, 91, 240, 0.9);
+	transform: translateY(-1px);
+}
+
+/* Top bar (announcement) — ink, centered, Manrope */
+.whb-top-bar,
+.whb-top-bar .whb-flex-row,
+.whb-top-bar > .container {
+	background: var(--st-ink) !important;
+	color: rgba(255, 255, 255, 0.92) !important;
+	font-family: var(--st-font-body) !important;
+	font-size: 13px !important;
+}
+
+/* ============================================================
+   15. FOOTER — exact Next.js footer (markup in footer.html,
+       pasted into one full-width Custom HTML footer widget)
+   ============================================================ */
+.footer-container {
+	padding: 0 !important;
+}
+.st-footer {
+	font-family: var(--st-font-body);
+	color: rgba(255, 255, 255, 0.55);
+}
+.st-footer a {
+	color: rgba(255, 255, 255, 0.55) !important;
+	text-decoration: none;
+	transition: color 0.25s ease;
+}
+.st-footer a:hover {
+	color: #fff !important;
+}
+
+/* Motif divider — thin lines + indigo tee icon at 30% opacity */
+.st-footer-divider {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 24px;
+	opacity: 0.3;
+}
+.st-footer-divider span {
+	height: 1px;
+	flex: 1;
+	background: rgba(255, 255, 255, 0.2);
+}
+.st-footer-divider svg {
+	width: 24px;
+	height: 24px;
+	color: var(--st-glow);
+}
+
+/* Column grid — 1.5 / 1 / 1 / 1 / 1 / 1.3, like the Next.js footer */
+.st-footer-grid {
+	display: grid;
+	grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1.3fr;
+	gap: 48px 32px;
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 24px 24px 48px;
+}
+@media (max-width: 1024px) {
+	.st-footer-grid {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+@media (max-width: 640px) {
+	.st-footer-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.st-footer-logo {
+	height: 40px;
+	width: auto;
+	margin-bottom: 20px;
+}
+.st-footer-brand p {
+	max-width: 280px;
+	font-size: 14px;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.6);
+}
+
+.st-footer-grid h4 {
+	font-family: var(--st-font-body) !important;
+	font-size: 14px !important;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.9) !important;
+	margin: 0 0 16px;
+}
+.st-footer-grid ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.st-footer-grid ul li {
+	margin-bottom: 10px;
+	font-size: 14px;
+	list-style: none;
+}
+
+/* Contact column — indigo icons */
+.st-contact li {
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+	margin-bottom: 12px;
+}
+.st-contact svg {
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+	margin-top: 2px;
+	color: var(--st-glow);
+	stroke: currentColor;
+	fill: none;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+.st-hours {
+	font-size: 12px;
+	color: rgba(255, 255, 255, 0.4);
+}
+
+/* Social circles — border, fill indigo on hover */
+.st-socials {
+	display: flex;
+	gap: 8px;
+	margin-top: 20px;
+}
+.st-socials a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 999px;
+	color: rgba(255, 255, 255, 0.7) !important;
+	transition: all 0.3s ease;
+}
+.st-socials a:hover {
+	border-color: var(--st-glow);
+	background: var(--st-glow);
+	color: #fff !important;
+}
+.st-socials svg {
+	width: 16px;
+	height: 16px;
+	stroke: currentColor;
+	fill: none;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+/* Bottom bar — © + payment chips + legal links */
+.st-footer-bottom {
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.st-footer-bottom-inner {
+	max-width: 1280px;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 24px;
+	font-size: 12px;
+	color: rgba(255, 255, 255, 0.45);
+}
+.st-footer-bottom-inner .st-gstin {
+	color: rgba(255, 255, 255, 0.3);
+}
+.st-pay {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+.st-pay span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 28px;
+	width: 44px;
+	border-radius: 6px;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.st-legal-links {
+	display: flex;
+	gap: 16px;
+}
+
+/* WhatsApp floating button */
+.st-whatsapp {
+	position: fixed;
+	right: 24px;
+	bottom: 24px;
+	z-index: 90;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 56px;
+	height: 56px;
+	border-radius: 999px;
+	background: #25d366;
+	box-shadow: 0 10px 30px -8px rgba(37, 211, 102, 0.6);
+	transition: transform 0.3s ease;
+}
+.st-whatsapp:hover {
+	transform: scale(1.08);
+}
+.st-whatsapp svg {
+	width: 28px;
+	height: 28px;
+	fill: #fff;
+}
+/* Keep WoodMart's scroll-to-top above the WhatsApp button */
+.scrollToTop {
+	bottom: 96px !important;
+	right: 24px !important;
+}
+/*
+   PASTE #3 — SHOP PAGE HERO ("The Collection")
+   Append BELOW paste #2 in Theme Settings → Custom CSS → Global CSS.
+
+   Replaces WoodMart's shop page title (plain "Shop" + demo category links)
+   with the exact Next.js PageHeader: navy band with drifting indigo/cyan
+   mesh washes, "The Collection" title, subtitle. (No breadcrumb.)
+   Verified against the staging DOM: .page-title > .container > .wd-title-wrapp
+   > h1.entry-title.title, plus ul.wd-nav-product-cat (hidden below).
+*/
+
+/* Kill the demo category links + mobile "Categories" toggle in the title,
+   and any breadcrumbs inside the hero band */
+.page-title .wd-nav-product-cat,
+.page-title .wd-btn-show-cat,
+.page-title .wd-breadcrumbs,
+.page-title .woocommerce-breadcrumb {
+	display: none !important;
+}
+
+/* The band — navy + the GradientMesh blobs (glow/30, cyan/20, indigo/20) */
+.woocommerce-page .page-title,
+.page-title.page-title-default {
+	background-color: var(--st-navy) !important;
+	background-image:
+		radial-gradient(40rem 40rem at -5% 0%, rgba(91, 91, 240, 0.3), transparent 60%),
+		radial-gradient(34rem 34rem at 100% 45%, rgba(61, 214, 208, 0.2), transparent 60%),
+		radial-gradient(30rem 30rem at 33% 100%, rgba(99, 102, 241, 0.2), transparent 60%) !important;
+	overflow: hidden;
+	padding: 72px 0 88px !important;
+	margin-bottom: 0 !important;
+	text-align: left !important;
+}
+.page-title .container,
+.page-title .wd-title-wrapp {
+	text-align: left !important;
+}
+
+/* Title — hide the page's own "Shop" text, render "The Collection".
+   (If you rename the WooCommerce Shop page to "The Collection" in WP admin,
+   delete this block and just keep the styling on the h1.) */
+.page-title .entry-title.title {
+	font-size: 0 !important;
+	line-height: 0 !important;
+	color: transparent !important;
+	margin: 0 !important;
+}
+.page-title .entry-title.title::before {
+	content: "The Collection";
+	display: block;
+	font-family: var(--st-font-display);
+	font-size: clamp(38px, 5.2vw, 60px);
+	font-weight: 700;
+	letter-spacing: -0.06em;
+	line-height: 1.05;
+	color: #ffffff;
+	max-width: 48rem;
+}
+
+/* Subtitle — white/70 Manrope, max-w-xl, mt-5 */
+.page-title .entry-title.title::after {
+	content: "Premium everyday staples — tees and polos built to feel as good as they look.";
+	display: block;
+	margin-top: 20px;
+	font-family: var(--st-font-body);
+	font-size: 17px;
+	font-weight: 400;
+	letter-spacing: 0;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.7);
+	max-width: 36rem;
+	text-transform: none;
+}
+
+/* Breathing room between the hero band and the product grid */
+.woocommerce-page .page-title + * ,
+.page-title ~ .main-page-wrapper .site-content {
+	scroll-margin-top: 0;
+}
+.woocommerce-page .main-page-wrapper {
+	padding-top: 0;
+}
+.woocommerce-page .site-content {
+	padding-top: 40px;
+}
+/*
+   PASTE #4 — SINGLE PRODUCT PAGE
+   Append BELOW paste #3 in Theme Settings → Custom CSS → Global CSS.
+
+   Restyles the WooCommerce product page to match the Next.js ProductDetail
+   (smalltalk-two.vercel.app/shop/essential-tee): rounded-3xl gallery with
+   thumbnail switcher, Syne title/price, pill qty + gradient add-to-cart,
+   trust-badges row, accordion sections as rounded cards.
+   Verified against the staging DOM (WoodMart product-design-default,
+   tabs-layout-accordion).
+*/
+
+/* Breadcrumb above the product — small, muted */
+.single-product .wd-breadcrumbs,
+.single-product .woocommerce-breadcrumb {
+	font-size: 12px !important;
+	color: var(--st-mist) !important;
+	margin-bottom: 24px;
+}
+.single-product .wd-breadcrumbs a {
+	color: var(--st-mist) !important;
+}
+.single-product .wd-breadcrumbs a:hover {
+	color: var(--st-navy) !important;
+}
+
+/* ---------- Gallery — rounded-3xl main image on cream, rounded-xl thumbs */
+.woocommerce-product-gallery .woocommerce-product-gallery__wrapper,
+.woocommerce-product-gallery .woocommerce-product-gallery__image,
+.woocommerce-product-gallery .wp-post-image {
+	border-radius: 24px !important;
+	overflow: hidden;
+	background-color: var(--st-cream);
+}
+/* Thumbnails — WoodMart renders them as a .wd-gallery-thumb carousel
+   (.wd-carousel-item, active = .wd-active); flex-control-thumbs kept as
+   fallback for other gallery modes */
+.wd-gallery-thumb .wd-carousel-item img,
+.woocommerce-product-gallery .flex-control-thumbs li img {
+	border-radius: 12px !important;
+	border: 2px solid transparent;
+	opacity: 0.7;
+	transition: opacity 0.25s ease, border-color 0.25s ease;
+	cursor: pointer;
+}
+.wd-gallery-thumb .wd-carousel-item.wd-active img,
+.wd-gallery-thumb .wd-carousel-item:hover img,
+.woocommerce-product-gallery .flex-control-thumbs li img.flex-active,
+.woocommerce-product-gallery .flex-control-thumbs li img:hover {
+	border-color: var(--st-navy);
+	opacity: 1;
+}
+
+/* Sale badge on the gallery — indigo pill (matches the -% chip) */
+.single-product .onsale {
+	left: 16px !important;
+	top: 16px !important;
+}
+
+/* ---------- Summary (buy box) */
+.summary .product_title,
+.product_title.entry-title {
+	font-family: var(--st-font-display) !important;
+	font-size: clamp(28px, 3vw, 36px) !important;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+	color: var(--st-ink) !important;
+	line-height: 1.1;
+	margin-bottom: 8px;
+}
+
+/* Stars — cyan on the product page (Next.js uses text-cyan here) */
+.summary .star-rating,
+.summary .star-rating span::before {
+	color: var(--st-cyan) !important;
+}
+
+/* Price — Syne bold navy, struck compare-at in mist */
+.summary .price {
+	font-family: var(--st-font-display) !important;
+	font-size: clamp(26px, 2.6vw, 32px) !important;
+	font-weight: 700;
+	color: var(--st-navy) !important;
+	margin: 12px 0 !important;
+}
+.summary .price del {
+	font-family: var(--st-font-body) !important;
+	font-size: 18px !important;
+	font-weight: 400;
+	color: var(--st-mist) !important;
+	opacity: 0.8;
+}
+.summary .price ins {
+	text-decoration: none;
+}
+
+/* Short description */
+.woocommerce-product-details__short-description,
+.woocommerce-product-details__short-description p {
+	color: var(--st-mist) !important;
+	line-height: 1.7;
+	font-size: 15px;
+}
+
+/* ---------- Cart form — qty pill + full-width gradient button */
+.summary form.cart {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 16px;
+	margin: 28px 0 !important;
+}
+.summary form.cart .quantity {
+	border: 1px solid rgba(21, 21, 59, 0.2);
+	border-radius: 999px !important;
+	overflow: hidden;
+	background: transparent;
+}
+.summary form.cart .quantity input,
+.summary form.cart .quantity .qty {
+	border: 0 !important;
+	background: transparent !important;
+	font-family: var(--st-font-body) !important;
+	font-weight: 500;
+	color: var(--st-ink);
+}
+.summary form.cart .quantity .minus,
+.summary form.cart .quantity .plus {
+	border: 0 !important;
+	background: transparent !important;
+	color: var(--st-navy) !important;
+}
+.summary form.cart .quantity .minus:hover,
+.summary form.cart .quantity .plus:hover {
+	color: var(--st-glow) !important;
+}
+.summary .single_add_to_cart_button {
+	flex: 1 1 200px;
+	padding-top: 15px !important;
+	padding-bottom: 15px !important;
+	font-size: 14px !important;
+}
+
+/* Variation swatches (when Tees/Polos get size/color attributes):
+   size boxes like the Next.js selector — rounded-lg, navy when active */
+.summary .variations .wd-swatch,
+.summary .variations .wd-swatches-product > div {
+	border-radius: 10px !important;
+	border: 1px solid rgba(21, 21, 59, 0.2) !important;
+	font-family: var(--st-font-body) !important;
+	font-weight: 500;
+	color: var(--st-ink);
+	transition: all 0.25s ease;
+}
+.summary .variations .wd-swatch:hover {
+	border-color: var(--st-navy) !important;
+}
+.summary .variations .wd-swatch.wd-active {
+	background: var(--st-navy) !important;
+	border-color: var(--st-navy) !important;
+	color: #fff !important;
+}
+
+/* ---------- Trust badges row (pure CSS, above the product meta) */
+.single-product-page .product_meta {
+	border-top: 1px solid rgba(21, 21, 59, 0.1);
+	padding-top: 24px;
+	margin-top: 12px;
+	font-size: 13px;
+	color: var(--st-mist);
+}
+.single-product-page .product_meta::before {
+	content: "Free shipping ₹1499+   ·   7-day easy returns   ·   Secure checkout";
+	display: block;
+	margin-bottom: 18px;
+	font-family: var(--st-font-body);
+	font-size: 13px;
+	color: var(--st-mist);
+}
+.single-product-page .product_meta a {
+	color: var(--st-navy) !important;
+}
+.single-product-page .product_meta a:hover {
+	color: var(--st-glow) !important;
+}
+
+/* ---------- Accordion sections — rounded cards with glow "+" opener
+   (Description / Additional information / Reviews → like the Next.js
+   Specifications / Size Guide / Care Instructions cards) */
+.woocommerce-tabs .wd-accordion-item {
+	border: 1px solid rgba(21, 21, 59, 0.1) !important;
+	border-radius: 16px !important;
+	margin-bottom: 14px;
+	overflow: hidden;
+	background: transparent;
+}
+.woocommerce-tabs .wd-accordion-title {
+	padding: 18px 22px !important;
+	border: 0 !important;
+}
+.woocommerce-tabs .wd-accordion-title .wd-accordion-title-text,
+.woocommerce-tabs .wd-accordion-title.wd-active .wd-accordion-title-text {
+	font-family: var(--st-font-display) !important;
+	font-size: 17px !important;
+	font-weight: 700;
+	color: var(--st-ink) !important;
+	letter-spacing: -0.02em;
+	text-transform: none !important;
+}
+.woocommerce-tabs .wd-accordion-title .wd-accordion-opener,
+.woocommerce-tabs .wd-accordion-title.wd-active .wd-accordion-opener {
+	color: var(--st-glow) !important;
+}
+.woocommerce-tabs .woocommerce-Tabs-panel {
+	padding: 0 22px 20px !important;
+	color: var(--st-mist);
+}
+.woocommerce-tabs .woocommerce-Tabs-panel p {
+	color: var(--st-mist);
+}
+
+/* Hide WoodMart's "About brand" tab (accordion title + panel + tab link).
+   Can also be disabled in Theme Settings → Shop → Brands. */
+.woocommerce-tabs .tab-title-brand_tab,
+.woocommerce-tabs .woocommerce-Tabs-panel--brand_tab,
+.woocommerce-tabs .wd-nav-tabs .brand_tab_tab {
+	display: none !important;
+}
+
+/* ---------- Related products — Syne section heading */
+.related-products .wd-el-title,
+.related-products .slider-title,
+.wd-el-title.slider-title {
+	font-family: var(--st-font-display) !important;
+	font-size: clamp(24px, 2.6vw, 32px) !important;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+	color: var(--st-ink) !important;
+}
+
+/* Page spacing */
+.single-product .site-content {
+	padding-top: 32px;
+}

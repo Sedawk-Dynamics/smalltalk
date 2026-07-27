@@ -1,0 +1,132 @@
+<!-- ============================================================
+  THE SMALL TALK STORE — exact footer (mirrors components/layout/Footer.tsx)
+
+  HOW TO USE
+  1. Theme Settings → Footer → layout: ONE full-width column;
+     DISABLE the built-in "Copyrights" bar (this HTML has its own).
+  2. Media → upload logo-white.png (from the Next.js repo /public),
+     copy its URL and replace REPLACE_WITH_LOGO_WHITE_URL below.
+  3. Appearance → Widgets → Footer column 1 → add "Custom HTML" → paste ALL of this.
+  4. The styling comes from "paste-2-header-footer.css" (Custom CSS → Global CSS).
+  5. Links point at https://thesmalltalkstore.com — swap for the Vercel
+     staging URL until the real domain is live.
+============================================================= -->
+
+<div class="st-footer">
+
+  <!-- Brand motif divider -->
+  <div class="st-footer-divider" aria-hidden="true">
+    <span></span>
+    <svg viewBox="0 0 64 64" fill="none"><path d="M22 8 L12 14 L7 26 L16 30 L18 24 L18 54 A2 2 0 0 0 20 56 L44 56 A2 2 0 0 0 46 54 L46 24 L48 30 L57 26 L52 14 L42 8 C40 14 34 16 32 16 C30 16 24 14 22 8 Z" fill="currentColor"/></svg>
+    <span></span>
+  </div>
+
+  <div class="st-footer-grid">
+
+    <!-- Col 1 — brand -->
+    <div class="st-footer-brand">
+      <img src="REPLACE_WITH_LOGO_WHITE_URL" alt="The Small Talk Store" class="st-footer-logo" loading="lazy">
+      <p>Premium everyday apparel — honest pricing, no compromise.</p>
+    </div>
+
+    <!-- Col 2 — Shop (this site) -->
+    <div>
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="/product-category/tees/">Tees</a></li>
+        <li><a href="/product-category/polos/">Polos</a></li>
+        <li><a href="/shop/">All Products</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 3 — Company (main site) -->
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="https://thesmalltalkstore.com/about">About</a></li>
+        <li><a href="https://thesmalltalkstore.com/contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 4 — Support (main site) -->
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="https://thesmalltalkstore.com/support/shipping">Shipping</a></li>
+        <li><a href="https://thesmalltalkstore.com/support/returns">Returns</a></li>
+        <li><a href="https://thesmalltalkstore.com/support/faq">FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 5 — Legal (main site) -->
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="https://thesmalltalkstore.com/terms">Terms &amp; Conditions</a></li>
+        <li><a href="https://thesmalltalkstore.com/privacy">Privacy Policy</a></li>
+        <li><a href="https://thesmalltalkstore.com/refund">Refund &amp; Cancellation</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 6 — Contact -->
+    <div>
+      <h4>Contact</h4>
+      <ul class="st-contact">
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>C-182 Pushpanjali Enclave, Pitampura, New Delhi 110034</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:+918595382034">+91 8595382034</a>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <a href="mailto:info@thesmalltalkstore.com">info@thesmalltalkstore.com</a>
+        </li>
+        <li class="st-hours">Hours: 9:00 AM – 5:00 PM</li>
+      </ul>
+
+      <div class="st-socials">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+          <svg viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+        </a>
+        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.92 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright + payment badges + legal links -->
+  <div class="st-footer-bottom">
+    <div class="st-footer-bottom-inner">
+      <p>© 2026 Small Talk Garment LLP. All rights reserved. <span class="st-gstin">GSTIN: 07AFXFS8211B1ZS</span></p>
+
+      <div class="st-pay" aria-label="Accepted payment methods">
+        <span title="Visa"><svg viewBox="0 0 48 16" style="height:12px"><text x="24" y="13" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-style="italic" font-size="15" letter-spacing="0.5" fill="#1A1F71">VISA</text></svg></span>
+        <span title="Mastercard"><svg viewBox="0 0 40 24" style="height:16px"><circle cx="15" cy="12" r="8" fill="#EB001B"/><circle cx="25" cy="12" r="8" fill="#F79E1B"/><ellipse cx="20" cy="12" rx="3" ry="6" fill="#FF5F00"/></svg></span>
+        <span title="RuPay"><svg viewBox="0 0 52 16" style="height:12px"><text x="0" y="13" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-style="italic" font-size="14"><tspan fill="#1B458F">Ru</tspan><tspan fill="#F37021">Pay</tspan></text></svg></span>
+        <span title="UPI"><svg viewBox="0 0 34 16" style="height:14px"><text x="0" y="13" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-style="italic" font-size="14"><tspan fill="#F37021">U</tspan><tspan fill="#0C8A3E">P</tspan><tspan fill="#1B458F">I</tspan></text></svg></span>
+        <span title="American Express"><svg viewBox="0 0 44 24" style="height:20px"><rect width="44" height="24" rx="3" fill="#006FCF"/><text x="22" y="15" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="9" letter-spacing="0.5" fill="#ffffff">AMEX</text></svg></span>
+      </div>
+
+      <div class="st-legal-links">
+        <a href="https://thesmalltalkstore.com/terms">Terms</a>
+        <a href="https://thesmalltalkstore.com/privacy">Privacy</a>
+        <a href="https://thesmalltalkstore.com/refund">Refund</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp floating button -->
+<a class="st-whatsapp" href="https://wa.me/918595382034" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.511-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.884 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+</a>

@@ -1,0 +1,244 @@
+/*
+   PASTE #4 — SINGLE PRODUCT PAGE
+   Append BELOW paste #3 in Theme Settings → Custom CSS → Global CSS.
+
+   Restyles the WooCommerce product page to match the Next.js ProductDetail
+   (smalltalk-two.vercel.app/shop/essential-tee): rounded-3xl gallery with
+   thumbnail switcher, Syne title/price, pill qty + gradient add-to-cart,
+   trust-badges row, accordion sections as rounded cards.
+   Verified against the staging DOM (WoodMart product-design-default,
+   tabs-layout-accordion).
+*/
+
+/* Breadcrumb above the product — small, muted */
+.single-product .wd-breadcrumbs,
+.single-product .woocommerce-breadcrumb {
+	font-size: 12px !important;
+	color: var(--st-mist) !important;
+	margin-bottom: 24px;
+}
+.single-product .wd-breadcrumbs a {
+	color: var(--st-mist) !important;
+}
+.single-product .wd-breadcrumbs a:hover {
+	color: var(--st-navy) !important;
+}
+
+/* ---------- Gallery — rounded-3xl main image on cream, rounded-xl thumbs */
+.woocommerce-product-gallery .woocommerce-product-gallery__wrapper,
+.woocommerce-product-gallery .woocommerce-product-gallery__image,
+.woocommerce-product-gallery .wp-post-image {
+	border-radius: 24px !important;
+	overflow: hidden;
+	background-color: var(--st-cream);
+}
+/* Thumbnails — WoodMart renders them as a .wd-gallery-thumb carousel
+   (.wd-carousel-item, active = .wd-active); flex-control-thumbs kept as
+   fallback for other gallery modes */
+.wd-gallery-thumb .wd-carousel-item img,
+.woocommerce-product-gallery .flex-control-thumbs li img {
+	border-radius: 12px !important;
+	border: 2px solid transparent;
+	opacity: 0.7;
+	transition: opacity 0.25s ease, border-color 0.25s ease;
+	cursor: pointer;
+}
+.wd-gallery-thumb .wd-carousel-item.wd-active img,
+.wd-gallery-thumb .wd-carousel-item:hover img,
+.woocommerce-product-gallery .flex-control-thumbs li img.flex-active,
+.woocommerce-product-gallery .flex-control-thumbs li img:hover {
+	border-color: var(--st-navy);
+	opacity: 1;
+}
+
+/* Sale badge on the gallery — indigo pill (matches the -% chip) */
+.single-product .onsale {
+	left: 16px !important;
+	top: 16px !important;
+}
+
+/* ---------- Summary (buy box) */
+.summary .product_title,
+.product_title.entry-title {
+	font-family: var(--st-font-display) !important;
+	font-size: clamp(28px, 3vw, 36px) !important;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+	color: var(--st-ink) !important;
+	line-height: 1.1;
+	margin-bottom: 8px;
+}
+
+/* Stars — cyan on the product page (Next.js uses text-cyan here) */
+.summary .star-rating,
+.summary .star-rating span::before {
+	color: var(--st-cyan) !important;
+}
+
+/* Price — Syne bold navy, struck compare-at in mist */
+.summary .price {
+	font-family: var(--st-font-display) !important;
+	font-size: clamp(26px, 2.6vw, 32px) !important;
+	font-weight: 700;
+	color: var(--st-navy) !important;
+	margin: 12px 0 !important;
+}
+.summary .price del {
+	font-family: var(--st-font-body) !important;
+	font-size: 18px !important;
+	font-weight: 400;
+	color: var(--st-mist) !important;
+	opacity: 0.8;
+}
+.summary .price ins {
+	text-decoration: none;
+}
+
+/* Short description */
+.woocommerce-product-details__short-description,
+.woocommerce-product-details__short-description p {
+	color: var(--st-mist) !important;
+	line-height: 1.7;
+	font-size: 15px;
+}
+
+/* ---------- Cart form — qty pill + full-width gradient button */
+.summary form.cart {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 16px;
+	margin: 28px 0 !important;
+}
+.summary form.cart .quantity {
+	border: 1px solid rgba(21, 21, 59, 0.2);
+	border-radius: 999px !important;
+	overflow: hidden;
+	background: transparent;
+}
+.summary form.cart .quantity input,
+.summary form.cart .quantity .qty {
+	border: 0 !important;
+	background: transparent !important;
+	font-family: var(--st-font-body) !important;
+	font-weight: 500;
+	color: var(--st-ink);
+}
+.summary form.cart .quantity .minus,
+.summary form.cart .quantity .plus {
+	border: 0 !important;
+	background: transparent !important;
+	color: var(--st-navy) !important;
+}
+.summary form.cart .quantity .minus:hover,
+.summary form.cart .quantity .plus:hover {
+	color: var(--st-glow) !important;
+}
+.summary .single_add_to_cart_button {
+	flex: 1 1 200px;
+	padding-top: 15px !important;
+	padding-bottom: 15px !important;
+	font-size: 14px !important;
+}
+
+/* Variation swatches (when Tees/Polos get size/color attributes):
+   size boxes like the Next.js selector — rounded-lg, navy when active */
+.summary .variations .wd-swatch,
+.summary .variations .wd-swatches-product > div {
+	border-radius: 10px !important;
+	border: 1px solid rgba(21, 21, 59, 0.2) !important;
+	font-family: var(--st-font-body) !important;
+	font-weight: 500;
+	color: var(--st-ink);
+	transition: all 0.25s ease;
+}
+.summary .variations .wd-swatch:hover {
+	border-color: var(--st-navy) !important;
+}
+.summary .variations .wd-swatch.wd-active {
+	background: var(--st-navy) !important;
+	border-color: var(--st-navy) !important;
+	color: #fff !important;
+}
+
+/* ---------- Trust badges row (pure CSS, above the product meta) */
+.single-product-page .product_meta {
+	border-top: 1px solid rgba(21, 21, 59, 0.1);
+	padding-top: 24px;
+	margin-top: 12px;
+	font-size: 13px;
+	color: var(--st-mist);
+}
+.single-product-page .product_meta::before {
+	content: "Free shipping ₹1499+   ·   7-day easy returns   ·   Secure checkout";
+	display: block;
+	margin-bottom: 18px;
+	font-family: var(--st-font-body);
+	font-size: 13px;
+	color: var(--st-mist);
+}
+.single-product-page .product_meta a {
+	color: var(--st-navy) !important;
+}
+.single-product-page .product_meta a:hover {
+	color: var(--st-glow) !important;
+}
+
+/* ---------- Accordion sections — rounded cards with glow "+" opener
+   (Description / Additional information / Reviews → like the Next.js
+   Specifications / Size Guide / Care Instructions cards) */
+.woocommerce-tabs .wd-accordion-item {
+	border: 1px solid rgba(21, 21, 59, 0.1) !important;
+	border-radius: 16px !important;
+	margin-bottom: 14px;
+	overflow: hidden;
+	background: transparent;
+}
+.woocommerce-tabs .wd-accordion-title {
+	padding: 18px 22px !important;
+	border: 0 !important;
+}
+.woocommerce-tabs .wd-accordion-title .wd-accordion-title-text,
+.woocommerce-tabs .wd-accordion-title.wd-active .wd-accordion-title-text {
+	font-family: var(--st-font-display) !important;
+	font-size: 17px !important;
+	font-weight: 700;
+	color: var(--st-ink) !important;
+	letter-spacing: -0.02em;
+	text-transform: none !important;
+}
+.woocommerce-tabs .wd-accordion-title .wd-accordion-opener,
+.woocommerce-tabs .wd-accordion-title.wd-active .wd-accordion-opener {
+	color: var(--st-glow) !important;
+}
+.woocommerce-tabs .woocommerce-Tabs-panel {
+	padding: 0 22px 20px !important;
+	color: var(--st-mist);
+}
+.woocommerce-tabs .woocommerce-Tabs-panel p {
+	color: var(--st-mist);
+}
+
+/* Hide WoodMart's "About brand" tab (accordion title + panel + tab link).
+   Can also be disabled in Theme Settings → Shop → Brands. */
+.woocommerce-tabs .tab-title-brand_tab,
+.woocommerce-tabs .woocommerce-Tabs-panel--brand_tab,
+.woocommerce-tabs .wd-nav-tabs .brand_tab_tab {
+	display: none !important;
+}
+
+/* ---------- Related products — Syne section heading */
+.related-products .wd-el-title,
+.related-products .slider-title,
+.wd-el-title.slider-title {
+	font-family: var(--st-font-display) !important;
+	font-size: clamp(24px, 2.6vw, 32px) !important;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+	color: var(--st-ink) !important;
+}
+
+/* Page spacing */
+.single-product .site-content {
+	padding-top: 32px;
+}

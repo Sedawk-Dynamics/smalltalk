@@ -1,0 +1,624 @@
+/* =============================================================
+   THE SMALL TALK STORE — WoodMart / WooCommerce skin
+   Matches the Next.js site (smalltalk-two.vercel.app)
+   Paste into: WP Admin → Theme Settings → Custom CSS → Global CSS
+   -------------------------------------------------------------
+   Brand tokens (same as tailwind.config.ts):
+     navy #15153C   ink #0E0E2A   cream #F7F6F2
+     mist #6B6B7B   glow #5B5BF0  cyan #3DD6D0
+   Fonts: Syne (headings, tight tracking) / Manrope (body & UI)
+   Personality: pill buttons, 20px card radii, electric glow
+   accents, frosted surfaces — NO uppercase-serif luxury here.
+   ============================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+
+/* ----------------------------------------------------------------
+   1. WOODMART CSS VARIABLES
+   ---------------------------------------------------------------- */
+:root {
+  --wd-text-font: "Manrope", system-ui, sans-serif;
+  --wd-text-font-weight: 400;
+  --wd-text-color: #0E0E2A;
+
+  --wd-title-font: "Syne", system-ui, sans-serif;
+  --wd-title-font-weight: 700;
+  --wd-title-color: #0E0E2A;
+
+  --wd-entities-title-font: "Syne", system-ui, sans-serif;
+  --wd-entities-title-font-weight: 600;
+  --wd-entities-title-color: #0E0E2A;
+
+  --wd-widget-title-font: "Manrope", system-ui, sans-serif;
+  --wd-widget-title-color: #15153C;
+
+  --wd-primary-color: #5B5BF0;      /* glow */
+  --wd-alternative-color: #15153C;  /* navy */
+  --wd-link-color: #15153C;
+  --wd-link-color-hover: #5B5BF0;
+
+  --wd-brd-radius: 20px;            /* cards (rounded-xl2) */
+  --wd-form-brd-radius: 12px;       /* inputs */
+  --btn-accented-brd-radius: 9999px;
+  --btn-default-brd-radius: 9999px;
+
+  /* accented = primary CTA: navy → glow on hover */
+  --btn-accented-bgcolor: #15153C;
+  --btn-accented-bgcolor-hover: #5B5BF0;
+  --btn-accented-color: #FFFFFF;
+  --btn-accented-color-hover: #FFFFFF;
+
+  /* default = secondary: white glass → navy on hover */
+  --btn-default-bgcolor: #FFFFFF;
+  --btn-default-bgcolor-hover: #15153C;
+  --btn-default-color: #15153C;
+  --btn-default-color-hover: #FFFFFF;
+
+  --wd-main-bgcolor: #F7F6F2;
+}
+
+/* ----------------------------------------------------------------
+   2. BASE
+   ---------------------------------------------------------------- */
+body {
+  background-color: #F7F6F2;   /* cream */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* WoodMart paints the page bg on this wrapper, not on body.
+   Replicates the Next.js cool-tinted radial wash. */
+.website-wrapper,
+.wd-page-wrapper,
+.main-page-wrapper {
+  background-color: #F7F6F2 !important;
+  background-image:
+    radial-gradient(60rem 40rem at 100% -10%, rgba(91, 91, 240, 0.08), transparent 60%),
+    radial-gradient(50rem 40rem at -10% 20%, rgba(61, 214, 208, 0.06), transparent 55%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: #5B5BF0;
+  color: #FFFFFF;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #F7F6F2; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#5B5BF0, #3DD6D0);
+  border-radius: 99px;
+  border: 2px solid #F7F6F2;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Syne", system-ui, sans-serif !important;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  color: #0E0E2A;
+}
+
+:focus-visible {
+  outline: 2px solid #5B5BF0;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ----------------------------------------------------------------
+   3. HEADER
+   ---------------------------------------------------------------- */
+
+/* top announcement bar — navy with soft white text */
+.whb-top-bar,
+.whb-top-bar .whb-flex-row {
+  background-color: #15153C !important;
+  color: rgba(255, 255, 255, 0.85);
+}
+.whb-top-bar,
+.whb-top-bar a,
+.whb-top-bar .wd-header-text,
+.whb-top-bar p {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.whb-top-bar b, .whb-top-bar strong { color: #3DD6D0; font-weight: 700; }
+
+/* main header — frosted cream, soft shadow when sticky */
+.whb-general-header {
+  background-color: rgba(247, 246, 242, 0.72) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+}
+.whb-sticked .whb-general-header {
+  background-color: rgba(247, 246, 242, 0.85) !important;
+  box-shadow: 0 18px 50px -24px rgba(21, 21, 59, 0.5);
+}
+
+/* main menu — Manrope medium, sentence case, pill hover */
+.wd-nav[class*="wd-style-"] > li > a,
+.whb-header .wd-nav-main > li > a {
+  font-family: "Manrope", sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  color: rgba(21, 21, 59, 0.8) !important;
+  border-radius: 9999px;
+}
+.whb-header .wd-nav-main > li:hover > a,
+.whb-header .wd-nav-main > li.current-menu-item > a {
+  color: #15153C !important;
+}
+/* active underline in electric glow */
+.wd-nav-main > li > a .nav-link-text::after { background-color: #5B5BF0 !important; }
+
+/* header icons + cart count */
+.whb-general-header .wd-tools-element > a,
+.whb-general-header .wd-header-cart .wd-cart-icon,
+.whb-general-header .wd-tools-icon {
+  color: #15153C !important;
+}
+.wd-header-cart .wd-cart-number,
+.wd-tools-count {
+  background-color: #5B5BF0 !important;
+  color: #FFFFFF !important;
+}
+
+/* dropdowns — white rounded panel, soft navy shadow */
+.wd-dropdown,
+.wd-dropdown-menu,
+.wd-nav-main .wd-sub-menu {
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(21, 21, 59, 0.06) !important;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px -20px rgba(21, 21, 59, 0.25) !important;
+}
+.wd-nav-main .wd-sub-menu { min-width: 240px; padding: 8px !important; }
+.wd-sub-menu li > a {
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  padding: 10px 14px !important;
+  border-radius: 10px;
+  font-family: "Manrope", sans-serif !important;
+  font-size: 0.94rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: #0E0E2A !important;
+}
+.wd-sub-menu li > a small {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: #6B6B7B;   /* mist */
+}
+.wd-sub-menu li > a:hover { background-color: #F7F6F2; color: #5B5BF0 !important; }
+
+/* top-bar marquee — same mechanics as the Next.js announcement.
+   Top bar Text element: <div class="st-marquee"><div class="st-marquee-track"> spans ×2 </div></div> */
+.whb-top-bar .whb-column { flex: 1; min-width: 0; }
+.st-marquee { overflow: hidden; width: 100%; }
+.st-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: st-marquee 40s linear infinite;
+}
+@keyframes st-marquee {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+.st-marquee-track > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding-right: 2.5rem;
+  white-space: nowrap;
+}
+.st-marquee-track .dot { color: #3DD6D0; }
+@media (prefers-reduced-motion: reduce) { .st-marquee-track { animation: none; } }
+
+/* slide-in mini cart */
+.wd-side-hidden.cart-widget-side { background-color: #FFFFFF !important; }
+.cart-widget-side .widget-heading .widget-title { color: #15153C !important; }
+.woocommerce-mini-cart__total { color: #0E0E2A; font-family: "Manrope", sans-serif; }
+
+/* mobile drawer — navy, Syne links */
+.wd-side-hidden.mobile-nav,
+.mobile-nav {
+  background-color: #15153C !important;
+}
+.mobile-nav .wd-nav-mobile > li > a {
+  font-family: "Syne", sans-serif !important;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.92) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+.mobile-nav .wd-nav-mobile li > a:hover { color: #3DD6D0 !important; }
+
+/* ----------------------------------------------------------------
+   4. BUTTONS — pills, semibold, sentence case
+   ---------------------------------------------------------------- */
+.btn, .button, a.button,
+.woocommerce .button,
+button[type="submit"],
+input[type="submit"],
+.woocommerce #respond input#submit,
+.single_add_to_cart_button,
+.checkout-button,
+.add_to_cart_button {
+  font-family: "Manrope", sans-serif !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+  font-size: 0.88rem !important;
+  border-radius: 9999px !important;
+  transition: all 0.3s ease !important;
+}
+
+/* primary actions: navy → glow, with the electric shadow */
+.single_add_to_cart_button,
+.checkout-button,
+.woocommerce .button.alt,
+.btn-style-accented {
+  background-color: #15153C !important;
+  color: #FFFFFF !important;
+  border: 1px solid #15153C !important;
+  box-shadow: 0 10px 30px -10px rgba(91, 91, 240, 0.5);
+}
+.single_add_to_cart_button:hover,
+.checkout-button:hover,
+.woocommerce .button.alt:hover,
+.btn-style-accented:hover {
+  background-color: #5B5BF0 !important;
+  border-color: #5B5BF0 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 16px 44px -12px rgba(91, 91, 240, 0.9);
+}
+
+/* ----------------------------------------------------------------
+   5. SHOP / PRODUCT GRID
+   ---------------------------------------------------------------- */
+
+/* category label above title — glow chip style */
+.wd-product .wd-product-cats a,
+.product-grid-item .wd-product-cats a {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.66rem !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #5B5BF0 !important;
+}
+
+/* product title — Syne, tight tracking */
+.wd-entities-title,
+.wd-entities-title a,
+.product-grid-item .wd-entities-title a {
+  font-family: "Syne", system-ui, sans-serif !important;
+  font-size: 1.06rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #0E0E2A !important;
+}
+.wd-entities-title a:hover { color: #5B5BF0 !important; }
+
+/* price */
+.wd-product .price,
+.product-grid-item .price {
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  color: #15153C !important;
+}
+.price del { color: #6B6B7B !important; font-weight: 400; }
+.price ins { color: #5B5BF0 !important; text-decoration: none; }
+
+/* card image — 20px radius, lift + glow shadow on hover */
+.wd-product .product-image-link,
+.product-grid-item .product-image-link {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px -15px rgba(21, 21, 59, 0.25);
+}
+.wd-product,
+.product-grid-item {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.wd-product:hover,
+.product-grid-item:hover { transform: translateY(-6px); }
+.wd-product:hover .product-image-link {
+  box-shadow: 0 34px 80px -34px rgba(91, 91, 240, 0.55);
+}
+.wd-product .product-image-link img {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.wd-product:hover .product-image-link img { transform: scale(1.05); }
+
+/* sale / new badges — glow pill, white text */
+.product-labels .product-label,
+.wd-product-labels .product-label,
+span.onsale {
+  background-color: #5B5BF0 !important;
+  color: #FFFFFF !important;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.62rem !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  border-radius: 9999px !important;
+}
+
+/* star ratings */
+.star-rating span::before,
+.star-rating::before { color: #5B5BF0 !important; }
+
+.wd-buttons .wd-action-btn > a { color: #15153C !important; }
+
+/* ----------------------------------------------------------------
+   6. PAGE TITLE + BREADCRUMBS — navy band with mesh tint
+   ---------------------------------------------------------------- */
+.page-title,
+.wd-page-title {
+  background-color: #15153C !important;
+  background-image:
+    radial-gradient(40rem 22rem at 85% -20%, rgba(91, 91, 240, 0.35), transparent 60%),
+    radial-gradient(30rem 20rem at 5% 120%, rgba(61, 214, 208, 0.18), transparent 55%);
+}
+.wd-page-title .entry-title,
+.page-title .entry-title {
+  font-family: "Syne", system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.04em;
+  color: #FFFFFF !important;
+}
+
+/* breadcrumbs on ALL page-title bands */
+.page-title .wd-breadcrumbs,
+.page-title .wd-breadcrumbs span,
+.page-title .woocommerce-breadcrumb,
+.page-title nav.breadcrumbs,
+.page-title .yoast-breadcrumb {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.76rem !important;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #3DD6D0 !important;   /* current page = cyan */
+}
+.page-title .wd-breadcrumbs a,
+.page-title .woocommerce-breadcrumb a,
+.page-title nav.breadcrumbs a,
+.page-title .yoast-breadcrumb a {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+.page-title .wd-breadcrumbs a:hover,
+.page-title .woocommerce-breadcrumb a:hover,
+.page-title nav.breadcrumbs a:hover { color: #FFFFFF !important; }
+
+/* gradient hairline under the band (the brand's glow→cyan line) */
+.page-title::after,
+.wd-page-title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(91,91,240,0.9), rgba(61,214,208,0.7), transparent 85%);
+}
+.page-title, .wd-page-title { position: relative; }
+
+/* ----------------------------------------------------------------
+   7. SIDEBAR / FILTER WIDGETS
+   ---------------------------------------------------------------- */
+.widget-title,
+.wd-widget-title {
+  font-family: "Manrope", sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #15153C !important;
+}
+.widget a { color: #6B6B7B; }
+.widget a:hover { color: #5B5BF0; }
+
+.widget_price_filter .ui-slider .ui-slider-range { background: linear-gradient(90deg,#5B5BF0,#3DD6D0) !important; }
+.widget_price_filter .ui-slider .ui-slider-handle { background-color: #15153C !important; }
+
+/* ----------------------------------------------------------------
+   8. PAGINATION — pills
+   ---------------------------------------------------------------- */
+.wd-pagination a, .wd-pagination span,
+.woocommerce-pagination a, .woocommerce-pagination span {
+  font-family: "Manrope", sans-serif;
+  font-weight: 600;
+  border-radius: 9999px !important;
+}
+.wd-pagination span.current,
+.woocommerce-pagination span.current {
+  background-color: #15153C !important;
+  color: #FFFFFF !important;
+}
+
+/* ----------------------------------------------------------------
+   9. SINGLE PRODUCT PAGE
+   ---------------------------------------------------------------- */
+.single-product .product_title {
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.04em;
+}
+.single-product .summary .price {
+  font-family: "Manrope", sans-serif;
+  font-size: 1.2rem !important;
+  font-weight: 700;
+  color: #15153C !important;
+}
+.single-product .product_meta {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.78rem;
+  color: #6B6B7B;
+}
+.single-product .product_meta a { color: #5B5BF0; }
+
+/* tabs (row layout) */
+.wd-nav-tabs li > a,
+.woocommerce-tabs .tabs li a {
+  font-family: "Manrope", sans-serif !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.76rem !important;
+}
+.wd-nav-tabs li.wd-active > a,
+.woocommerce-tabs .tabs li.active a { color: #5B5BF0 !important; }
+
+/* accordion-style product tabs (WoodMart Layouts product page) */
+.wd-accordion .wd-accordion-title {
+  font-family: "Manrope", sans-serif !important;
+  font-size: 0.8rem !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #0E0E2A !important;
+  border-color: rgba(21, 21, 59, 0.12) !important;
+}
+.wd-accordion .wd-accordion-title.wd-active,
+.wd-accordion .wd-accordion-title:hover { color: #5B5BF0 !important; }
+.wd-accordion .wd-accordion-title.wd-active .wd-accordion-opener { color: #3DD6D0 !important; }
+.wd-accordion .woocommerce-Tabs-panel { color: #6B6B7B; }
+
+.quantity input[type="number"], .quantity .qty {
+  border-color: rgba(21, 21, 59, 0.15) !important;
+  border-radius: 10px !important;
+  background: #FFFFFF;
+}
+
+/* ----------------------------------------------------------------
+   10. FORMS / INPUTS
+   ---------------------------------------------------------------- */
+input[type="text"], input[type="email"], input[type="tel"],
+input[type="password"], input[type="search"], input[type="number"],
+select, textarea, .select2-container--default .select2-selection {
+  font-family: "Manrope", sans-serif !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(21, 21, 59, 0.15) !important;
+  border-radius: 12px !important;
+  color: #0E0E2A !important;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #5B5BF0 !important;
+  box-shadow: 0 0 0 3px rgba(91, 91, 240, 0.18) !important;
+}
+
+.cart_totals, .woocommerce-checkout-review-order {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(21, 21, 59, 0.08) !important;
+  border-radius: 20px;
+}
+
+.woocommerce table.shop_table th {
+  font-family: "Manrope", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  color: #15153C;
+}
+
+.woocommerce-message, .woocommerce-info {
+  border-top-color: #5B5BF0 !important;
+  background-color: #FFFFFF !important;
+  color: #0E0E2A;
+}
+.woocommerce-message::before, .woocommerce-info::before { color: #5B5BF0 !important; }
+
+/* ----------------------------------------------------------------
+   11. FOOTER — deep ink with gradient hairline on top
+   ---------------------------------------------------------------- */
+.footer-container {
+  position: relative;
+  background-color: #0E0E2A !important;
+  color: rgba(255, 255, 255, 0.7);
+}
+.footer-container::before {
+  content: "";
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(91,91,240,0.9), rgba(61,214,208,0.7), transparent 85%);
+}
+.footer-container .widget-title,
+.footer-container .wd-widget-title {
+  color: #FFFFFF !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+.footer-container a { color: rgba(255, 255, 255, 0.7) !important; transition: all 0.25s; }
+.footer-container a:hover { color: #3DD6D0 !important; }
+.footer-container p, .footer-container li { color: rgba(255, 255, 255, 0.65); font-size: 0.875rem; }
+
+.copyrights-wrapper {
+  background-color: #0E0E2A !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+.copyrights-wrapper, .copyrights-wrapper p {
+  color: rgba(255, 255, 255, 0.45) !important;
+  font-size: 0.75rem;
+}
+
+/* ----------------------------------------------------------------
+   12. MISC
+   ---------------------------------------------------------------- */
+.scrollToTop, .wd-back-to-top {
+  background: linear-gradient(135deg, #15153C, #5B5BF0) !important;
+  color: #FFFFFF !important;
+  border-radius: 9999px !important;
+}
+.scrollToTop:hover, .wd-back-to-top:hover {
+  background: #5B5BF0 !important;
+  box-shadow: 0 16px 44px -12px rgba(91, 91, 240, 0.9);
+}
+
+a { transition: color 0.25s ease; }
+
+.wd-title, .title.element-title {
+  font-family: "Syne", system-ui, sans-serif !important;
+  letter-spacing: -0.03em;
+}
+
+/* ----------------------------------------------------------------
+   13. ELEMENTOR SUPPORT CLASSES
+   ---------------------------------------------------------------- */
+
+/* footer social circles (if footer is rebuilt in Elementor) */
+.st-soc .elementor-social-icon {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s;
+}
+.st-soc .elementor-social-icon:hover {
+  border-color: #5B5BF0;
+  background-color: #5B5BF0 !important;
+}
+.st-soc .elementor-social-icon:hover i { color: #FFFFFF; }
+
+.st-footlinks .elementor-icon-list-item a { transition: all 0.25s; }
+.st-footlinks .elementor-icon-list-item a:hover .elementor-icon-list-text {
+  color: #3DD6D0 !important;
+}
+
+/* cool mesh-tinted section — add row class .mesh-tint in Elementor */
+.mesh-tint {
+  background-color: #F7F6F2;
+  background-image:
+    radial-gradient(40rem 26rem at 90% -10%, rgba(91, 91, 240, 0.1), transparent 60%),
+    radial-gradient(34rem 24rem at 0% 110%, rgba(61, 214, 208, 0.08), transparent 55%);
+}

@@ -13,17 +13,13 @@ import { Menu, Search, ShoppingBag, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import Logo from "@/components/ui/Logo";
 import MagneticButton from "@/components/ui/MagneticButton";
-import { navLinks } from "@/data/content";
-import { useCart } from "@/components/providers/CartProvider";
+import { navLinks, shopUrl } from "@/data/content";
 import { cn } from "@/lib/utils";
-import SearchModal from "./SearchModal";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { count, openCart } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -106,46 +102,33 @@ export default function Navbar() {
             })}
           </ul>
 
-          {/* Right cluster */}
+          {/* Right cluster — search/cart/shop all live on the WooCommerce site */}
           <div className="flex items-center gap-1.5">
-            <button
-              aria-label="Search"
-              onClick={() => setSearchOpen(true)}
+            <a
+              href={shopUrl}
+              aria-label="Search the shop"
               className={cn(
                 "rounded-full p-2.5 transition-colors",
                 onLight ? "text-navy hover:bg-navy/5" : "text-white hover:bg-white/10"
               )}
             >
               <Search className="h-5 w-5" />
-            </button>
+            </a>
 
-            <button
-              aria-label={`Cart, ${count} items`}
-              onClick={openCart}
+            <a
+              href={`${shopUrl}/cart/`}
+              aria-label="Cart"
               className={cn(
                 "relative rounded-full p-2.5 transition-colors",
                 onLight ? "text-navy hover:bg-navy/5" : "text-white hover:bg-white/10"
               )}
             >
               <ShoppingBag className="h-5 w-5" />
-              <AnimatePresence>
-                {count > 0 && (
-                  <motion.span
-                    key={count}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    exit={{ scale: 0 }}
-                    className="absolute -right-0.5 -top-0.5 flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-glow px-1 text-[10px] font-bold text-white"
-                  >
-                    {count}
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </button>
+            </a>
 
             <div className="ml-1 hidden sm:block">
               <MagneticButton
-                href="/shop"
+                href={shopUrl}
                 variant={onLight ? "primary" : "light"}
                 className="px-5 py-2.5 text-xs"
               >
@@ -208,15 +191,13 @@ export default function Navbar() {
             </nav>
 
             <div className="container-st pb-10">
-              <MagneticButton href="/shop" variant="light">
+              <MagneticButton href={shopUrl} variant="light">
                 Shop the Collection
               </MagneticButton>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-
-      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

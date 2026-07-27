@@ -411,9 +411,16 @@ export const ctaBanner = {
 };
 
 /* ---------------- NAV + FOOTER ---------------- */
+
+/* The WooCommerce shop — all commerce (shop, cart, checkout) lives there;
+   this Next.js site is the brand frontend. Swap via env when the shop moves
+   to its real domain (e.g. shop.thesmalltalkstore.com). */
+export const shopUrl =
+  process.env.NEXT_PUBLIC_SHOP_URL ?? "https://staging.smalltalks.sedawk.cloud";
+
 export const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Shop", href: "/shop" },
+  { label: "Shop", href: shopUrl },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

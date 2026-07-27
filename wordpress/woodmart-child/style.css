@@ -1,0 +1,422 @@
+/*
+Theme Name:  Woodmart Child — Small Talk
+Description: Woodmart child theme skinned to match The Small Talk Store Next.js site (Syne/Manrope, navy–indigo–cream palette, pill buttons, glow cards).
+Author:      Webelio
+Template:    woodmart
+Version:     1.0.0
+*/
+
+/* ============================================================
+   1. BRAND TOKENS  (mirrors app/globals.css + tailwind.config.ts
+      of the Next.js site)
+   ============================================================ */
+:root {
+	--st-navy: #15153c;
+	--st-ink: #0e0e2a;
+	--st-cream: #f7f6f2;
+	--st-mist: #6b6b7b;
+	--st-glow: #5b5bf0;
+	--st-cyan: #3dd6d0;
+
+	--st-font-display: "Syne", system-ui, sans-serif;
+	--st-font-body: "Manrope", system-ui, sans-serif;
+
+	--st-shadow-soft: 0 20px 60px -20px rgba(21, 21, 59, 0.25);
+	--st-shadow-card: 0 10px 40px -15px rgba(21, 21, 59, 0.35);
+	--st-shadow-glow: 0 10px 30px -10px rgba(91, 91, 240, 0.7);
+
+	/* ---- Woodmart variable overrides ---- */
+	--wd-primary-color: var(--st-glow);
+	--wd-alternative-color: var(--st-cyan);
+	--wd-link-color: var(--st-navy);
+	--wd-link-color-hover: var(--st-glow);
+
+	--wd-text-color: var(--st-mist);
+	--wd-text-font: var(--st-font-body);
+	--wd-title-color: var(--st-navy);
+	--wd-title-font: var(--st-font-display);
+	--wd-title-font-weight: 700;
+	--wd-entities-title-color: var(--st-navy);
+	--wd-entities-title-color-hover: var(--st-glow);
+	--wd-entities-title-font: var(--st-font-display);
+	--wd-entities-title-font-weight: 700;
+	--wd-widget-title-font: var(--st-font-body);
+	--wd-widget-title-color: var(--st-navy);
+
+	/* Buttons (default = navy, accented [add-to-cart/checkout] = indigo) */
+	--btn-default-bgcolor: var(--st-navy);
+	--btn-default-bgcolor-hover: var(--st-glow);
+	--btn-default-color: #ffffff;
+	--btn-default-color-hover: #ffffff;
+	--btn-accented-bgcolor: var(--st-glow);
+	--btn-accented-bgcolor-hover: var(--st-navy);
+	--btn-accented-color: #ffffff;
+	--btn-accented-color-hover: #ffffff;
+
+	/* Forms */
+	--wd-form-brd-radius: 14px;
+	--wd-form-brd-color: rgba(21, 21, 59, 0.15);
+	--wd-form-brd-color-focus: var(--st-glow);
+}
+
+/* ============================================================
+   2. BASE — page background, typography, selection, scrollbar
+   ============================================================ */
+html {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+body {
+	font-family: var(--st-font-body);
+	color: var(--st-mist);
+	background-color: var(--st-cream);
+	/* Same cool-tinted radial washes as the Next.js site */
+	background-image:
+		radial-gradient(60rem 40rem at 100% -10%, rgba(91, 91, 240, 0.08), transparent 60%),
+		radial-gradient(50rem 40rem at -10% 20%, rgba(61, 214, 208, 0.06), transparent 55%);
+	background-attachment: fixed;
+}
+
+/* Global film-grain overlay — identical to the Next.js `.grain::after` */
+body::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: 60;
+	pointer-events: none;
+	opacity: 0.05;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	mix-blend-mode: overlay;
+}
+
+h1, h2, h3, h4,
+.title, .entry-title, .wd-entities-title {
+	font-family: var(--st-font-display);
+	color: var(--st-navy);
+	letter-spacing: -0.04em;
+	font-weight: 700;
+}
+
+::selection {
+	background: var(--st-glow);
+	color: #fff;
+}
+
+:focus-visible {
+	outline: 2px solid var(--st-glow);
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background: var(--st-cream);
+}
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(var(--st-glow), var(--st-cyan));
+	border-radius: 99px;
+	border: 2px solid var(--st-cream);
+}
+::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(var(--st-navy), var(--st-glow));
+}
+
+/* ============================================================
+   3. BUTTONS — full pill, Manrope semibold, gradient primary
+   ============================================================ */
+.btn,
+.button,
+button.button,
+a.button,
+input[type="submit"],
+.woocommerce .button,
+.wd-button {
+	border-radius: 999px !important;
+	font-family: var(--st-font-body);
+	font-weight: 600;
+	letter-spacing: 0.025em;
+	text-transform: none;
+	padding-left: 28px;
+	padding-right: 28px;
+	transition: all 0.3s ease;
+}
+
+/* Primary/accented actions — animated navy→indigo gradient + glow,
+   same as the Next.js MagneticButton primary variant */
+.btn.btn-color-primary,
+.button.checkout,
+.single_add_to_cart_button,
+.woocommerce .button.alt,
+.woocommerce-cart .checkout-button,
+.add_to_cart_button {
+	background-image: linear-gradient(90deg, var(--st-navy), var(--st-glow), var(--st-navy)) !important;
+	background-size: 200% 100% !important;
+	background-position: 0% 50%;
+	color: #fff !important;
+	box-shadow: var(--st-shadow-glow);
+}
+.btn.btn-color-primary:hover,
+.button.checkout:hover,
+.single_add_to_cart_button:hover,
+.woocommerce .button.alt:hover,
+.woocommerce-cart .checkout-button:hover,
+.add_to_cart_button:hover {
+	background-position: 100% 50% !important;
+	box-shadow: 0 16px 44px -12px rgba(91, 91, 240, 0.9);
+	transform: translateY(-1px);
+}
+
+/* ============================================================
+   4. FORMS
+   ============================================================ */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+select,
+textarea {
+	border-radius: 14px;
+	font-family: var(--st-font-body);
+	background-color: #fff;
+}
+
+/* ============================================================
+   5. PRODUCT CARDS & SHOP GRID
+   ============================================================ */
+.wd-product .product-wrapper,
+.product-grid-item .product-wrapper {
+	border-radius: 24px;
+	overflow: hidden;
+	background: rgba(255, 255, 255, 0.55);
+	transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+}
+.wd-product:hover .product-wrapper,
+.product-grid-item:hover .product-wrapper {
+	transform: translateY(-6px);
+	box-shadow: 0 34px 80px -34px rgba(91, 91, 240, 0.55);
+}
+
+.wd-product .product-element-top,
+.product-grid-item .product-element-top {
+	border-radius: 20px;
+	overflow: hidden;
+}
+
+.wd-entities-title {
+	font-size: 15px;
+}
+
+/* Price */
+.price {
+	font-family: var(--st-font-body);
+	font-weight: 700;
+	color: var(--st-navy);
+}
+.price del {
+	color: var(--st-mist);
+	opacity: 0.6;
+}
+.price ins {
+	color: var(--st-glow);
+	text-decoration: none;
+}
+
+/* Sale / New labels — glowing pill chips */
+.product-label,
+.product-labels .product-label,
+.onsale {
+	border-radius: 999px !important;
+	font-family: var(--st-font-body);
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	font-size: 10px;
+}
+.product-label.onsale,
+.onsale {
+	background-color: var(--st-glow) !important;
+	color: #fff !important;
+	box-shadow: 0 6px 18px -6px rgba(91, 91, 240, 0.7);
+}
+.product-label.new {
+	background-color: var(--st-cyan) !important;
+	color: var(--st-ink) !important;
+}
+
+/* Star ratings in brand indigo */
+.star-rating,
+.star-rating span::before {
+	color: var(--st-glow);
+}
+
+/* Pagination as pills */
+.wd-pagination a,
+.wd-pagination span,
+.woocommerce-pagination a,
+.woocommerce-pagination span {
+	border-radius: 999px !important;
+	font-family: var(--st-font-body);
+	font-weight: 600;
+}
+
+/* ============================================================
+   6. HEADER — frosted cream sticky bar (matches the Next.js
+      navbar's scrolled "floating pill" look)
+   ============================================================ */
+.whb-general-header,
+.whb-main-header .whb-general-header {
+	transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* When Woodmart's sticky header kicks in: cream glass + blur + soft shadow */
+.whb-sticked .whb-general-header,
+.whb-sticked.whb-scroll-slide .whb-general-header,
+.whb-sticked.whb-scroll-stick .whb-general-header {
+	background-color: rgba(247, 246, 242, 0.72) !important;
+	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
+	box-shadow: 0 18px 50px -24px rgba(21, 21, 59, 0.5);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Menu links — Manrope medium, navy, indigo hover, pill hover bg */
+.whb-header .wd-nav-main > li > a,
+.whb-header .navigation-wrap .wd-nav > li > a {
+	font-family: var(--st-font-body);
+	font-weight: 500;
+	font-size: 14px;
+	color: rgba(21, 21, 59, 0.8);
+	text-transform: none;
+	letter-spacing: 0;
+}
+.whb-header .wd-nav-main > li > a:hover,
+.whb-header .wd-nav-main > li.current-menu-item > a {
+	color: var(--st-navy);
+}
+.whb-header .wd-nav-main > li.current-menu-item > a::after {
+	background-color: var(--st-glow);
+}
+
+/* Header icons (search / cart / account) */
+.whb-header .wd-header-cart .wd-cart-number,
+.wd-header-cart .wd-cart-number {
+	background-color: var(--st-glow) !important;
+	color: #fff !important;
+}
+
+/* ============================================================
+   7. FOOTER — deep ink, matches Next.js footer
+   ============================================================ */
+.footer-container,
+.wd-footer {
+	background-color: var(--st-ink) !important;
+	color: rgba(255, 255, 255, 0.55);
+}
+.footer-container .widget-title,
+.footer-container .wd-widget-title,
+.wd-footer .widget-title {
+	font-family: var(--st-font-body);
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.9);
+}
+.footer-container a,
+.wd-footer a {
+	color: rgba(255, 255, 255, 0.55);
+}
+.footer-container a:hover,
+.wd-footer a:hover {
+	color: #ffffff;
+}
+.copyrights-wrapper {
+	background-color: var(--st-ink);
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	color: rgba(255, 255, 255, 0.45);
+	font-size: 12px;
+}
+
+/* Footer social icons — bordered circles that fill indigo on hover */
+.footer-container .wd-social-icon,
+.wd-footer .wd-social-icon {
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 999px;
+	background: transparent;
+	transition: background 0.3s ease, border-color 0.3s ease;
+}
+.footer-container .wd-social-icon:hover,
+.wd-footer .wd-social-icon:hover {
+	background: var(--st-glow);
+	border-color: var(--st-glow);
+}
+
+/* ============================================================
+   8. PAGE TITLES / BREADCRUMBS — keep light & clean
+   ============================================================ */
+.page-title,
+.page-title-default {
+	background-color: transparent !important;
+	background-image: none !important;
+}
+.page-title .entry-title,
+.page-title .title {
+	color: var(--st-navy);
+	font-family: var(--st-font-display);
+	letter-spacing: -0.04em;
+}
+.wd-breadcrumbs,
+.woocommerce-breadcrumb {
+	font-family: var(--st-font-body);
+	color: var(--st-mist);
+}
+
+/* ============================================================
+   9. CART DRAWER / SIDE PANELS / NOTICES
+   ============================================================ */
+.cart-widget-side,
+.wd-side-hidden {
+	background-color: var(--st-cream);
+}
+
+.woocommerce-message,
+.woocommerce-info {
+	border-top-color: var(--st-glow);
+	border-radius: 14px;
+}
+
+/* Quantity selector pills */
+.quantity {
+	border-radius: 999px;
+	overflow: hidden;
+}
+
+/* Tabs on single product */
+.wd-nav-tabs li a,
+.tabs-layout-tabs .wd-nav-tabs li a {
+	font-family: var(--st-font-display);
+	letter-spacing: -0.02em;
+	color: var(--st-mist);
+}
+.wd-nav-tabs li.wd-active a {
+	color: var(--st-navy);
+}
+
+/* ============================================================
+   10. REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}

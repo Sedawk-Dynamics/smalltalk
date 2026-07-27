@@ -1,0 +1,191 @@
+{
+  "content": [
+    {
+      "id": "stpmain1",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "structure": "20",
+        "gap": "extended",
+        "padding": { "unit": "px", "top": "40", "right": "0", "bottom": "40", "left": "0", "isLinked": false },
+        "padding_mobile": { "unit": "px", "top": "20", "right": "0", "bottom": "20", "left": "0", "isLinked": false }
+      },
+      "elements": [
+        {
+          "id": "stpleft1",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 50,
+            "_inline_size": 50,
+            "_inline_size_tablet": 100,
+            "_inline_size_mobile": 100
+          },
+          "elements": [
+            {
+              "id": "stpbc01",
+              "elType": "widget",
+              "widgetType": "wd_wc_breadcrumb",
+              "settings": {}
+            },
+            {
+              "id": "stpgal01",
+              "elType": "widget",
+              "widgetType": "wd_single_product_gallery",
+              "settings": {
+                "thumbnails_position": "left",
+                "sticky": "top",
+                "sticky_offset": 120,
+                "sticky_parent": "yes",
+                "grid_columns_gap_mobile": { "unit": "px", "size": 12 }
+              }
+            }
+          ]
+        },
+        {
+          "id": "stpright1",
+          "elType": "column",
+          "isInner": false,
+          "settings": {
+            "_column_size": 50,
+            "_inline_size": 50,
+            "_inline_size_tablet": 100,
+            "_inline_size_mobile": 100,
+            "space_between_widgets": 14
+          },
+          "elements": [
+            {
+              "id": "stptit01",
+              "elType": "widget",
+              "widgetType": "wd_single_product_title",
+              "settings": {}
+            },
+            {
+              "id": "stpprc01",
+              "elType": "widget",
+              "widgetType": "wd_single_product_price",
+              "settings": {}
+            },
+            {
+              "id": "stpsds01",
+              "elType": "widget",
+              "widgetType": "wd_single_product_short_description",
+              "settings": {}
+            },
+            {
+              "id": "stpatc01",
+              "elType": "widget",
+              "widgetType": "wd_single_product_add_to_cart",
+              "settings": {}
+            },
+            {
+              "id": "stpwap01",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<a href=\"https://wa.me/918595382034?text=Hi%2C%20I%27m%20interested%20in%20this%20product\" style=\"display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid rgba(21,21,60,.2);border-radius:9999px;padding:14px 24px;font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:#15153C;text-decoration:none;background:#fff;\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"#15153C\"><path d=\"M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-5.8-5.1c-.8-1.4-.9-2.5-.4-3.1.2-.3.6-.8 1-.8h.7c.2 0 .5-.1.7.5l1 2.3c0 .2 0 .4-.1.5l-.5.7c-.1.2-.3.3-.1.6a8.5 8.5 0 0 0 3.9 3.4c.3.1.4 0 .6-.1l.9-1.1c.2-.3.4-.2.7-.1l2.2 1c.3.2.5.3.6.4 0 .2 0 .7-.1 1.2Z\"/></svg>Chat with us on WhatsApp</a>"
+              }
+            },
+            {
+              "id": "stptru01",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"st-trust\"><style>.st-trust{--glow:#5B5BF0;--ink:#0E0E2A;background:#FFFFFF;font-family:'Manrope',system-ui,sans-serif;width:100%;padding:26px 18px;border:1px solid rgba(21,21,60,.08);border-radius:20px;box-shadow:0 10px 40px -15px rgba(21,21,59,.2);box-sizing:border-box}.st-trust *{box-sizing:border-box}.st-trust__row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px 14px;align-items:center}.st-trust__item{display:flex;align-items:center;justify-content:center;gap:10px;text-align:left}.st-trust__item svg{flex:none}.st-trust__item svg path,.st-trust__item svg circle,.st-trust__item svg rect{stroke:var(--glow);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}.st-trust__label{font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink);line-height:1.35}@media(max-width:900px){.st-trust__row{grid-template-columns:repeat(2,1fr)}}</style><div class=\"st-trust__row\"><div class=\"st-trust__item\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08\"/><path d=\"M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.02 1.08 1.1 2.49 2.02 4 2.02 2.2 0 4-1.8 4-4.04a3.01 3.01 0 0 0-3-3.02z\"/></svg><span class=\"st-trust__label\">High Quality<br>Fabrics</span></div><div class=\"st-trust__item\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z\"/></svg><span class=\"st-trust__label\">Everyday<br>Fashion</span></div><div class=\"st-trust__item\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18\"/><path d=\"M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18\"/></svg><span class=\"st-trust__label\">Pan-India<br>Shipping</span></div><div class=\"st-trust__item\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><rect x=\"2\" y=\"5\" width=\"20\" height=\"14\" rx=\"2\"/><path d=\"M2 10h20\"/></svg><span class=\"st-trust__label\">Secure<br>Payments</span></div></div></div>"
+              }
+            },
+            {
+              "id": "stptab01",
+              "elType": "widget",
+              "widgetType": "wd_single_product_tabs",
+              "settings": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stprel01",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "padding": { "unit": "px", "top": "20", "right": "0", "bottom": "40", "left": "0", "isLinked": false }
+      },
+      "elements": [
+        {
+          "id": "stprelc1",
+          "elType": "column",
+          "isInner": false,
+          "settings": { "_column_size": 100 },
+          "elements": [
+            {
+              "id": "stprelw1",
+              "elType": "widget",
+              "widgetType": "wd_products",
+              "settings": {
+                "element_title": "Complete the Look",
+                "post_type": "related",
+                "layout": "carousel",
+                "slides_per_view": { "unit": "px", "size": 4 },
+                "slides_per_view_tablet": { "unit": "px", "size": 2 },
+                "slides_per_view_mobile": { "unit": "px", "size": 2 },
+                "carousel_arrows_position_popover": "yes",
+                "carousel_arrows_position": "sep",
+                "hide_pagination_control": "yes",
+                "product_hover": "fw-button",
+                "img_size": "full",
+                "title_typography_typography": "custom",
+                "title_typography_font_family": "Syne",
+                "title_typography_font_weight": "700",
+                "title_typography_font_size": { "unit": "px", "size": 26 },
+                "title_typography_font_size_tablet": { "unit": "px", "size": 22 }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stprev01",
+      "elType": "section",
+      "isInner": false,
+      "settings": {
+        "padding": { "unit": "px", "top": "10", "right": "0", "bottom": "40", "left": "0", "isLinked": false }
+      },
+      "elements": [
+        {
+          "id": "stprevc1",
+          "elType": "column",
+          "isInner": false,
+          "settings": { "_column_size": 100 },
+          "elements": [
+            {
+              "id": "stprevh1",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Add Your Review",
+                "header_size": "h2",
+                "title_color": "#0E0E2A",
+                "typography_typography": "custom",
+                "typography_font_family": "Syne",
+                "typography_font_weight": "700",
+                "typography_font_size": { "unit": "px", "size": 32 }
+              }
+            },
+            {
+              "id": "stprevw1",
+              "elType": "widget",
+              "widgetType": "wd_single_product_reviews",
+              "settings": {}
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_settings": [],
+  "version": "0.4",
+  "title": "Small Talk Single Product Layout",
+  "type": "section"
+}

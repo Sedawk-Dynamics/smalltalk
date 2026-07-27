@@ -1,0 +1,364 @@
+/*
+   SKIN LOCK — printed in the FOOTER (see functions.php), i.e. after every
+   Woodmart / Elementor / imported-demo stylesheet. The food-delivery demo
+   ships generated CSS (Nunito font, coral #EB7A61) that loads after the
+   normal child style.css and overrides it; everything here re-asserts the
+   Small Talk brand with equal-or-higher priority so the demo can never win.
+*/
+
+/* ============================================================
+   1. TOKENS — re-declared on body: inline `body` declarations
+      beat any :root declarations coming from demo stylesheets.
+   ============================================================ */
+body {
+	--st-navy: #15153c;
+	--st-ink: #0e0e2a;
+	--st-cream: #f7f6f2;
+	--st-mist: #6b6b7b;
+	--st-glow: #5b5bf0;
+	--st-cyan: #3dd6d0;
+	--st-font-display: "Syne", system-ui, sans-serif;
+	--st-font-body: "Manrope", system-ui, sans-serif;
+
+	--wd-primary-color: var(--st-glow);
+	--wd-alternative-color: var(--st-cyan);
+	--wd-link-color: var(--st-navy);
+	--wd-link-color-hover: var(--st-glow);
+	--wd-text-color: var(--st-mist);
+	--wd-text-font: var(--st-font-body);
+	--wd-title-color: var(--st-navy);
+	--wd-title-font: var(--st-font-display);
+	--wd-title-font-weight: 700;
+	--wd-entities-title-color: var(--st-navy);
+	--wd-entities-title-color-hover: var(--st-glow);
+	--wd-entities-title-font: var(--st-font-display);
+	--wd-entities-title-font-weight: 700;
+	--wd-widget-title-font: var(--st-font-body);
+	--wd-widget-title-color: var(--st-navy);
+	--btn-default-bgcolor: var(--st-navy);
+	--btn-default-bgcolor-hover: var(--st-glow);
+	--btn-default-color: #fff;
+	--btn-default-color-hover: #fff;
+	--btn-accented-bgcolor: var(--st-glow);
+	--btn-accented-bgcolor-hover: var(--st-navy);
+	--btn-accented-color: #fff;
+	--btn-accented-color-hover: #fff;
+	--wd-form-brd-radius: 14px;
+	--wd-form-brd-color: rgba(21, 21, 59, 0.15);
+	--wd-form-brd-color-focus: var(--st-glow);
+}
+
+/* ============================================================
+   2. TYPOGRAPHY — kill the demo's Nunito everywhere
+   ============================================================ */
+body,
+p,
+.woocommerce-breadcrumb,
+.wd-breadcrumbs {
+	font-family: var(--st-font-body) !important;
+	color: var(--st-mist);
+}
+
+h1, h2, h3, h4, h5,
+.title,
+.entry-title,
+.page-title .entry-title,
+.wd-entities-title,
+.wd-entities-title a,
+.product-grid-item .wd-entities-title a {
+	font-family: var(--st-font-display) !important;
+	color: var(--st-navy) !important;
+	letter-spacing: -0.03em;
+	font-weight: 700;
+}
+.wd-entities-title a:hover {
+	color: var(--st-glow) !important;
+}
+
+.widget-title,
+.wd-widget-title,
+.woodmart-widget-title {
+	font-family: var(--st-font-body) !important;
+	font-size: 12px !important;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--st-navy) !important;
+}
+
+/* ============================================================
+   3. PAGE CANVAS — cream + brand radial washes (demo forces white)
+   ============================================================ */
+body,
+.website-wrapper,
+.main-page-wrapper {
+	background-color: var(--st-cream) !important;
+}
+body {
+	background-image:
+		radial-gradient(60rem 40rem at 100% -10%, rgba(91, 91, 240, 0.08), transparent 60%),
+		radial-gradient(50rem 40rem at -10% 20%, rgba(61, 214, 208, 0.06), transparent 55%) !important;
+	background-attachment: fixed;
+}
+
+/* ============================================================
+   4. SHOP PAGE TITLE — demo uses a dark hero strip w/ white text;
+      match the Next.js page header: clean, navy on cream.
+   ============================================================ */
+.page-title,
+.page-title-default,
+.woocommerce-page .page-title {
+	background: transparent !important;
+	background-image: none !important;
+	margin-bottom: 10px;
+}
+.page-title .entry-title,
+.page-title .title,
+.page-title h1 {
+	color: var(--st-navy) !important;
+	font-size: clamp(32px, 5vw, 48px) !important;
+	text-transform: none !important;
+}
+/* Category links inside the shop page title — brand pill chips,
+   same as the Next.js category filter buttons */
+.wd-nav-shop-cat > li > a,
+.page-title .wd-nav > li > a {
+	font-family: var(--st-font-body) !important;
+	font-size: 13px !important;
+	font-weight: 600;
+	color: var(--st-navy) !important;
+	background: rgba(21, 21, 59, 0.06);
+	border-radius: 999px;
+	padding: 8px 18px;
+	text-transform: none !important;
+	transition: background 0.25s ease, color 0.25s ease;
+}
+.wd-nav-shop-cat > li > a:hover,
+.wd-nav-shop-cat > li.current-cat > a {
+	background: var(--st-navy);
+	color: #fff !important;
+}
+
+/* ============================================================
+   5. PRODUCT CARDS — rounded-3xl, soft glass, indigo glow hover
+   ============================================================ */
+.wd-product .product-wrapper,
+.product-grid-item .product-wrapper {
+	border-radius: 24px !important;
+	overflow: hidden;
+	background: rgba(255, 255, 255, 0.6) !important;
+	transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease !important;
+}
+.wd-product:hover .product-wrapper,
+.product-grid-item:hover .product-wrapper {
+	transform: translateY(-6px);
+	box-shadow: 0 34px 80px -34px rgba(91, 91, 240, 0.55) !important;
+}
+.wd-product .product-element-top,
+.product-grid-item .product-element-top {
+	border-radius: 20px !important;
+	overflow: hidden;
+}
+.wd-entities-title {
+	font-size: 15px !important;
+}
+
+/* Price — navy, Manrope bold (demo paints it coral) */
+.price,
+.price .amount,
+.woocommerce-Price-amount,
+.product-grid-item .price {
+	font-family: var(--st-font-body) !important;
+	color: var(--st-navy) !important;
+	font-weight: 700;
+}
+.price del,
+.price del .amount {
+	color: var(--st-mist) !important;
+	opacity: 0.6;
+	font-weight: 500;
+}
+.price ins,
+.price ins .amount {
+	color: var(--st-glow) !important;
+	text-decoration: none;
+}
+
+/* ============================================================
+   6. BUTTONS — kill the demo coral, force brand pills
+   ============================================================ */
+.btn,
+.button,
+button.button,
+a.button,
+input[type="submit"],
+.woocommerce .button,
+.wd-button {
+	border-radius: 999px !important;
+	font-family: var(--st-font-body) !important;
+	font-weight: 600;
+	text-transform: none !important;
+	letter-spacing: 0.02em;
+}
+
+.btn.btn-color-primary,
+.button.checkout,
+.single_add_to_cart_button,
+.woocommerce .button.alt,
+.woocommerce-cart .checkout-button,
+.add_to_cart_button,
+.wd-add-btn a {
+	background-color: var(--st-navy) !important;
+	background-image: linear-gradient(90deg, var(--st-navy), var(--st-glow), var(--st-navy)) !important;
+	background-size: 200% 100% !important;
+	background-position: 0% 50%;
+	color: #fff !important;
+	box-shadow: 0 10px 30px -10px rgba(91, 91, 240, 0.7);
+	transition: background-position 0.4s ease, box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+.btn.btn-color-primary:hover,
+.button.checkout:hover,
+.single_add_to_cart_button:hover,
+.woocommerce .button.alt:hover,
+.woocommerce-cart .checkout-button:hover,
+.add_to_cart_button:hover,
+.wd-add-btn a:hover {
+	background-position: 100% 50% !important;
+	box-shadow: 0 16px 44px -12px rgba(91, 91, 240, 0.9);
+	transform: translateY(-1px);
+}
+
+/* ============================================================
+   7. LABELS / RATINGS / PAGINATION
+   ============================================================ */
+.product-label,
+.onsale {
+	border-radius: 999px !important;
+	font-family: var(--st-font-body) !important;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	font-size: 10px !important;
+}
+.product-label.onsale,
+.onsale {
+	background-color: var(--st-glow) !important;
+	color: #fff !important;
+}
+.product-label.new {
+	background-color: var(--st-cyan) !important;
+	color: var(--st-ink) !important;
+}
+.star-rating,
+.star-rating span::before {
+	color: var(--st-glow) !important;
+}
+.wd-pagination a,
+.wd-pagination span,
+.woocommerce-pagination a,
+.woocommerce-pagination span {
+	border-radius: 999px !important;
+	font-family: var(--st-font-body) !important;
+}
+
+/* ============================================================
+   8. SHOP SIDEBAR — mirror the Next.js filter panel
+   ============================================================ */
+.sidebar-container .widget {
+	margin-bottom: 34px;
+}
+.sidebar-container a {
+	font-family: var(--st-font-body) !important;
+	color: var(--st-mist) !important;
+}
+.sidebar-container a:hover {
+	color: var(--st-navy) !important;
+}
+/* Category list as pill chips */
+.sidebar-container .widget_product_categories li a,
+.sidebar-container .wd-nav-product-cat li a {
+	display: inline-block;
+	background: rgba(21, 21, 59, 0.05);
+	border: 1px solid rgba(21, 21, 59, 0.12);
+	border-radius: 999px;
+	padding: 6px 16px;
+	margin: 3px 0;
+	font-size: 13px;
+	transition: all 0.25s ease;
+}
+.sidebar-container .widget_product_categories li a:hover,
+.sidebar-container .widget_product_categories li.current-cat > a {
+	background: var(--st-navy);
+	border-color: var(--st-navy);
+	color: #fff !important;
+}
+/* Price filter slider in brand colors */
+.widget_price_filter .ui-slider .ui-slider-range {
+	background-color: var(--st-glow) !important;
+}
+.widget_price_filter .ui-slider .ui-slider-handle {
+	background-color: var(--st-navy) !important;
+	border-radius: 999px;
+}
+
+/* ============================================================
+   9. HEADER & FOOTER — brand even while demo header remains
+   ============================================================ */
+.whb-header .wd-nav-main > li > a,
+.whb-header .navigation-wrap .wd-nav > li > a,
+.whb-header .wd-nav > li > a {
+	font-family: var(--st-font-body) !important;
+	font-weight: 500;
+	font-size: 14px !important;
+	text-transform: none !important;
+	color: rgba(21, 21, 59, 0.8) !important;
+}
+.whb-header .wd-nav-main > li > a:hover,
+.whb-header .wd-nav > li.current-menu-item > a {
+	color: var(--st-navy) !important;
+}
+.wd-header-cart .wd-cart-number {
+	background-color: var(--st-glow) !important;
+	color: #fff !important;
+}
+.whb-sticked .whb-general-header {
+	background-color: rgba(247, 246, 242, 0.72) !important;
+	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
+	box-shadow: 0 18px 50px -24px rgba(21, 21, 59, 0.5);
+}
+
+.footer-container,
+.wd-footer,
+.copyrights-wrapper {
+	background-color: var(--st-ink) !important;
+	color: rgba(255, 255, 255, 0.55);
+}
+.footer-container .widget-title,
+.wd-footer .widget-title {
+	color: rgba(255, 255, 255, 0.9) !important;
+}
+.footer-container a,
+.wd-footer a,
+.copyrights-wrapper a {
+	color: rgba(255, 255, 255, 0.55) !important;
+}
+.footer-container a:hover,
+.wd-footer a:hover,
+.copyrights-wrapper a:hover {
+	color: #fff !important;
+}
+
+/* ============================================================
+   10. NOTICES / DRAWERS
+   ============================================================ */
+.woocommerce-message,
+.woocommerce-info {
+	border-top-color: var(--st-glow) !important;
+	border-radius: 14px;
+	font-family: var(--st-font-body) !important;
+}
+.cart-widget-side,
+.wd-side-hidden {
+	background-color: var(--st-cream) !important;
+}
