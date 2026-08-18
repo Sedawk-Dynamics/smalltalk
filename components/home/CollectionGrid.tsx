@@ -6,7 +6,7 @@
  */
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { collections } from "@/data/content";
+import { collections, shopUrl } from "@/data/content";
 import SmartImage from "@/components/ui/SmartImage";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Aurora from "@/components/ui/Aurora";
@@ -25,7 +25,7 @@ export default function CollectionGrid() {
           highlight={[2]}
         />
         <Link
-          href="/shop"
+          href={shopUrl}
           className="hidden items-center gap-1.5 text-sm font-semibold text-navy underline-offset-4 hover:underline sm:flex"
         >
           View everything <ArrowUpRight className="h-4 w-4" />

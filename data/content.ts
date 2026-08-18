@@ -147,7 +147,7 @@ export const hero = {
   sub: "Premium everyday apparel — without the premium price.",
   longSub:
     "Premium everyday apparel — honest pricing, real confidence, no compromise.",
-  ctaPrimary: { label: "Shop Now", href: "/shop" },
+  ctaPrimary: { label: "Shop Now", href: shopUrl },
   ctaSecondary: { label: "Our Story", href: "/about" },
 };
 
@@ -256,8 +256,8 @@ export const media = {
 export const categories = [
   { name: "Tees", href: `${shopUrl}/product-category/tees/` },
   { name: "Polos", href: `${shopUrl}/product-category/polos/` },
-  { name: "Hoodies", href: `${shopUrl}/product-category/hoodies-sweatshirts/` },
-  { name: "Pullover", href: `${shopUrl}/product-category/hoodies-sweatshirts/` },
+  { name: "Hoodies", href: `${shopUrl}/product-category/hoodies/` },
+  { name: "Pullover", href: `${shopUrl}/product-category/pullover/` },
   { name: "Joggers", href: `${shopUrl}/product-category/joggers/` },
   { name: "Kids", href: `${shopUrl}/product-category/kids/` },
 ];
@@ -267,14 +267,14 @@ export const promos = [
   {
     title: "Buy 2, Get 1 Free",
     sub: "Mix & match any tees. Limited time.",
-    cta: { label: "Shop Tees", href: "/shop?category=Tees" },
+    cta: { label: "Shop Tees", href: `${shopUrl}/product-category/tees/` },
     gradient: "from-navy via-indigo-700 to-glow",
     tag: "Combo Offer",
   },
   {
     title: "Flat ₹400 Off Polos",
     sub: "Elevate your collar game for less.",
-    cta: { label: "Shop Polos", href: "/shop?category=Polos" },
+    cta: { label: "Shop Polos", href: `${shopUrl}/product-category/polos/` },
     gradient: "from-ink via-navy to-cyan",
     tag: "Polo Edit",
   },
@@ -285,7 +285,7 @@ export const collections = [
   {
     title: "The Polo Edit",
     caption: "Collars, done casually.",
-    href: "/shop?category=Polos",
+    href: `${shopUrl}/product-category/polos/`,
     span: "lg:col-span-2 lg:row-span-2",
     photo: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=1100&q=80",
     image: "/lookbook/look-1.svg",
@@ -293,7 +293,7 @@ export const collections = [
   {
     title: "Weekend Casual",
     caption: "Off-duty, on point.",
-    href: "/shop?category=Tees",
+    href: `${shopUrl}/product-category/tees/`,
     span: "",
     photo: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=700&q=80",
     image: "/lookbook/look-2.svg",
@@ -301,7 +301,7 @@ export const collections = [
   {
     title: "Heavyweight Drop",
     caption: "Structured. Substantial.",
-    href: "/shop/heavyweight-tee",
+    href: `${shopUrl}/product-category/tees/oversized-tee/`,
     span: "",
     photo: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=700&q=80",
     image: "/lookbook/look-3.svg",
@@ -309,7 +309,7 @@ export const collections = [
   {
     title: "Everyday Ready",
     caption: "Sorted for any day.",
-    href: "/shop",
+    href: shopUrl,
     span: "lg:col-span-2",
     photo: "https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1100&q=80",
     image: "/lookbook/look-4.svg",
@@ -411,7 +411,7 @@ export const testimonials = [
 export const ctaBanner = {
   heading: "Start with the staples.",
   sub: "Premium tees and polos, priced honestly — built for every day.",
-  cta: { label: "Shop Now", href: "/shop" },
+  cta: { label: "Shop Now", href: shopUrl },
 };
 
 /* ---------------- NAV + FOOTER ---------------- */
@@ -428,9 +428,13 @@ export const announcement =
 
 export const footerColumns = {
   Shop: [
-    { label: "Tees", href: "/shop?category=Tees" },
-    { label: "Polos", href: "/shop?category=Polos" },
-    { label: "All Products", href: "/shop" },
+    { label: "Tees", href: `${shopUrl}/product-category/tees/` },
+    { label: "Polos", href: `${shopUrl}/product-category/polos/` },
+    { label: "Hoodies", href: `${shopUrl}/product-category/hoodies/` },
+    { label: "Pullover", href: `${shopUrl}/product-category/pullover/` },
+    { label: "Joggers", href: `${shopUrl}/product-category/joggers/` },
+    { label: "Kids", href: `${shopUrl}/product-category/kids/` },
+    { label: "All Products", href: shopUrl },
   ],
   Company: [
     { label: "About", href: "/about" },

@@ -3,7 +3,7 @@
 /** Featured Tees & Polos grid with hover effects + quick view. */
 import { useState } from "react";
 import type { Product } from "@/data/content";
-import { featuredProducts } from "@/data/content";
+import { featuredProducts, shopUrl } from "@/data/content";
 import ProductCard from "@/components/shop/ProductCard";
 import QuickView from "@/components/shop/QuickView";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -23,7 +23,7 @@ export default function FeaturedProducts() {
           intro="Start with the staples everyone reaches for — reimagined in premium fabric, priced honestly."
         />
         <div className="hidden sm:block">
-          <MagneticButton href="/shop" variant="secondary">
+          <MagneticButton href={shopUrl} variant="secondary">
             View All
           </MagneticButton>
         </div>
@@ -41,7 +41,7 @@ export default function FeaturedProducts() {
       </RevealStagger>
 
       <div className="mt-10 flex justify-center sm:hidden">
-        <MagneticButton href="/shop" variant="secondary">
+        <MagneticButton href={shopUrl} variant="secondary">
           View All Products
         </MagneticButton>
       </div>

@@ -1,0 +1,155 @@
+/*
+   PASTE #5 — SHOP FILTER PANEL + TOOLBAR
+   Append BELOW paste #4 in Theme Settings → Custom CSS → Global CSS.
+
+   Makes the WooCommerce shop sidebar + toolbar match the Next.js
+   /shop?category=Tees layout: Category pills (already styled in paste #1),
+   Size chips, price slider, pill sort dropdown, product count, and
+   active-filter pills. Pair with the widget setup in SETUP-GUIDE Step 7.
+   Verified selectors on staging: .shop-loop-head, .woocommerce-result-count,
+   form.woocommerce-ordering select.orderby, .sidebar-container.
+*/
+
+/* ---------- Toolbar: count left, pill sort right */
+.shop-loop-head {
+	align-items: center;
+	margin-bottom: 24px;
+}
+.woocommerce-result-count {
+	font-family: var(--st-font-body) !important;
+	font-size: 14px !important;
+	color: var(--st-mist) !important;
+}
+.woocommerce-ordering select.orderby,
+.woocommerce-ordering .orderby {
+	border: 1px solid rgba(21, 21, 59, 0.2) !important;
+	border-radius: 999px !important;
+	background-color: #fff !important;
+	padding: 8px 36px 8px 18px !important;
+	font-family: var(--st-font-body) !important;
+	font-size: 14px !important;
+	color: var(--st-navy) !important;
+}
+/* Kill WoodMart's underline-style ordering decoration */
+.woocommerce-ordering.wd-style-underline::after,
+.woocommerce-ordering.wd-style-underline::before {
+	display: none !important;
+}
+
+/* ---------- Sidebar: sticky on desktop, like the Next.js filter column */
+@media (min-width: 1025px) {
+	.sidebar-container .sidebar-inner {
+		position: sticky;
+		top: 110px;
+	}
+}
+
+/* Widget titles → "CATEGORY" / "SIZE" / "MAX PRICE" style labels */
+.sidebar-container .widget-title,
+.sidebar-container .wd-widget-title {
+	margin-bottom: 14px;
+}
+
+/* ---------- Size filter (Filter Products by Attribute widget) —
+   square-ish chips like the Next.js size selector */
+.sidebar-container .widget_layered_nav ul,
+.sidebar-container .wd-widget-layered-nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.sidebar-container .widget_layered_nav ul li,
+.sidebar-container .wd-widget-layered-nav ul li {
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+	list-style: none;
+}
+.sidebar-container .widget_layered_nav ul li a,
+.sidebar-container .wd-widget-layered-nav ul li a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	padding: 9px 12px;
+	border: 1px solid rgba(21, 21, 59, 0.2) !important;
+	border-radius: 10px !important;
+	background: transparent;
+	font-family: var(--st-font-body) !important;
+	font-size: 13px !important;
+	font-weight: 500;
+	color: var(--st-ink) !important;
+	transition: all 0.25s ease;
+}
+.sidebar-container .widget_layered_nav ul li a:hover {
+	border-color: var(--st-navy) !important;
+}
+.sidebar-container .widget_layered_nav ul li.chosen a,
+.sidebar-container .wd-widget-layered-nav ul li.wd-active a {
+	background: var(--st-navy) !important;
+	border-color: var(--st-navy) !important;
+	color: #fff !important;
+}
+/* Hide the little × Woo injects inside chosen links (pill shows state) */
+.sidebar-container .widget_layered_nav ul li.chosen a::before {
+	display: none !important;
+}
+/* Hide product counts next to size terms for the clean Next.js look */
+.sidebar-container .widget_layered_nav .count {
+	display: none !important;
+}
+
+/* ---------- Active filters (Active Product Filters widget) — navy/5 pills */
+.widget_layered_nav_filters ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	list-style: none;
+	margin: 0 0 8px;
+	padding: 0;
+}
+.widget_layered_nav_filters ul li {
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none;
+}
+.widget_layered_nav_filters ul li a,
+.wd-active-filters a {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: rgba(21, 21, 59, 0.05);
+	border-radius: 999px !important;
+	padding: 6px 14px !important;
+	font-family: var(--st-font-body) !important;
+	font-size: 13px !important;
+	color: var(--st-navy) !important;
+	border: 0 !important;
+	transition: background 0.25s ease;
+}
+.widget_layered_nav_filters ul li a:hover,
+.wd-active-filters a:hover {
+	background: rgba(21, 21, 59, 0.12);
+}
+
+/* ---------- Price filter — already brand-colored in paste #1; tidy the
+   layout: slider full-width, button + label on one row */
+.widget_price_filter .price_slider_amount {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-top: 18px;
+}
+.widget_price_filter .price_slider_amount .price_label {
+	font-family: var(--st-font-body) !important;
+	font-size: 13px;
+	color: var(--st-mist);
+}
+.widget_price_filter .price_slider_amount .button {
+	padding: 8px 20px !important;
+	font-size: 12px !important;
+}

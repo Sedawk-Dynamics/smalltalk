@@ -7,7 +7,7 @@ import { Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
 import SmartImage from "@/components/ui/SmartImage";
 import { useEffect } from "react";
 import { useCart } from "@/components/providers/CartProvider";
-import { formatINR } from "@/data/content";
+import { formatINR, shopUrl } from "@/data/content";
 import MagneticButton from "@/components/ui/MagneticButton";
 
 export default function CartDrawer() {
@@ -97,7 +97,7 @@ export default function CartDrawer() {
                 <div className="flex h-full flex-col items-center justify-center gap-4 text-center">
                   <ShoppingBag className="h-12 w-12 text-navy/20" />
                   <p className="text-mist">Your cart is empty.</p>
-                  <MagneticButton href="/shop" onClick={closeCart}>
+                  <MagneticButton href={shopUrl} onClick={closeCart}>
                     Start Shopping
                   </MagneticButton>
                 </div>

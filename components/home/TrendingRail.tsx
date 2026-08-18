@@ -9,7 +9,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useCallback, useState } from "react";
 import type { Product } from "@/data/content";
-import { products } from "@/data/content";
+import { products, shopUrl } from "@/data/content";
 import ProductCard from "@/components/shop/ProductCard";
 import QuickView from "@/components/shop/QuickView";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -75,7 +75,7 @@ export default function TrendingRail() {
       </div>
 
       <div className="container-st mt-10 flex justify-center">
-        <MagneticButton href="/shop" variant="light">
+        <MagneticButton href={shopUrl} variant="light">
           Shop All Bestsellers
         </MagneticButton>
       </div>
