@@ -123,6 +123,12 @@ export const brand = {
     "https://www.google.com/maps?q=Pushpanjali+Enclave+Pitampura+New+Delhi+110034&output=embed",
 };
 
+/* The WooCommerce shop — all commerce (shop, cart, checkout) lives there;
+   this Next.js site is the brand frontend. Swap via env when the shop moves
+   to its real domain (e.g. shop.thesmalltalkstore.com). */
+export const shopUrl =
+  process.env.NEXT_PUBLIC_SHOP_URL ?? "https://staging.smalltalks.sedawk.cloud";
+
 /* ---------------- HERO ----------------
    The brand message lives HERE and nowhere else — one bold headline + one
    supporting line. (Client feedback: state it once, prominently.) */
@@ -244,37 +250,16 @@ export const media = {
   founderFallback: "/lookbook/look-3.svg",
 };
 
-/* ---------------- SHOP BY CATEGORY (circular tiles) ----------------
-   `photo` = real CDN; `image` = local SVG fallback. */
+/* ---------------- SHOP BY CATEGORY ----------------
+   Compact pills (client: no big banner) — deep links into the WooCommerce
+   product categories on the shop subdomain. */
 export const categories = [
-  {
-    name: "Tees",
-    blurb: "Everyday staples",
-    href: "/shop?category=Tees",
-    photo: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80",
-    image: "/products/essential-tee-1.svg",
-  },
-  {
-    name: "Polos",
-    blurb: "Casual yet formal",
-    href: "/shop?category=Polos",
-    photo: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?auto=format&fit=crop&w=500&q=80",
-    image: "/products/premium-polo-1.svg",
-  },
-  {
-    name: "New Arrivals",
-    blurb: "Fresh drops",
-    href: "/shop",
-    photo: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=500&q=80",
-    image: "/products/heavyweight-tee-1.svg",
-  },
-  {
-    name: "Bestsellers",
-    blurb: "Customer favourites",
-    href: "/shop",
-    photo: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=500&q=80",
-    image: "/products/classic-crew-1.svg",
-  },
+  { name: "Tees", href: `${shopUrl}/product-category/tees/` },
+  { name: "Polos", href: `${shopUrl}/product-category/polos/` },
+  { name: "Hoodies", href: `${shopUrl}/product-category/hoodies-sweatshirts/` },
+  { name: "Pullover", href: `${shopUrl}/product-category/hoodies-sweatshirts/` },
+  { name: "Joggers", href: `${shopUrl}/product-category/joggers/` },
+  { name: "Kids", href: `${shopUrl}/product-category/kids/` },
 ];
 
 /* ---------------- PROMOTIONAL BANNERS ---------------- */
@@ -331,18 +316,37 @@ export const collections = [
   },
 ];
 
-/* ---------------- ABOUT ---------------- */
+/* ---------------- ABOUT ----------------
+   Copy updated per client review (Aug 2026). */
 export const about = {
   story: [
-    "We started with a simple idea — looking good shouldn't feel expensive, and quality shouldn't feel out of reach. In a world where fashion forces you to choose between comfort, style, or price, we decided to change the equation.",
-    "Our journey begins with something familiar — the T-shirt. But not just any T-shirt. We've reimagined it to carry you from everyday moments to important ones, with ease, confidence, and style. Every piece is rooted in clean design, thoughtful fits, and premium-quality fabric — so when you wear it, you don't just look put-together, you feel it. That quiet confidence. That presence. That “CEO energy” — without the need to overspend.",
+    "Looking sharp shouldn't come with luxury markups, and everyday comfort should never be a compromise. We set out to fix that equation.",
+    "We started with everyday wear, meticulously designed for modern life. Built with natural fabrics and comfort-driven fits, our products transition seamlessly from casual routines to key meetings.",
+    "You get clean minimalist style, all-day comfort, and quiet confidence — without overpaying.",
     "This brand is for the go-getters, the self-starters, and the everyday achievers. We're not just building clothing — we're building a mindset.",
   ],
-  mission:
-    "We believe everyone deserves well-made clothing without the premium price tag. Our mission is to deliver quality and honest style in every piece, while building a culture where we grow, care, and take ownership of the value we deliver.",
-  vision:
-    "To be a brand people trust and feel proud of — where everyone can find clothing that looks good, feels great, and fits their budget, without compromise.",
-  valuesList: ["Quality Products", "Comfort", "Affordability"],
+  // Client: call this "Reason for Being" instead of Mission.
+  reasonForBeing:
+    "To redefine the everyday wardrobe by making durable, comfortable, and minimalist style accessible to all at an honest accessible value.",
+  // Client: call this "Aspiration" instead of Vision.
+  aspiration:
+    "To be a brand people trust and feel proud of, providing clothing that looks good, feels great, and delivers honest value - without compromise.",
+  valuesList: [
+    {
+      title: "Uncompromising Quality",
+      description:
+        "Quality isn't optional. Built to last — craftsmanship perfected for everyday durability.",
+    },
+    {
+      title: "Absolute Comfort",
+      description: "Comfort fits and natural materials for seamless daily wear.",
+    },
+    {
+      title: "Value",
+      description:
+        "Honest pricing that puts style, comfort & confidence within reach.",
+    },
+  ],
 };
 
 /* ---------------- FOUNDER ---------------- */
@@ -411,12 +415,6 @@ export const ctaBanner = {
 };
 
 /* ---------------- NAV + FOOTER ---------------- */
-
-/* The WooCommerce shop — all commerce (shop, cart, checkout) lives there;
-   this Next.js site is the brand frontend. Swap via env when the shop moves
-   to its real domain (e.g. shop.thesmalltalkstore.com). */
-export const shopUrl =
-  process.env.NEXT_PUBLIC_SHOP_URL ?? "https://staging.smalltalks.sedawk.cloud";
 
 export const navLinks = [
   { label: "Home", href: "/" },

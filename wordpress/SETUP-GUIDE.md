@@ -172,9 +172,14 @@ floating WhatsApp button (`wa.me/918595382034`).
   `grid-cols-2 md:grid-cols-3` shop grid.
 - **Product hover:** "Standard" or "Quick" — the CSS adds the slow 1.05× zoom and
   the lift + indigo glow on the card. Avoid the busy "icons" hover.
-- **Categories:** create **Tees** and **Polos**; if using a sidebar, add the
-  Product Categories widget — the CSS turns it into the Next.js pill chips.
-  (Staging's sidebar currently only has price-filter + top-rated widgets.)
+- **Real products:** import **`smalltalk-products.csv`** — the client's full
+  catalog (11 variable products, 211 Size × Color variations) as drafts:
+  `Products → All Products → Import` → upload the CSV → mapping is automatic
+  → Run. This also creates the categories (Tees · Polos · Hoodies &
+  Sweatshirts · Joggers · Kids) and the global Size/Color attributes.
+  Then per product: set the real price (placeholder is ₹999), add photos,
+  and Publish. If using a sidebar, add the Product Categories widget — the
+  CSS turns it into the Next.js pill chips.
 - **Sale/New labels:** any label shape — CSS restyles them into brand pills
   (sale = indigo `#5B5BF0`, new = cyan `#3DD6D0`).
 - **Favicon + site title:** same favicon as the Next.js site (`app/icon.svg`),
@@ -190,6 +195,55 @@ If the shop subdomain gets its own landing/lookbook page, reuse the Next.js patt
 - Primary CTAs: 999px pill, background `#15153C` (CSS adds gradient + glow)
 - Add the row class `st-wash` (defined in the CSS) for the local indigo/cyan
   radial-wash background used on the main site's sections.
+
+## Step 9 — Complete WooCommerce configuration
+
+Ordered checklist to take the store from "products imported" to "can sell".
+
+1. **Publish the catalog.** For each of the 11 drafts: set the real price
+   (placeholder ₹999), upload photos (variation images optional per color),
+   Publish. Trash the last demo product ("Henectus tincidunt") and the demo
+   "Accessories" category.
+2. **General** (`WooCommerce → Settings → General`): Store address =
+   C-182 Pushpanjali Enclave, Pitampura, New Delhi 110034 · Selling location:
+   Sell to specific countries → India (widen later) · Currency ₹ (done).
+3. **Products tab**: enable reviews + star ratings (the skin styles them).
+   Units: kg / cm. Customizer → WooCommerce → Product Images → crop **4:5**,
+   then install "Regenerate Thumbnails" plugin and run it.
+4. **Shipping** (`Settings → Shipping`): Zone "India" → add **Free shipping**
+   (min order ₹1499 — matches the "Free shipping ₹1499+" trust badge) + add
+   **Flat rate** (e.g. ₹99) for orders below. The announcement bar's "free
+   shipping on your first order" needs a first-order coupon: Marketing →
+   Coupons → new coupon `FIRSTSHIP`, Free shipping ✓, usage limit 1 per user.
+5. **Payments**: install the **Razorpay for WooCommerce** plugin (covers
+   UPI / cards / RuPay / netbanking — matches the footer payment badges);
+   connect it with keys from the Razorpay dashboard. Optionally enable
+   **Cash on delivery**. Keep COD enabled while testing.
+6. **Accounts & Privacy**: allow guest checkout ✓, allow account creation
+   during checkout ✓, login at checkout ✓.
+7. **Emails**: From name "The Small Talk Store", from address
+   info@thesmalltalkstore.com. Base color `#15153C`, background `#F7F6F2`.
+   Header image: upload `logo-blue.png` URL.
+8. **Advanced**: cart/checkout/my-account pages already assigned. Create a
+   local "Terms & Conditions" page (can simply link/summarize the main
+   site's /terms) and select it — enables the checkout T&C checkbox.
+9. **Taxes**: if invoicing with GST, enable taxes; enter prices inclusive of
+   tax; exact garment GST slab per the client's CA. For GSTIN on invoices,
+   add "PDF Invoices & Packing Slips for WooCommerce" and put
+   `GSTIN: 07AFXFS8211B1ZS` in the invoice footer.
+10. **Color swatches** (`Products → Attributes → Color → edit terms`):
+    WoodMart adds a "Color" swatch field per term. Suggested hexes:
+    Black #111111 · Dessert #C9A87C · Lagoon Blue #3E8E9E · Peacock Blue
+    #1B6B7B · Rose Mist #D9A6A6 · Olive Green #6B7245 · Navy Blue #1F2A44 ·
+    Kiwi Green #97C05C · Bottle Green #17493B · Maroon #6E1F2E · Asphalt
+    #4A4A52 · White #FFFFFF · Grey #9A9A9A · Petrol Blue #2C5F6F · Old Navy
+    #23395B · Moss Green #5A6E3A · Blue #2E4A8F · Smokey Blue #5F7085 ·
+    Lilac #C8A2C8 · Teal #2A8E82 · Red #C0392B · Ocean Blue #2E7EB3 ·
+    Cafe #8B6A50 · Sage Green #9CAF88. Then WoodMart → Theme Settings →
+    Shop → enable swatches on grid/filters.
+11. **Test order**: publish one product, buy it with COD end-to-end (add to
+    cart → checkout → place order), confirm the order appears in
+    WooCommerce → Orders and the confirmation email arrives, then cancel it.
 
 ---
 

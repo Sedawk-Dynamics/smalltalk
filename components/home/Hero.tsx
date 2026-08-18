@@ -1,14 +1,13 @@
 "use client";
 
 /**
- * Hero: kinetic headline (words mask up), animated gradient-mesh background,
- * parallax floating tee visual, CTAs, and an animated scroll cue.
+ * Hero: kinetic headline (words mask up) on a static solid logo-navy
+ * background (client request — no gradients/particles), parallax floating
+ * tee visual, CTAs, and an animated scroll cue.
  */
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { hero, media } from "@/data/content";
-import GradientMesh from "@/components/ui/GradientMesh";
-import HeroCanvas from "@/components/ui/HeroCanvas";
 import SmartImage from "@/components/ui/SmartImage";
 import MagneticButton from "@/components/ui/MagneticButton";
 import SplitText from "@/components/ui/SplitText";
@@ -30,22 +29,8 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative -mt-20 flex min-h-[100svh] items-center overflow-hidden bg-navy pt-20 text-white"
+      className="relative -mt-20 flex min-h-[100svh] items-center overflow-hidden bg-[#252464] pt-20 text-white"
     >
-      <GradientMesh />
-      {/* canvas particle constellation */}
-      <HeroCanvas className="pointer-events-none absolute inset-0 opacity-70" />
-      {/* subtle grid */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px)",
-          backgroundSize: "64px 64px",
-        }}
-      />
-
       <div className="container-st relative grid w-full items-center gap-10 py-24 lg:grid-cols-[1.15fr_0.85fr]">
         {/* Copy */}
         <motion.div style={{ y: yText, opacity }} className="relative z-10">
@@ -121,15 +106,15 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* floating chips */}
+            {/* floating chips — client: Premium Fabric · Whole day Comfort ·
+                Durable (pricing chip removed) */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.1 }}
               className="glass-dark absolute -left-6 top-10 rounded-2xl px-4 py-2.5 text-sm"
             >
-              <p className="font-display text-lg font-bold">100%</p>
-              <p className="text-xs text-white/60">Premium cotton</p>
+              <p className="font-display text-base font-bold">Premium Fabric</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -137,8 +122,17 @@ export default function Hero() {
               transition={{ delay: 1.25 }}
               className="glass-dark absolute -right-4 bottom-16 rounded-2xl px-4 py-2.5 text-sm"
             >
-              <p className="font-display text-lg font-bold text-cyan">₹799</p>
-              <p className="text-xs text-white/60">Honest pricing</p>
+              <p className="font-display text-base font-bold text-cyan">
+                Whole day Comfort
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1.4 }}
+              className="glass-dark absolute -left-4 bottom-24 rounded-2xl px-4 py-2.5 text-sm"
+            >
+              <p className="font-display text-base font-bold">Durable</p>
             </motion.div>
           </motion.div>
         </motion.div>

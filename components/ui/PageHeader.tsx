@@ -5,21 +5,30 @@ import Link from "next/link";
 import GradientMesh from "./GradientMesh";
 import SplitText from "./SplitText";
 import { Reveal } from "./Reveal";
+import { cn } from "@/lib/utils";
 
 export default function PageHeader({
   title,
   subtitle,
   breadcrumb,
   highlight = [],
+  solid = false,
 }: {
   title: string;
   subtitle?: string;
   breadcrumb?: { label: string; href: string }[];
   highlight?: number[];
+  /** Solid logo-navy background (#252464), no gradient mesh (client request). */
+  solid?: boolean;
 }) {
   return (
-    <section className="relative -mt-20 overflow-hidden bg-navy pb-16 pt-32 text-white lg:pb-20 lg:pt-40">
-      <GradientMesh />
+    <section
+      className={cn(
+        "relative -mt-20 overflow-hidden pb-16 pt-32 text-white lg:pb-20 lg:pt-40",
+        solid ? "bg-[#252464]" : "bg-navy"
+      )}
+    >
+      {!solid && <GradientMesh />}
       <div className="container-st relative">
         {breadcrumb && (
           <Reveal>

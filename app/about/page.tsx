@@ -20,8 +20,11 @@ import {
 export const metadata: Metadata = {
   title: "About",
   description:
-    "The story, mission, vision and people behind The Small Talk Store — premium everyday apparel without the premium price.",
+    "The story, values and reason for being behind The Small Talk Store — premium everyday apparel without the premium price.",
 };
+
+// NOTE(client): founder band hidden for now — flip to true to bring it back.
+const SHOW_FOUNDER_SECTION = false;
 
 export default function AboutPage() {
   return (
@@ -29,7 +32,8 @@ export default function AboutPage() {
       <PageHeader
         title="We're building a mindset."
         highlight={[3]}
-        subtitle="Looking good shouldn't feel expensive, and quality shouldn't feel out of reach. So we changed the equation."
+        subtitle="Premium comfort shouldn't come with a luxury price tag."
+        solid
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "About", href: "/about" },
@@ -76,20 +80,26 @@ export default function AboutPage() {
         </div>
       </ClipReveal>
 
-      {/* Mission + Vision */}
+      {/* Reason for Being + Aspiration (client: renamed from Mission/Vision) */}
       <section className="container-st grid gap-5 py-14 md:grid-cols-2 lg:py-20">
         <Reveal>
           <div className="h-full rounded-3xl bg-navy p-8 text-white sm:p-10">
             <Target className="h-9 w-9 text-cyan" />
-            <h3 className="mt-5 font-display text-2xl font-bold">Mission</h3>
-            <p className="mt-3 leading-relaxed text-white/75">{about.mission}</p>
+            <h3 className="mt-5 font-display text-2xl font-bold">
+              Reason for Being
+            </h3>
+            <p className="mt-3 leading-relaxed text-white/75">
+              {about.reasonForBeing}
+            </p>
           </div>
         </Reveal>
         <Reveal delay={0.1}>
           <div className="h-full rounded-3xl bg-ink p-8 text-white sm:p-10">
             <Eye className="h-9 w-9 text-glow" />
-            <h3 className="mt-5 font-display text-2xl font-bold">Vision</h3>
-            <p className="mt-3 leading-relaxed text-white/75">{about.vision}</p>
+            <h3 className="mt-5 font-display text-2xl font-bold">Aspiration</h3>
+            <p className="mt-3 leading-relaxed text-white/75">
+              {about.aspiration}
+            </p>
           </div>
         </Reveal>
       </section>
@@ -103,13 +113,16 @@ export default function AboutPage() {
           highlight={[1]}
           className="mx-auto"
         />
-        <RevealStagger className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-3">
+        <RevealStagger className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-3">
           {about.valuesList.map((v) => (
-            <RevealItem key={v}>
-              <div className="flex flex-col items-center rounded-3xl border border-navy/10 bg-white p-8 text-center">
+            <RevealItem key={v.title}>
+              <div className="flex h-full flex-col items-center rounded-3xl border border-navy/10 bg-white p-8 text-center">
                 <TeeMotif className="h-8 w-8 text-glow" />
                 <p className="mt-4 font-display text-lg font-semibold text-ink">
-                  {v}
+                  {v.title}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-mist">
+                  {v.description}
                 </p>
               </div>
             </RevealItem>
@@ -119,7 +132,8 @@ export default function AboutPage() {
 
       <Marquee items={marqueeItems} className="my-12" />
 
-      {/* Founder — bold navy feature band */}
+      {/* Founder — bold navy feature band (hidden per client, see flag above) */}
+      {SHOW_FOUNDER_SECTION && (
       <section className="container-st py-8 lg:py-12">
         <div className="relative grid items-stretch gap-0 overflow-hidden rounded-[2rem] bg-navy text-white shadow-soft lg:grid-cols-[0.9fr_1.1fr]">
           <GradientMesh className="opacity-60" />
@@ -163,6 +177,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Closing CTA
           NOTE(client-feedback): the "Meet the team" roster was removed — it
