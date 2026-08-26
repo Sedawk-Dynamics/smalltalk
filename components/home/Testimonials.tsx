@@ -53,29 +53,29 @@ export default function Testimonials() {
             {testimonials.map((t, i) => (
               <figure
                 key={i}
-                className="card-glow min-w-0 shrink-0 basis-[88%] rounded-3xl bg-white p-8 shadow-soft sm:basis-[46%] lg:basis-[31%]"
+                className="card-glow min-w-0 shrink-0 basis-[80%] rounded-2xl bg-white p-6 shadow-soft sm:basis-[40%] lg:basis-[23.5%]"
               >
-                <Quote className="h-8 w-8 text-glow/40" />
-                <div className="mt-4 flex gap-0.5 text-cyan">
+                <Quote className="h-6 w-6 text-glow/40" />
+                <div className="mt-3 flex gap-0.5 text-cyan">
                   {Array.from({ length: 5 }).map((_, s) => (
-                    <Star key={s} className="h-4 w-4 fill-current" />
+                    <Star key={s} className="h-3.5 w-3.5 fill-current" />
                   ))}
                 </div>
-                <blockquote className="mt-4 text-base leading-relaxed text-ink">
+                <blockquote className="mt-3 text-sm leading-relaxed text-ink">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
-                <figcaption className="mt-6 flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-navy via-glow to-cyan text-sm font-bold text-white">
+                <figcaption className="mt-5 flex items-center gap-2.5">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-navy via-glow to-cyan text-xs font-bold text-white">
                     {t.name
                       .split(" ")
                       .map((n) => n[0])
                       .join("")}
                   </span>
                   <span>
-                    <span className="block font-semibold text-ink">
+                    <span className="block text-sm font-semibold text-ink">
                       {t.name}
                     </span>
-                    <span className="block text-sm text-mist">{t.role}</span>
+                    <span className="block text-xs text-mist">{t.role}</span>
                   </span>
                 </figcaption>
               </figure>

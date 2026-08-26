@@ -1,0 +1,85 @@
+/*
+   PASTE #7 — SHOP MEGA MENU PANEL + SIDEBAR CATEGORY TREE
+   Append at the BOTTOM of the Custom CSS (or Customizer → Additional CSS).
+
+   1) The Header Builder menu element has a fixed "Dropdown height" (495px)
+      which paints a huge empty white void under the category columns.
+      This forces auto height and styles the panel like the Next.js mega
+      menu: cream, rounded bottom, soft shadow, Syne parents + Manrope subs.
+      (Also fix the setting itself: Header Builder → menu element →
+      remove the Dropdown height value.)
+   2) Styles the sidebar Product Categories widget as a tree: parent pills
+      + indented plain sub-category links.
+*/
+
+/* ---------- 1. Mega dropdown: kill fixed height, style the panel */
+.whb-header .wd-dropdown-menu.wd-design-full-width {
+	--wd-dropdown-height: auto;
+	min-height: 0 !important;
+	height: auto !important;
+	background: #f7f6f2 !important;
+	border-radius: 0 0 24px 24px;
+	box-shadow: 0 30px 60px -30px rgba(21, 21, 59, 0.45);
+	padding: 36px 0 28px !important;
+	border: 0 !important;
+}
+.whb-header .wd-dropdown-menu.wd-design-full-width > .container {
+	min-height: 0 !important;
+}
+
+/* Parent categories — Syne bold ink, indigo hover */
+.whb-header .wd-dropdown-menu .wd-sub-menu > li > a {
+	font-family: var(--st-font-display) !important;
+	font-size: 16px !important;
+	font-weight: 700;
+	color: var(--st-ink) !important;
+	text-transform: none !important;
+	letter-spacing: -0.02em;
+	padding-bottom: 10px;
+}
+.whb-header .wd-dropdown-menu .wd-sub-menu > li > a:hover {
+	color: var(--st-glow) !important;
+}
+/* Sub-categories — Manrope, muted, navy hover */
+.whb-header .wd-dropdown-menu .wd-sub-menu li li a {
+	font-family: var(--st-font-body) !important;
+	font-size: 14px !important;
+	font-weight: 400;
+	color: var(--st-mist) !important;
+	text-transform: none !important;
+	padding: 4px 0;
+}
+.whb-header .wd-dropdown-menu .wd-sub-menu li li a:hover {
+	color: var(--st-navy) !important;
+}
+
+/* ---------- 2. Sidebar Product Categories — parent pills + indented tree */
+.sidebar-container .widget_product_categories > ul > li {
+	margin-bottom: 6px;
+	list-style: none;
+}
+/* children lists: plain indented links instead of pills */
+.sidebar-container .widget_product_categories ul.children {
+	margin: 4px 0 10px 16px;
+	padding: 0;
+}
+.sidebar-container .widget_product_categories ul.children li {
+	margin: 0;
+	list-style: none;
+}
+.sidebar-container .widget_product_categories ul.children li a {
+	display: inline-block;
+	background: transparent !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+	padding: 3px 0 !important;
+	margin: 0 !important;
+	font-size: 13px;
+	color: var(--st-mist) !important;
+}
+.sidebar-container .widget_product_categories ul.children li a:hover,
+.sidebar-container .widget_product_categories ul.children li.current-cat > a {
+	background: transparent !important;
+	color: var(--st-navy) !important;
+	font-weight: 600;
+}

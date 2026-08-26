@@ -29,9 +29,9 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative -mt-20 flex min-h-[100svh] items-center overflow-hidden bg-[#252464] pt-20 text-white"
+      className="relative -mt-20 flex min-h-[88svh] items-center overflow-hidden bg-[#252464] pt-20 text-white"
     >
-      <div className="container-st relative grid w-full items-center gap-10 py-24 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="container-st relative grid w-full items-center gap-10 pb-20 pt-8 lg:grid-cols-[1.15fr_0.85fr]">
         {/* Copy */}
         <motion.div style={{ y: yText, opacity }} className="relative z-10">
           <motion.span
