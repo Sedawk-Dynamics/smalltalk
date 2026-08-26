@@ -618,6 +618,18 @@ textarea {
 	transform: translateY(-1px);
 }
 
+/* Shop mega menu — WoodMart caps mega-menu columns at 5, so the 6th
+   category (Kids) wraps to a second row. Force all top-level columns
+   onto ONE horizontal row with equal widths. */
+.whb-header .wd-dropdown-menu.wd-design-full-width .wd-sub-menu {
+	flex-wrap: nowrap !important;
+}
+.whb-header .wd-dropdown-menu.wd-design-full-width .wd-sub-menu > li {
+	width: auto !important;
+	max-width: none !important;
+	flex: 1 1 0 !important;
+}
+
 /* Top bar (announcement) — ink, centered, Manrope */
 .whb-top-bar,
 .whb-top-bar .whb-flex-row,
@@ -1327,4 +1339,83 @@ textarea {
 .widget_price_filter .price_slider_amount .button {
 	padding: 8px 20px !important;
 	font-size: 12px !important;
+}
+/*
+   PASTE #6 — VARIATION SWATCHES (product page Size / Color rows)
+   Append at the BOTTOM of the Custom CSS (or Customizer → Additional CSS).
+
+   Cleans up the shabby variation selector: proper chip-sized size boxes,
+   36px color circles, navy active states. Verified live on
+   /product/comfort-tee-100-cotton/ (WoodMart .wd-swatch.wd-text /
+   .wd-swatch.wd-bg markup).
+
+   Pair with two admin steps (see SETUP-GUIDE):
+   1. Size order: Products → Attributes → Size → order terms S,M,L,XL,XXL
+   2. Color circles: set a swatch color on EVERY Color term (only Black
+      has one now — that's why the rest render as plain text)
+*/
+
+/* Row labels — "Size:" / "Color:" */
+.summary .variations th.label,
+.summary .variations .label {
+	font-family: var(--st-font-body) !important;
+	font-size: 14px !important;
+	font-weight: 600;
+	color: var(--st-ink) !important;
+	padding-top: 10px;
+}
+.summary .variations td.value {
+	padding: 4px 0 12px !important;
+}
+
+/* Text swatches (sizes + colors without a set color) — proper chips */
+.summary .variations .wd-swatch.wd-text {
+	min-width: 44px;
+	min-height: 40px !important;
+	padding: 0 14px !important;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid rgba(21, 21, 59, 0.2) !important;
+	border-radius: 10px !important;
+	background: #fff !important;
+	font-family: var(--st-font-body) !important;
+	font-size: 13px !important;
+	font-weight: 500;
+	color: var(--st-ink) !important;
+	margin: 0 8px 8px 0 !important;
+	transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+.summary .variations .wd-swatch.wd-text:hover {
+	border-color: var(--st-navy) !important;
+}
+.summary .variations .wd-swatch.wd-text.wd-active {
+	background: var(--st-navy) !important;
+	border-color: var(--st-navy) !important;
+	color: #fff !important;
+}
+
+/* Color swatches with a real color — clean 36px circles */
+.summary .variations .wd-swatch.wd-bg {
+	width: 36px !important;
+	height: 36px !important;
+	padding: 3px !important;
+	border-radius: 999px !important;
+	border: 2px solid rgba(21, 21, 59, 0.15) !important;
+	background: transparent !important;
+	margin: 0 8px 8px 0 !important;
+	transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.summary .variations .wd-swatch.wd-bg .wd-swatch-bg {
+	border-radius: 999px;
+	width: 100%;
+	height: 100%;
+}
+.summary .variations .wd-swatch.wd-bg:hover {
+	border-color: var(--st-navy) !important;
+}
+.summary .variations .wd-swatch.wd-bg.wd-active {
+	background: transparent !important;
+	border-color: var(--st-navy) !important;
+	box-shadow: 0 0 0 2px rgba(21, 21, 59, 0.2);
 }

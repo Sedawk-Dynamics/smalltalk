@@ -11,7 +11,7 @@ import { Eye, Heart, Plus } from "lucide-react";
 import SmartImage from "@/components/ui/SmartImage";
 import { useRef, useState } from "react";
 import type { Product } from "@/data/content";
-import { formatINR } from "@/data/content";
+import { formatINR, shopUrl } from "@/data/content";
 import { useCart } from "@/components/providers/CartProvider";
 import { useToast } from "@/components/providers/ToastProvider";
 import { useReducedMotion } from "@/lib/hooks";
@@ -62,6 +62,11 @@ export default function ProductCard({
       )
     : 0;
 
+  // Real WooCommerce product — the card links to the shop; local cart /
+  // quick-view / wishlist controls don't apply.
+  const externalHref = product.url ? `${shopUrl}${product.url}` : null;
+  const productHref = externalHref ?? `/shop/${product.slug}`;
+
   return (
     <div
       ref={cardRef}
@@ -82,7 +87,7 @@ export default function ProductCard({
       >
         {/* Image */}
         <Link
-          href={`/shop/${product.slug}`}
+          href={productHref}
           className="relative block aspect-[4/5] overflow-hidden"
         >
           <SmartImage
@@ -121,27 +126,29 @@ export default function ProductCard({
           </div>
         </Link>
 
-        {/* Wishlist heart */}
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            setWished((w) => !w);
-            toast(
-              wished ? "Removed from wishlist" : `${product.name} saved to wishlist`,
-              "info"
-            );
-          }}
-          aria-label={wished ? "Remove from wishlist" : "Add to wishlist"}
-          aria-pressed={wished}
-          className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/85 text-navy shadow-card backdrop-blur transition-transform hover:scale-110"
-        >
-          <Heart
-            className={cn(
-              "h-4 w-4 transition-colors",
-              wished && "fill-glow text-glow"
-            )}
-          />
-        </button>
+        {/* Wishlist heart — only for the built-in (local) catalog */}
+        {!externalHref && (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setWished((w) => !w);
+              toast(
+                wished ? "Removed from wishlist" : `${product.name} saved to wishlist`,
+                "info"
+              );
+            }}
+            aria-label={wished ? "Remove from wishlist" : "Add to wishlist"}
+            aria-pressed={wished}
+            className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/85 text-navy shadow-card backdrop-blur transition-transform hover:scale-110"
+          >
+            <Heart
+              className={cn(
+                "h-4 w-4 transition-colors",
+                wished && "fill-glow text-glow"
+              )}
+            />
+          </button>
+        )}
 
         {/* Hover actions */}
         <div
@@ -153,26 +160,37 @@ export default function ProductCard({
           )}
           style={{ transform: "translateZ(40px)" }}
         >
-          <button
-            onClick={quickAdd}
-            className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-navy py-3 text-xs font-semibold text-white shadow-card transition-colors hover:bg-ink"
-          >
-            <Plus className="h-4 w-4" /> Add to Cart
-          </button>
-          <button
-            onClick={() => onQuickView(product)}
-            aria-label={`Quick view ${product.name}`}
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-navy shadow-card transition-colors hover:bg-cream"
-          >
-            <Eye className="h-4 w-4" />
-          </button>
+          {externalHref ? (
+            <a
+              href={externalHref}
+              className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-navy py-3 text-xs font-semibold text-white shadow-card transition-colors hover:bg-ink"
+            >
+              View Product
+            </a>
+          ) : (
+            <>
+              <button
+                onClick={quickAdd}
+                className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-navy py-3 text-xs font-semibold text-white shadow-card transition-colors hover:bg-ink"
+              >
+                <Plus className="h-4 w-4" /> Add to Cart
+              </button>
+              <button
+                onClick={() => onQuickView(product)}
+                aria-label={`Quick view ${product.name}`}
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-navy shadow-card transition-colors hover:bg-cream"
+              >
+                <Eye className="h-4 w-4" />
+              </button>
+            </>
+          )}
         </div>
       </div>
 
       {/* Meta */}
       <div className="mt-3.5 px-1">
         <div className="flex items-start justify-between gap-2">
-          <Link href={`/shop/${product.slug}`}>
+          <Link href={productHref}>
             <h3 className="font-display text-base font-semibold text-ink transition-colors group-hover/card:text-navy">
               {product.name}
             </h3>

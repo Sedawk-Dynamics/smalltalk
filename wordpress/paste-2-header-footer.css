@@ -114,6 +114,18 @@
 	transform: translateY(-1px);
 }
 
+/* Shop mega menu — WoodMart caps mega-menu columns at 5, so the 6th
+   category (Kids) wraps to a second row. Force all top-level columns
+   onto ONE horizontal row with equal widths. */
+.whb-header .wd-dropdown-menu.wd-design-full-width .wd-sub-menu {
+	flex-wrap: nowrap !important;
+}
+.whb-header .wd-dropdown-menu.wd-design-full-width .wd-sub-menu > li {
+	width: auto !important;
+	max-width: none !important;
+	flex: 1 1 0 !important;
+}
+
 /* Top bar (announcement) — ink, centered, Manrope */
 .whb-top-bar,
 .whb-top-bar .whb-flex-row,

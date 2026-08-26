@@ -1,158 +1,205 @@
 [
   {
-    "slug": "essential-tee",
-    "name": "Essential Tee",
-    "category": "Tees",
-    "price": 799,
-    "compareAtPrice": 1199,
-    "currency": "INR",
-    "badge": "Bestseller",
-    "shortDescription": "The everyday hero. Mid-weight cotton, clean drape, zero fuss.",
-    "description": "Our Essential Tee is the staple your wardrobe keeps reaching for. Cut from breathable mid-weight cotton with a tailored-but-relaxed fit, it carries you from coffee runs to calls without missing a beat. Pre-shrunk, colour-locked, and built to keep its shape wash after wash.",
-    "colors": ["navy", "white", "cream"],
-    "sizes": ["S", "M", "L", "XL", "XXL"],
-    "fabric": "100% combed cotton, 180 GSM",
-    "fit": "Regular",
-    "featured": true,
-    "rating": 4.8,
-    "reviews": 214,
-    "photos": [
-      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1622445275576-721325763afe?auto=format&fit=crop&w=900&q=80"
-    ],
-    "images": [
-      "/products/essential-tee-1.svg",
-      "/products/essential-tee-2.svg"
-    ]
-  },
-  {
-    "slug": "premium-polo",
-    "name": "Premium Polo",
-    "category": "Polos",
-    "price": 1299,
-    "compareAtPrice": 1799,
-    "currency": "INR",
-    "badge": "New",
-    "shortDescription": "Casual yet refined — the everyday collar.",
-    "description": "The Premium Polo bridges relaxed and refined effortlessly. A structured ribbed collar, mother-of-pearl-style buttons and a piqué knit give it a quietly elevated finish. Throw it on with denim or shorts — it just works, every day.",
-    "colors": ["navy", "white", "cream"],
-    "sizes": ["S", "M", "L", "XL", "XXL"],
-    "fabric": "Cotton piqué, 220 GSM",
-    "fit": "Tailored",
-    "featured": true,
-    "rating": 4.9,
-    "reviews": 168,
-    "photos": [
-      "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=900&q=80"
-    ],
-    "images": [
-      "/products/premium-polo-1.svg",
-      "/products/premium-polo-2.svg"
-    ]
-  },
-  {
-    "slug": "heavyweight-tee",
-    "name": "Heavyweight Tee",
+    "slug": "oversize-tee",
+    "name": "Oversize Tee — French Terry Cotton",
     "category": "Tees",
     "price": 999,
-    "compareAtPrice": 1399,
     "currency": "INR",
-    "badge": "Premium",
-    "shortDescription": "Boxy, substantial, structured. Streetwear-grade weight.",
-    "description": "For those who like their tees with presence. The Heavyweight Tee is a 240 GSM boxy cut with structured shoulders and a premium hand-feel that drapes beautifully. It is the kind of basic that quietly signals you don't compromise.",
-    "colors": ["navy", "white", "cream"],
+    "badge": "Bestseller",
+    "shortDescription": "100% Ring-Spun Super Combed French Terry Cotton, bio-washed for extra softness.",
+    "description": "100% Ring-Spun Super Combed French Terry Cotton. Bio-washed for extra softness and smooth texture. Breathable, with enhanced fabric stability to reduce pilling, reinforced stitches for extended wear, and hypoallergenic, skin-friendly fabric.",
+    "colors": [],
     "sizes": ["S", "M", "L", "XL", "XXL"],
-    "fabric": "100% cotton, 240 GSM",
-    "fit": "Boxy / Oversized",
+    "fabric": "100% Ring Spun Super Combed French Terry Cotton, 250 GSM",
+    "fit": "Oversized",
     "featured": true,
-    "rating": 4.7,
-    "reviews": 132,
+    "rating": 4.9,
+    "reviews": 0,
+    "url": "/product/oversize-tee-french-terry-cotton/",
     "photos": [
-      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=80"
+      "/SmallTalk Products/Tees/Oversized/Oversize Tee front.webp",
+      "/SmallTalk Products/Tees/Oversized/Oversize Tee Back.webp"
     ],
     "images": [
-      "/products/heavyweight-tee-1.svg",
-      "/products/heavyweight-tee-2.svg"
+      "/SmallTalk Products/Tees/Oversized/Oversize Tee front.webp",
+      "/SmallTalk Products/Tees/Oversized/Oversize Tee Back.webp"
     ]
   },
   {
-    "slug": "classic-crew",
-    "name": "Classic Crew",
+    "slug": "comfort-tee",
+    "name": "Comfort Tee — 100% Cotton",
     "category": "Tees",
-    "price": 899,
-    "compareAtPrice": 1299,
+    "price": 999,
     "currency": "INR",
-    "badge": "",
-    "shortDescription": "Timeless crew neck. Soft, durable, endlessly wearable.",
-    "description": "The Classic Crew is exactly what it promises — a perfectly proportioned crew neck in soft, durable cotton. Reinforced neckline, clean side seams and a fit that flatters without trying too hard. The reliable backbone of any rotation.",
-    "colors": ["navy", "white", "cream"],
+    "shortDescription": "Super soft long-staple cotton for everyday comfort.",
+    "description": "Super soft long-staple cotton for everyday comfort. Specially treated and anti-microbial for long-lasting freshness. Ultra-soft, breathable, hypoallergenic and durable — retains shape and colour wash after wash.",
+    "colors": [],
     "sizes": ["S", "M", "L", "XL", "XXL"],
-    "fabric": "100% combed cotton, 190 GSM",
+    "fabric": "100% Ring Spun Super Combed Cotton, 180 GSM",
     "fit": "Regular",
     "featured": true,
     "rating": 4.8,
-    "reviews": 97,
+    "reviews": 0,
+    "url": "/product/comfort-tee-100-cotton/",
     "photos": [
-      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=900&q=80"
+      "/SmallTalk Products/Tees/Comfort Everyday Tee/Comfort Tee front.webp",
+      "/SmallTalk Products/Tees/Comfort Everyday Tee/Comfort Tee Back.webp"
     ],
     "images": [
-      "/products/classic-crew-1.svg",
-      "/products/classic-crew-2.svg"
+      "/SmallTalk Products/Tees/Comfort Everyday Tee/Comfort Tee front.webp",
+      "/SmallTalk Products/Tees/Comfort Everyday Tee/Comfort Tee Back.webp"
     ]
   },
   {
-    "slug": "signature-polo",
-    "name": "Signature Polo",
+    "slug": "executive-polo",
+    "name": "Executive Polo Tee — 100% Cotton",
     "category": "Polos",
-    "price": 1499,
-    "compareAtPrice": 1999,
+    "price": 999,
     "currency": "INR",
-    "badge": "",
-    "shortDescription": "Our most refined collar. Subtle tonal branding.",
-    "description": "The Signature Polo is our most considered collar yet — a slightly heavier piqué, tonal stitched detailing and a clean placket. It reads weekend or weekday with equal ease.",
-    "colors": ["navy", "cream"],
+    "badge": "New",
+    "shortDescription": "Soft, breathable 100% cotton with piqué knit structure.",
+    "description": "Soft, breathable and hypoallergenic 100% cotton for all-day comfort. Long-staple fibre with piqué knit for structure, ribbed collar and cuff for enhanced flexibility, fade resistant, and versatile — smart casual yet at home in a formal setup.",
+    "colors": [],
     "sizes": ["S", "M", "L", "XL", "XXL"],
-    "fabric": "Cotton piqué, 240 GSM",
-    "fit": "Tailored",
-    "featured": false,
-    "rating": 4.9,
-    "reviews": 64,
+    "fabric": "100% Ring Spun Super Combed Cotton, 240 GSM, Single Pique Knit",
+    "fit": "Regular",
+    "featured": true,
+    "rating": 4.7,
+    "reviews": 0,
+    "url": "/product/executive-polo-tee-100-cotton/",
     "photos": [
-      "https://images.unsplash.com/photo-1571945153237-4929e783af4a?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1503341960582-b45751874cf0?auto=format&fit=crop&w=900&q=80"
+      "/SmallTalk Products/Polo/Polo Adults front.webp",
+      "/SmallTalk Products/Polo/Polo Adults Back.webp"
     ],
     "images": [
-      "/products/premium-polo-1.svg",
-      "/products/premium-polo-2.svg"
+      "/SmallTalk Products/Polo/Polo Adults front.webp",
+      "/SmallTalk Products/Polo/Polo Adults Back.webp"
     ]
   },
   {
-    "slug": "everyday-pocket-tee",
-    "name": "Everyday Pocket Tee",
-    "category": "Tees",
-    "price": 849,
-    "compareAtPrice": 1249,
+    "slug": "sweatshirt",
+    "name": "Sweatshirt",
+    "category": "Pullover",
+    "price": 999,
     "currency": "INR",
-    "badge": "",
-    "shortDescription": "A clean chest pocket on our signature soft cotton.",
-    "description": "Same beloved Essential cotton, now with a neatly proportioned chest pocket for a touch of utility. A small detail that makes a simple tee feel intentional.",
-    "colors": ["navy", "white", "cream"],
+    "shortDescription": "Fleece-lined cotton for superior warmth and comfort.",
+    "description": "100% Ring-Spun Super Combed Cotton for extra softness and all-day comfort. Fleece inner lining for superior warmth, reinforced seams for long-lasting wear, and anti-pilling fabric that keeps a fresh look after multiple washes.",
+    "colors": [],
     "sizes": ["S", "M", "L", "XL", "XXL"],
-    "fabric": "100% combed cotton, 180 GSM",
+    "fabric": "100% Ring Spun Super Combed Cotton, 280-300 GSM, Loop Knit Fleece",
+    "fit": "Regular",
+    "featured": true,
+    "rating": 4.6,
+    "reviews": 0,
+    "url": "/product/sweatshirt/",
+    "photos": [
+      "/SmallTalk Products/Pullover/Pullover front.webp",
+      "/SmallTalk Products/Pullover/Pullover Back.webp"
+    ],
+    "images": [
+      "/SmallTalk Products/Pullover/Pullover front.webp",
+      "/SmallTalk Products/Pullover/Pullover Back.webp"
+    ]
+  },
+  {
+    "slug": "zipper-hoodie",
+    "name": "Zipper Hoodie",
+    "category": "Hoodies",
+    "price": 999,
+    "currency": "INR",
+    "shortDescription": "Fleece-lined zip-up built for everyday warmth.",
+    "description": "100% Ring-Spun Super Combed Cotton for extra softness and all-day comfort. Fleece inner lining for superior warmth, reinforced seams for long-lasting wear, and anti-pilling fabric that keeps a fresh look after multiple washes.",
+    "colors": [],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "fabric": "100% Ring Spun Super Combed Cotton, 280-300 GSM, Loop Knit Fleece",
+    "fit": "Regular",
+    "featured": false,
+    "rating": 4.8,
+    "reviews": 0,
+    "url": "/product/zipper-hoodie/",
+    "photos": [
+      "/SmallTalk Products/Hoodies/Zipper Hoodies/Zipper Hoodie front.webp",
+      "/SmallTalk Products/Hoodies/Zipper Hoodies/Zipper Hoodie Back.webp"
+    ],
+    "images": [
+      "/SmallTalk Products/Hoodies/Zipper Hoodies/Zipper Hoodie front.webp",
+      "/SmallTalk Products/Hoodies/Zipper Hoodies/Zipper Hoodie Back.webp"
+    ]
+  },
+  {
+    "slug": "hoodie",
+    "name": "Hoodie",
+    "category": "Hoodies",
+    "price": 999,
+    "currency": "INR",
+    "shortDescription": "Ultra-warm 350 GSM brushed fleece hoodie.",
+    "description": "Ultra-warm fleece — heavy 350 GSM brushed fleece keeps you snug in cooler weather. Premium cotton blend with polyester strength, bio-washed finish for a smooth hand feel, built to last, with anti-microbial protection for odour resistance.",
+    "colors": [],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "fabric": "60% cotton 40% polyester, 350 GSM, 3 Thread Cross Loop Knit",
+    "fit": "Regular",
+    "featured": false,
+    "rating": 4.7,
+    "reviews": 0,
+    "url": "/product/hoodie/",
+    "photos": [
+      "/SmallTalk Products/Hoodies/Everyday Hoodies/Hoodie front.webp",
+      "/SmallTalk Products/Hoodies/Everyday Hoodies/Hoodie Back.webp"
+    ],
+    "images": [
+      "/SmallTalk Products/Hoodies/Everyday Hoodies/Hoodie front.webp",
+      "/SmallTalk Products/Hoodies/Everyday Hoodies/Hoodie Back.webp"
+    ]
+  },
+  {
+    "slug": "joggers",
+    "name": "Joggers",
+    "category": "Joggers",
+    "price": 999,
+    "currency": "INR",
+    "shortDescription": "French Terry joggers with a sleek secure zipper pocket.",
+    "description": "All-day comfort in 100% Ring-Spun Super Combed French Terry Cotton. Anti-pilling for long-lasting durability, featuring a sleek zipper pocket for security.",
+    "colors": [],
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "fabric": "100% Ring Spun Super Combed French Terry Cotton, 250 GSM",
     "fit": "Regular",
     "featured": false,
     "rating": 4.6,
-    "reviews": 51,
+    "reviews": 0,
+    "url": "/product/joggers/",
     "photos": [
-      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=900&q=80",
-      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=80"
+      "/SmallTalk Products/Joggers/Joggers.webp",
+      "/SmallTalk Products/Joggers/Joggers Background.webp"
     ],
     "images": [
-      "/products/essential-tee-1.svg",
-      "/products/essential-tee-2.svg"
+      "/SmallTalk Products/Joggers/Joggers.webp",
+      "/SmallTalk Products/Joggers/Joggers Background.webp"
+    ]
+  },
+  {
+    "slug": "kids-tee",
+    "name": "Kids Tee Shirt",
+    "category": "Kids",
+    "price": 999,
+    "currency": "INR",
+    "badge": "Kids",
+    "shortDescription": "Lightweight, breathable and gentle on a kid's skin.",
+    "description": "Lightweight fabric, ideal for comfort and layering. Soft hand feel that's gentle on a kid's skin, breathable to keep them cool, and bio-washed to maintain colour and shape wash after wash.",
+    "colors": [],
+    "sizes": ["7-8 yrs", "8-10 yrs", "11-12 yrs", "12-14 yrs"],
+    "fabric": "100% Ring Spun Super Combed Cotton, 160 GSM",
+    "fit": "Regular",
+    "featured": false,
+    "rating": 4.9,
+    "reviews": 0,
+    "url": "/product/kids-tee-shirt/",
+    "photos": [
+      "/SmallTalk Products/Kids/Polo/Kids Everyday Tee front.webp",
+      "/SmallTalk Products/Kids/Polo/Kids Everyday Tee Back.webp"
+    ],
+    "images": [
+      "/SmallTalk Products/Kids/Polo/Kids Everyday Tee front.webp",
+      "/SmallTalk Products/Kids/Polo/Kids Everyday Tee Back.webp"
     ]
   }
 ]

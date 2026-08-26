@@ -24,7 +24,9 @@ export type Product = {
   featured: boolean;
   rating: number;
   reviews: number;
-  /** Real photography (CDN). SmartImage falls back to `images` (SVG) on error. */
+  /** Path on the WooCommerce shop (e.g. /product/joggers/) — cards link there. */
+  url?: string;
+  /** Real photography. SmartImage falls back to `images` on error. */
   photos?: string[];
   images: string[];
 };
@@ -208,25 +210,25 @@ export const lookbook = [
   {
     title: "Off-Duty",
     caption: "Easy layers, zero effort.",
-    photo: "https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?auto=format&fit=crop&w=900&q=80",
+    photo: "/SmallTalk Products/Tees/Oversized/Oversize Tee Background.webp",
     image: "/lookbook/look-1.svg",
   },
   {
     title: "The Weekend",
     caption: "Tees built for ease.",
-    photo: "https://images.unsplash.com/photo-1496346651646-50b4ca7d0f31?auto=format&fit=crop&w=900&q=80",
+    photo: "/SmallTalk Products/Tees/Comfort Everyday Tee/Comfort Tee Background.webp",
     image: "/lookbook/look-2.svg",
   },
   {
     title: "Out & About",
     caption: "Made for moving.",
-    photo: "https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=900&q=80",
+    photo: "/SmallTalk Products/Joggers/Joggers Background.webp",
     image: "/lookbook/look-3.svg",
   },
   {
     title: "The Off-Day",
     caption: "Comfort, elevated.",
-    photo: "https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=900&q=80",
+    photo: "/SmallTalk Products/Hoodies/Everyday Hoodies/Hoodie Background.webp",
     image: "/lookbook/look-4.svg",
   },
 ];
@@ -236,14 +238,11 @@ export const lookbook = [
    photography (relaxed-but-sharp — no business-formal / corporate framing).
    SVG fallbacks are brand tee/polo mockups and are safe to keep. */
 export const media = {
-  heroPhoto:
-    "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80",
+  heroPhoto: "/SmallTalk Products/Tees/Oversized/Oversize Tee front.webp",
   heroFallback: "/products/essential-tee-1.svg",
-  brandIntroPhoto:
-    "https://images.unsplash.com/photo-1492447166138-50c3889fccb1?auto=format&fit=crop&w=900&q=80",
+  brandIntroPhoto: "/SmallTalk Products/Polo/Polo Adults front.webp",
   brandIntroFallback: "/lookbook/look-1.svg",
-  aboutStoryPhoto:
-    "https://images.unsplash.com/photo-1496346651646-50b4ca7d0f31?auto=format&fit=crop&w=1400&q=80",
+  aboutStoryPhoto: "/SmallTalk Products/Tees/Oversized/Oversize Tee Background.webp",
   aboutStoryFallback: "/lookbook/look-2.svg",
   founderPhoto:
     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=700&q=80",
@@ -253,13 +252,41 @@ export const media = {
 /* ---------------- SHOP BY CATEGORY ----------------
    Compact pills (client: no big banner) — deep links into the WooCommerce
    product categories on the shop subdomain. */
-export const categories = [
-  { name: "Tees", href: `${shopUrl}/product-category/tees/` },
+export type ShopCategory = {
+  name: string;
+  href: string;
+  children?: { name: string; href: string }[];
+};
+
+export const categories: ShopCategory[] = [
+  {
+    name: "Tees",
+    href: `${shopUrl}/product-category/tees/`,
+    children: [
+      { name: "Everyday Essential Tee", href: `${shopUrl}/product-category/tees/everyday-essential-tee/` },
+      { name: "Oversized Tee", href: `${shopUrl}/product-category/tees/oversized-tee/` },
+    ],
+  },
   { name: "Polos", href: `${shopUrl}/product-category/polos/` },
-  { name: "Hoodies", href: `${shopUrl}/product-category/hoodies/` },
+  {
+    name: "Hoodies",
+    href: `${shopUrl}/product-category/hoodies/`,
+    children: [
+      { name: "Everyday Hoodie", href: `${shopUrl}/product-category/hoodies/everyday-hoodie/` },
+      { name: "Zipper Hoodie", href: `${shopUrl}/product-category/hoodies/zipper-hoodie/` },
+    ],
+  },
   { name: "Pullover", href: `${shopUrl}/product-category/pullover/` },
   { name: "Joggers", href: `${shopUrl}/product-category/joggers/` },
-  { name: "Kids", href: `${shopUrl}/product-category/kids/` },
+  {
+    name: "Kids",
+    href: `${shopUrl}/product-category/kids/`,
+    children: [
+      { name: "Kids Tee", href: `${shopUrl}/product-category/kids/everyday-tee/` },
+      { name: "Kids Polo", href: `${shopUrl}/product-category/kids/polo/` },
+      { name: "Kids Zipper Hoodie", href: `${shopUrl}/product-category/kids/zipper-hoodie-kids/` },
+    ],
+  },
 ];
 
 /* ---------------- PROMOTIONAL BANNERS ---------------- */
@@ -287,7 +314,7 @@ export const collections = [
     caption: "Collars, done casually.",
     href: `${shopUrl}/product-category/polos/`,
     span: "lg:col-span-2 lg:row-span-2",
-    photo: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=1100&q=80",
+    photo: "/SmallTalk Products/Polo/Polo Adults Background.webp",
     image: "/lookbook/look-1.svg",
   },
   {
@@ -295,7 +322,7 @@ export const collections = [
     caption: "Off-duty, on point.",
     href: `${shopUrl}/product-category/tees/`,
     span: "",
-    photo: "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=700&q=80",
+    photo: "/SmallTalk Products/Tees/Comfort Everyday Tee/Comfort Tee Background.webp",
     image: "/lookbook/look-2.svg",
   },
   {
@@ -303,7 +330,7 @@ export const collections = [
     caption: "Structured. Substantial.",
     href: `${shopUrl}/product-category/tees/oversized-tee/`,
     span: "",
-    photo: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=700&q=80",
+    photo: "/SmallTalk Products/Tees/Oversized/Oversize Tee Back.webp",
     image: "/lookbook/look-3.svg",
   },
   {
@@ -311,7 +338,7 @@ export const collections = [
     caption: "Sorted for any day.",
     href: shopUrl,
     span: "lg:col-span-2",
-    photo: "https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1100&q=80",
+    photo: "/SmallTalk Products/Hoodies/Zipper Hoodies/Zipper Hoodie Background.webp",
     image: "/lookbook/look-4.svg",
   },
 ];
