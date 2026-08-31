@@ -1,0 +1,69 @@
+/*
+   PASTE #8 — PRODUCT SUMMARY LAYOUT ORDER
+   Append at the BOTTOM of the Custom CSS (or Customizer → Additional CSS).
+
+   Reorders the product page buy box (client request):
+     1. Title
+     2. Sale price ("₹1,299 → ₹999") + quantity + Add to cart
+     3. Short description bullets
+     4. Size / Color selectors
+   The parent product's plain min-price line is hidden (the variation
+   price carries the full was/now display; products have default
+   variations selected so it shows on load).
+   Verified live on /product/comfort-tee-100-cotton/ —
+   .summary-inner children lifted into one flex flow via display:contents.
+*/
+
+.single-product .summary-inner {
+	display: flex !important;
+	flex-direction: column;
+}
+/* everything unlisted keeps DOM order after the ordered blocks */
+.single-product .summary-inner > * {
+	order: 10;
+}
+.single-product .summary-inner > .single-breadcrumbs-wrapper {
+	order: 1;
+}
+.single-product .summary-inner > .product_title {
+	order: 2;
+}
+/* lift the form's inner blocks into the summary flex flow */
+.single-product .summary-inner > form.cart {
+	display: contents !important;
+}
+.single-product .summary-inner form.cart .single_variation_wrap {
+	display: contents !important;
+}
+/* 3rd: the was/now variation price */
+.single-product .summary-inner .woocommerce-variation.single_variation {
+	order: 3;
+}
+/* 4th: qty + add to cart */
+.single-product .summary-inner .woocommerce-variation-add-to-cart {
+	order: 4;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 16px;
+	margin: 4px 0 24px;
+}
+.single-product .summary-inner .woocommerce-variation-add-to-cart .single_add_to_cart_button {
+	flex: 1 1 200px;
+}
+/* 5th: short description */
+.single-product .summary-inner > .woocommerce-product-details__short-description {
+	order: 5;
+}
+/* 6th: Size / Color selectors */
+.single-product .summary-inner form.cart table.variations {
+	order: 6;
+	margin-bottom: 20px;
+}
+.single-product .summary-inner form.cart .reset_variations_alert {
+	order: 6;
+}
+/* hide the parent product's plain min-price (variation price replaces it) */
+.single-product .product-type-variable .summary-inner > p.price {
+	display: none !important;
+}

@@ -3,7 +3,6 @@
  * Styled to match the site. Server component — no client JS needed.
  */
 import Link from "next/link";
-import { AlertTriangle } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { brand } from "@/data/content";
@@ -23,15 +22,7 @@ export default function LegalPage({ doc }: { doc: LegalDoc }) {
 
       <section className="container-st py-14 lg:py-20">
         <div className="mx-auto max-w-3xl">
-          {/* Needs-legal-review notice (visible to the client) */}
-          <div className="mb-10 flex gap-3 rounded-2xl border border-glow/30 bg-glow/5 p-4 text-sm text-ink">
-            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-glow" />
-            <p>
-              <strong>Draft for review — not legal advice.</strong> This document
-              is an initial draft and must be reviewed and finalised by a
-              qualified lawyer before publishing. {doc.updated}.
-            </p>
-          </div>
+          <p className="mb-10 text-sm text-mist">{doc.updated}.</p>
 
           <div className="space-y-8">
             {doc.sections.map((s, i) => (

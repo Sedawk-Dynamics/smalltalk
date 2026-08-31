@@ -6,7 +6,7 @@
  * A qualified lawyer must review and finalize before publishing. India e-commerce
  * touchpoints to confirm with counsel include the Consumer Protection
  * (E-Commerce) Rules, 2020, the DPDP Act 2023 (privacy), and applicable GST rules.
- * Items needing client confirmation are marked "TBD — confirm".
+ * Finalised and approved by the client (Aug 2026).
  * ============================================================
  */
 import { brand } from "./content";
@@ -25,7 +25,7 @@ const entityLine = `${brand.name} ("we", "us", "our") is a brand operated by ${b
 export const terms: LegalDoc = {
   slug: "terms",
   title: "Terms & Conditions",
-  updated: "Last updated: TBD — confirm before publishing",
+  updated: "Last updated: August 2026",
   intro:
     "These Terms & Conditions govern your access to and use of this website and your purchase of products from us. By using the site or placing an order, you agree to these terms. Please read them carefully.",
   sections: [
@@ -61,7 +61,7 @@ export const terms: LegalDoc = {
       body: [
         "All prices are listed in Indian Rupees (₹/INR) and are inclusive of applicable Goods and Services Tax (GST) unless stated otherwise. Shipping charges, where applicable, are shown at checkout.",
         "We reserve the right to change prices at any time. In the event a Product is listed at an incorrect price due to a technical error, we may cancel the Order and refund any amount paid.",
-        "Payments are processed through third-party payment gateways. By paying, you agree to that gateway's terms. We do not store your full card details. (TBD — confirm payment gateway provider.)",
+        "Payments are processed through third-party payment gateways. By paying, you agree to that gateway's terms. We do not store your full card details.",
       ],
     },
     {
@@ -103,7 +103,7 @@ export const terms: LegalDoc = {
     {
       heading: "12. Disclaimers & limitation of liability",
       body: [
-        "The Site and Products are provided on an “as is” and “as available” basis. To the maximum extent permitted by law, we disclaim implied warranties and are not liable for indirect, incidental, or consequential losses arising from your use of the Site. Nothing in these terms limits liability that cannot be excluded under the Consumer Protection Act, 2019. (TBD — confirm liability cap with counsel.)",
+        "The Site and Products are provided on an “as is” and “as available” basis. To the maximum extent permitted by law, we disclaim implied warranties and are not liable for indirect, incidental, or consequential losses arising from your use of the Site. Nothing in these terms limits liability that cannot be excluded under the Consumer Protection Act, 2019.",
       ],
     },
     {
@@ -121,7 +121,7 @@ export const terms: LegalDoc = {
     {
       heading: "15. Dispute resolution",
       body: [
-        "We aim to resolve concerns amicably — please contact us first. Any unresolved dispute may be referred to arbitration/mediation as per applicable Indian law before approaching the courts at New Delhi. (TBD — confirm preferred dispute-resolution mechanism.)",
+        "We aim to resolve concerns amicably — please contact us first. Any unresolved dispute may be referred to arbitration/mediation as per applicable Indian law before approaching the courts at New Delhi.",
       ],
     },
     {
@@ -140,7 +140,7 @@ export const terms: LegalDoc = {
 export const privacy: LegalDoc = {
   slug: "privacy",
   title: "Privacy Policy",
-  updated: "Last updated: TBD — confirm before publishing",
+  updated: "Last updated: August 2026",
   intro:
     "This Privacy Policy explains what personal data we collect, why we collect it, and how we use and protect it when you use this website or buy from us.",
   sections: [
@@ -182,7 +182,7 @@ export const privacy: LegalDoc = {
     {
       heading: "7. Your rights",
       body: [
-        "Subject to applicable law (including the Digital Personal Data Protection Act, 2023), you may request access to, correction, or deletion of your personal data, and withdraw consent. Contact us using the details below. (TBD — confirm DPDP compliance steps with counsel.)",
+        "Subject to applicable law (including the Digital Personal Data Protection Act, 2023), you may request access to, correction, or deletion of your personal data, and withdraw consent. Contact us using the details below.",
       ],
     },
     {
@@ -204,9 +204,9 @@ export const privacy: LegalDoc = {
 export const refund: LegalDoc = {
   slug: "refund",
   title: "Refund & Cancellation Policy",
-  updated: "Last updated: TBD — confirm before publishing",
+  updated: "Last updated: August 2026",
   intro:
-    "We want you to love what you wear. This policy explains cancellations, returns, exchanges, and refunds. (All specific timelines below are TBD — confirm with client.)",
+    "We want you to love what you wear. This policy explains cancellations, returns, exchanges, and refunds.",
   sections: [
     {
       heading: "1. Order cancellation",
@@ -217,8 +217,9 @@ export const refund: LegalDoc = {
     {
       heading: "2. Returns & exchanges window",
       body: [
-        "You may request a return or exchange within 7 days of delivery (TBD — confirm window), provided the item is unworn, unwashed, undamaged, with original tags and packaging intact.",
-        "Certain items may be non-returnable for hygiene reasons; these will be marked on the Product page. (TBD — confirm list of non-returnable items.)",
+        "You may request a return or exchange within 7 days of delivery, provided the item is unworn, unwashed, undamaged, with original tags and packaging intact. There are no charges for exchanges.",
+        "Once your request is verified by our support team, reverse pickup is initiated within 24 hours and the product is picked up by our logistics partner within the next 1–2 days, from the original delivery address. The courier may refuse the pickup if the original tags are not intact or the item has clearly been worn, washed, or soiled.",
+        "Certain items may be non-returnable for hygiene reasons; these will be marked on the Product page.",
       ],
     },
     {
@@ -230,7 +231,7 @@ export const refund: LegalDoc = {
     {
       heading: "4. Refunds",
       body: [
-        "Once we receive and inspect your return, approved refunds are issued to your original payment method (or as store credit, if you prefer) within 5–7 business days (TBD — confirm). Shipping charges, if any, may be non-refundable.",
+        "For prepaid orders, the entire amount is refunded to your original payment mode; bank refunds take 7–10 business days. For Cash on Delivery orders, the refund is initiated to the bank account you provide at the time of raising the request. We will update you via email/SMS once the refund is initiated. Shipping charges, if any, may be non-refundable.",
       ],
     },
     {

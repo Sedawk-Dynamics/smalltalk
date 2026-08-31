@@ -68,6 +68,21 @@ function smalltalk_child_front_to_shop() {
 	}
 }
 
+/**
+ * Show "was → now" pricing for variable products everywhere (shop grid,
+ * category pages) instead of just the current minimum price. Reads the
+ * live variation prices, so it stays correct when prices change in admin.
+ */
+add_filter( 'woocommerce_variable_price_html', 'smalltalk_variable_sale_price_html', 10, 2 );
+function smalltalk_variable_sale_price_html( $price, $product ) {
+	$reg  = $product->get_variation_regular_price( 'min' );
+	$sale = $product->get_variation_sale_price( 'min' );
+	if ( '' !== $sale && '' !== $reg && $sale < $reg ) {
+		$price = wc_format_sale_price( wc_price( $reg ), wc_price( $sale ) ) . $product->get_price_suffix();
+	}
+	return $price;
+}
+
 // Speed up Google Fonts with preconnect hints.
 add_filter( 'wp_resource_hints', 'smalltalk_child_resource_hints', 10, 2 );
 function smalltalk_child_resource_hints( $urls, $relation_type ) {

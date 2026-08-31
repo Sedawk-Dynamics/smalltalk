@@ -10,33 +10,49 @@ export const supportPages = {
       },
       {
         q: "How much does shipping cost?",
-        a: "Flat ₹79 shipping on orders under ₹1,499. Orders of ₹1,499 and above ship free.",
+        a: "We offer free shipping across India for all prepaid orders above ₹1,000. For Cash on Delivery orders, a nominal charge is applicable depending on the location.",
       },
       {
-        q: "How long will my order take?",
-        a: "Orders are dispatched within 1–2 business days and typically arrive in 3–6 business days depending on your location.",
+        q: "When will my order be dispatched?",
+        a: "We strive to fulfil orders as soon as you place them. In most cases, your order will be dispatched within 1–2 business days. Our business days are Monday–Friday.",
+      },
+      {
+        q: "How long will delivery take?",
+        a: "For most serviceable pin codes, we deliver within 5 days. There could be a possible delay of 2–3 business days in delivery — you'll be able to track your package throughout using the unique tracking link we send you.",
       },
       {
         q: "Can I track my order?",
-        a: "Yes — you'll receive a tracking link by SMS/email as soon as your order ships.",
+        a: "Yes — you'll receive a tracking number in your inbox (email/SMS) as soon as your order ships to our delivery partner.",
       },
     ],
   },
   returns: {
     title: "Returns & Exchanges",
-    subtitle: "Easy 7-day returns. We want you to love the fit.",
+    subtitle: "7-days free return & exchanges. We want you to love the fit.",
     sections: [
       {
         q: "What is your return window?",
-        a: "You can request a return or exchange within 7 days of delivery, provided tags are intact and the item is unworn and unwashed.",
+        a: "The Small Talk Store products are eligible for return or exchange within 7 days of delivery, provided the original tags are intact and the item is unworn, unwashed and unsoiled. There are NO CHARGES to exchange the products — it's on us!",
       },
       {
-        q: "How do I start a return?",
-        a: "Email info@thesmalltalkstore.com or message us on WhatsApp with your order number and we'll arrange a pickup.",
+        q: "How does the return / exchange process work?",
+        a: "Email info@thesmalltalkstore.com or message us on WhatsApp with your order number. Once your request is verified by our support team, reverse pickup is initiated within 24 hours, and the product is picked up by our logistics partner within the next 1–2 days.",
+      },
+      {
+        q: "Where does the pickup and exchange delivery happen?",
+        a: "Pickup can only happen from the address the product was delivered to. For exchanges, the delivery address will be the same as the address on the original order.",
+      },
+      {
+        q: "Can a pickup be refused?",
+        a: "Yes — the courier can refuse the pickup if the original tags are not intact, or where it's obvious that the item has been worn, washed, or soiled.",
       },
       {
         q: "When will I get my refund?",
-        a: "Refunds are processed to the original payment method within 5–7 business days of the returned item passing quality check.",
+        a: "Prepaid orders: the entire amount is refunded to your original payment mode, and bank refunds take 7–10 business days. Cash on Delivery orders: the refund is initiated to the bank account you provide at the time of raising the request.",
+      },
+      {
+        q: "What should I do if I do not receive my refund?",
+        a: "We'll update you via email/SMS as soon as the refund is initiated. Bank refunds for prepaid orders take 7–10 business days. If you face any issues, reach out and our support team will help you out.",
       },
       {
         q: "Can I exchange for a different size?",

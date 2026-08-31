@@ -170,7 +170,7 @@
 	color: var(--st-mist);
 }
 .single-product-page .product_meta::before {
-	content: "Free shipping ₹1499+   ·   7-day easy returns   ·   Secure checkout";
+	content: "Free shipping on prepaid orders ₹1,000+   ·   7-day free returns & exchanges   ·   Secure checkout";
 	display: block;
 	margin-bottom: 18px;
 	font-family: var(--st-font-body);
