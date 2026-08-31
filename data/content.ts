@@ -411,25 +411,64 @@ export const founderHighlights = [
 ];
 
 /* ---------------- TESTIMONIALS ----------------
-   ⚠️ PLACEHOLDERS — replace with real customer reviews. */
+   ⚠️ PLACEHOLDERS — replace with real customer reviews as they come in.
+   Ratings are per-review (mixed on purpose — a wall of 5 stars reads fake). */
 export const testimonials = [
   {
     quote:
-      "The fabric genuinely feels premium and the fit is spot on. I bought one tee, came back for three more the same week.",
+      "Ordered one Comfort Tee in black to test the quality. The stitching and fabric weight surprised me at this price — came back for two more the same week.",
     name: "Aarav Mehta",
     role: "Bengaluru",
+    rating: 5,
   },
   {
     quote:
-      "Finally a polo I can wear to the office and to dinner without changing. Looks sharp, feels effortless.",
+      "The polo collar actually holds its shape after washing, which is where most polos I've owned give up. Wish there were a couple more colour options though.",
     name: "Ishita Rao",
     role: "Mumbai",
+    rating: 4,
   },
   {
     quote:
-      "Quality you'd expect at twice the price. The Small Talk Store nailed the everyday wardrobe.",
+      "Quality you'd expect at twice the price. Wore the Executive Polo to a client meeting and straight to dinner — no complaints either place.",
     name: "Kabir Singh",
     role: "New Delhi",
+    rating: 5,
+  },
+  {
+    quote:
+      "Bought the kids tee for my 9-year-old. Fabric is soft and survived a month of school and playground. Delivery took a day longer than promised, hence one star off.",
+    name: "Priya Nair",
+    role: "Kochi",
+    rating: 4,
+  },
+  {
+    quote:
+      "The Oversize Tee has proper weight to it — drapes well instead of clinging. It's become my default for WFH days and errands.",
+    name: "Rohan Deshpande",
+    role: "Pune",
+    rating: 5,
+  },
+  {
+    quote:
+      "Joggers are comfortable and the zip pocket is genuinely useful for keys on walks. Sizing runs slightly relaxed — I'd size down if you're between sizes.",
+    name: "Meera Iyer",
+    role: "Chennai",
+    rating: 4,
+  },
+  {
+    quote:
+      "Got the hoodie for Delhi winters. Warm without being bulky, and no pilling after several washes so far. Solid basics, honestly priced.",
+    name: "Arjun Malhotra",
+    role: "Gurugram",
+    rating: 5,
+  },
+  {
+    quote:
+      "Third order in two months. The consistency is what wins me over — every piece fits the same, washes the same, feels the same.",
+    name: "Sneha Kulkarni",
+    role: "Hyderabad",
+    rating: 5,
   },
 ];
 
@@ -451,7 +490,7 @@ export const navLinks = [
 ];
 
 export const announcement =
-  "Free shipping on your first order  ·  New: Premium Tees & Polos";
+  "Free shipping on orders above ₹1,000  ·  New: Premium Tees & Polos";
 
 export const footerColumns = {
   Shop: [

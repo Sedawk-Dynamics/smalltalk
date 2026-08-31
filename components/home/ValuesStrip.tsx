@@ -11,7 +11,7 @@ const icons: Record<string, LucideIcon> = { BadgeCheck, Feather, Wallet };
 const stats = [
   { icon: "BadgeCheck", label: "Quality Products", value: 100, suffix: "%", hint: "Honestly made, every piece" },
   { icon: "Feather", label: "Comfort", value: 24, suffix: "/7", hint: "Built for all-day wear" },
-  { icon: "Wallet", label: "Affordability", value: 0, suffix: "", hint: "Zero premium price tax", isText: true, text: "₹0" },
+  { icon: "Wallet", label: "Affordability", value: 0, suffix: "", hint: "Premium affordability", isText: true, text: "₹0" },
 ];
 
 function Stat({

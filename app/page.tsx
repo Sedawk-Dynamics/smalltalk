@@ -4,7 +4,6 @@ import CategoryTiles from "@/components/home/CategoryTiles";
 import PromoBanners from "@/components/home/PromoBanners";
 import TrendingRail from "@/components/home/TrendingRail";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
-import CollectionGrid from "@/components/home/CollectionGrid";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import ValuesStrip from "@/components/home/ValuesStrip";
 import Lookbook from "@/components/home/Lookbook";
@@ -27,7 +26,6 @@ export default function HomePage() {
       <PromoBanners />
       <TrendingRail />
       <FeaturedProducts />
-      <CollectionGrid />
       <WhyChooseUs />
       <ValuesStrip />
       <Lookbook />

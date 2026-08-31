@@ -56,9 +56,16 @@ export default function Testimonials() {
                 className="card-glow min-w-0 shrink-0 basis-[80%] rounded-2xl bg-white p-6 shadow-soft sm:basis-[40%] lg:basis-[23.5%]"
               >
                 <Quote className="h-6 w-6 text-glow/40" />
-                <div className="mt-3 flex gap-0.5 text-cyan">
+                <div className="mt-3 flex gap-0.5">
                   {Array.from({ length: 5 }).map((_, s) => (
-                    <Star key={s} className="h-3.5 w-3.5 fill-current" />
+                    <Star
+                      key={s}
+                      className={
+                        s < t.rating
+                          ? "h-3.5 w-3.5 fill-current text-cyan"
+                          : "h-3.5 w-3.5 text-navy/20"
+                      }
+                    />
                   ))}
                 </div>
                 <blockquote className="mt-3 text-sm leading-relaxed text-ink">

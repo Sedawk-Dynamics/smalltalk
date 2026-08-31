@@ -6,6 +6,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { TeeMotif } from "@/components/ui/Logo";
 import SmartImage from "@/components/ui/SmartImage";
 import GradientMesh from "@/components/ui/GradientMesh";
+import CollectionGrid from "@/components/home/CollectionGrid";
 import MagneticButton from "@/components/ui/MagneticButton";
 import Marquee from "@/components/ui/Marquee";
 import {
@@ -68,17 +69,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Editorial image */}
-      <ClipReveal className="container-st">
-        <div className="relative aspect-[16/8] overflow-hidden rounded-3xl bg-cream">
-          <SmartImage
-            src={media.aboutStoryPhoto}
-            fallbackSrc={media.aboutStoryFallback}
-            alt="The Small Talk Store editorial"
-            sizes="100vw"
-          />
-        </div>
-      </ClipReveal>
+      {/* Shop the collections — moved here from the home page (client request);
+          replaces the former editorial image */}
+      <CollectionGrid />
 
       {/* Reason for Being + Aspiration (client: renamed from Mission/Vision) */}
       <section className="container-st grid gap-5 py-14 md:grid-cols-2 lg:py-20">
