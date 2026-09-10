@@ -24,7 +24,6 @@ export const metadata: Metadata = {
     "The story, values and reason for being behind The Small Talk Store — premium everyday apparel without the premium price.",
 };
 
-// NOTE(client): founder band hidden for now — flip to true to bring it back.
 const SHOW_FOUNDER_SECTION = false;
 
 export default function AboutPage() {
