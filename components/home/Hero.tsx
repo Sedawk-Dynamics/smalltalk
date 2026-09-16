@@ -1,157 +1,39 @@
-"use client";
-
 /**
- * Hero: kinetic headline (words mask up) on a static solid logo-navy
- * background (client request — no gradients/particles), parallax floating
- * tee visual, CTAs, and an animated scroll cue.
+ * Hero: full-width banner image (client-supplied artwork with headline,
+ * sub-copy and social proof baked in). Desktop and mobile get separate
+ * art-directed crops; the whole banner links to the shop.
  */
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { hero, media } from "@/data/content";
-import SmartImage from "@/components/ui/SmartImage";
-import MagneticButton from "@/components/ui/MagneticButton";
-import SplitText from "@/components/ui/SplitText";
-import { TeeMotif } from "@/components/ui/Logo";
-import { useReducedMotion } from "@/lib/hooks";
+import Image from "next/image";
+import { hero } from "@/data/content";
+
+const ALT =
+  "Style that speaks without saying a word — premium everyday apparel by The Small Talk Store";
 
 export default function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const reduced = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  // Parallax layers.
-  const yText = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : -120]);
-  const yVisual = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : 140]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
   return (
-    <section
-      ref={ref}
-      className="relative -mt-20 flex min-h-[calc(100svh-36px)] items-center overflow-hidden bg-[#252464] pt-20 text-white"
-    >
-      <div className="container-st relative grid w-full items-center gap-10 pb-20 pt-8 lg:grid-cols-[1.15fr_0.85fr]">
-        {/* Copy */}
-        <motion.div style={{ y: yText, opacity }} className="relative z-10">
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-white/80"
-          >
-            <TeeMotif className="h-4 w-4 text-cyan" />
-            Premium · Everyday · Honest
-          </motion.span>
-
-          <h1 className="font-display text-[2.6rem] font-bold leading-[1.02] tracking-tightest sm:text-6xl lg:text-7xl">
-            <SplitText
-              words={hero.headlineWords}
-              highlight={[1, 6]}
-              stagger={0.06}
-            />
-          </h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.7 }}
-            className="mt-7 max-w-md text-base leading-relaxed text-white/70 sm:text-lg"
-          >
-            {hero.longSub}
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.7 }}
-            className="mt-9 flex flex-wrap items-center gap-3"
-          >
-            <MagneticButton href={hero.ctaPrimary.href} variant="light">
-              {hero.ctaPrimary.label}
-            </MagneticButton>
-            <MagneticButton
-              href={hero.ctaSecondary.href}
-              variant="ghost"
-              className="text-white hover:bg-white/10"
-            >
-              {hero.ctaSecondary.label}
-            </MagneticButton>
-          </motion.div>
-        </motion.div>
-
-        {/* Visual */}
-        <motion.div
-          style={{ y: yVisual }}
-          className="relative mx-auto hidden aspect-[4/5] w-full max-w-sm lg:block"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, rotate: -4 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative h-full w-full"
-          >
-            <div className="absolute inset-0 -z-10 rounded-[2rem] bg-glow/30 blur-3xl" />
-            <div className={reduced ? "" : "animate-float"}>
-              <div className="glass overflow-hidden rounded-[2rem] p-3 shadow-glow">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem]">
-                  <SmartImage
-                    src={media.heroPhoto}
-                    fallbackSrc={media.heroFallback}
-                    alt="Premium apparel by The Small Talk Store"
-                    priority
-                    sizes="380px"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* floating chips — client: Premium Fabric · Whole day Comfort ·
-                Durable (pricing chip removed) */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.1 }}
-              className="glass-dark absolute -left-6 top-10 rounded-2xl px-4 py-2.5 text-sm"
-            >
-              <p className="font-display text-base font-bold">Premium Fabric</p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.25 }}
-              className="glass-dark absolute -right-4 bottom-16 rounded-2xl px-4 py-2.5 text-sm"
-            >
-              <p className="font-display text-base font-bold text-cyan">
-                Whole day Comfort
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.4 }}
-              className="glass-dark absolute -left-4 bottom-24 rounded-2xl px-4 py-2.5 text-sm"
-            >
-              <p className="font-display text-base font-bold">Durable</p>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* Scroll cue */}
-      <motion.div
-        style={{ opacity }}
-        className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-white/60"
-      >
-        <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-        <div className="flex h-9 w-5 justify-center rounded-full border border-white/30 p-1">
-          <motion.span
-            animate={reduced ? {} : { y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 1.6 }}
-            className="h-1.5 w-1.5 rounded-full bg-cyan"
-          />
-        </div>
-      </motion.div>
+    <section className="relative -mt-20 bg-[#F5F3EF]">
+      <a href={hero.ctaPrimary.href} aria-label={hero.ctaPrimary.label}>
+        {/* Desktop / tablet banner (16:9) */}
+        <Image
+          src="/smalltalk-banner.webp"
+          alt={ALT}
+          width={2560}
+          height={1441}
+          priority
+          sizes="100vw"
+          className="hidden h-auto w-full md:block"
+        />
+        {/* Mobile banner (portrait) */}
+        <Image
+          src="/smalltalk-banner-mobile.webp"
+          alt={ALT}
+          width={1024}
+          height={1536}
+          priority
+          sizes="100vw"
+          className="h-auto w-full md:hidden"
+        />
+      </a>
     </section>
   );
 }
