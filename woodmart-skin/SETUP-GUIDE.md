@@ -1,8 +1,8 @@
 # The Small Talk Store — WoodMart shop skin setup
 
-Goal: make `staging.smalltalks.sedawk.cloud` (WoodMart 8.2.6 + WooCommerce,
+Goal: make `shop.thesmalltalkstore.com` (WoodMart 8.2.6 + WooCommerce,
 food-delivery demo installed) feel like the same website as the Next.js site
-(`smalltalk-two.vercel.app` → `thesmalltalkstore.com`). Shop-page and single-product
+(`www.thesmalltalkstore.com` → `thesmalltalkstore.com`). Shop-page and single-product
 **structure** mirrors the Banarasi Vastram build; all **colors/typography** are
 Small Talk.
 
@@ -238,7 +238,7 @@ Open any product page and check top to bottom:
 ---
 
 ## Verified against staging
-Injected the skin into `staging.smalltalks.sedawk.cloud/shop/` (WoodMart 8.2.6,
+Injected the skin into `shop.thesmalltalkstore.com/shop/` (WoodMart 8.2.6,
 woodmart-child active) and confirmed computed styles: cream mesh wrapper, frosted
 header `rgba(247,246,242,.72)`, Manrope sentence-case nav, navy page-title band
 with white Syne title, glow category chips, Syne product titles, 20px card radius,

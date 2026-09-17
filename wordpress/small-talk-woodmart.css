@@ -3,7 +3,7 @@
    Paste the whole file into: WP Admin → Theme Settings → Custom CSS → Global CSS
    (Alternative: Appearance → Customize → Additional CSS.)
 
-   Verified against staging.smalltalks.sedawk.cloud (WoodMart 8.2.6,
+   Verified against shop.thesmalltalkstore.com (WoodMart 8.2.6,
    woodmart-child active). The imported demo ships generated CSS (Nunito font,
    coral #EB7A61) that loads late — every brand-critical rule below therefore
    uses !important so the demo can never win.
@@ -946,7 +946,7 @@ textarea {
    Append BELOW paste #3 in Theme Settings → Custom CSS → Global CSS.
 
    Restyles the WooCommerce product page to match the Next.js ProductDetail
-   (smalltalk-two.vercel.app/shop/essential-tee): rounded-3xl gallery with
+   (www.thesmalltalkstore.com/shop/essential-tee): rounded-3xl gallery with
    thumbnail switcher, Syne title/price, pill qty + gradient add-to-cart,
    trust-badges row, accordion sections as rounded cards.
    Verified against the staging DOM (WoodMart product-design-default,

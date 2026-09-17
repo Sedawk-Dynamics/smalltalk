@@ -1,6 +1,6 @@
 # The Small Talk Store — WoodMart shop skin setup
 
-Goal: make `staging.smalltalks.sedawk.cloud` (WoodMart 8.2.6 + WooCommerce) feel like
+Goal: make `shop.thesmalltalkstore.com` (WoodMart 8.2.6 + WooCommerce) feel like
 the same website as the Next.js site — same colors, fonts, header, footer, and voice.
 
 Two parts:
@@ -249,7 +249,7 @@ Ordered checklist to take the store from "products imported" to "can sell".
 
 ## What was verified against staging
 
-Injected the skin live into `staging.smalltalks.sedawk.cloud/?post_type=product`
+Injected the skin live into `shop.thesmalltalkstore.com/?post_type=product`
 and confirmed via computed styles: body/wrapper bg cream `#F7F6F2`, body font
 Manrope, product titles Syne navy 15px, prices navy/Manrope-bold, add-to-cart
 pill 999px with the navy→indigo gradient, cards 24px glass `rgba(255,255,255,.6)`

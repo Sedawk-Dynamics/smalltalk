@@ -108,7 +108,7 @@ export const brand = {
   name: "The Small Talk Store",
   legalEntity: "Small Talk Garment LLP",
   domain: "thesmalltalkstore.com",
-  url: "https://thesmalltalkstore.com",
+  url: "https://www.thesmalltalkstore.com",
   tagline: "Wear confidence. Look like you mean business.",
   positioning:
     "Quality is not just about price — it's about how it makes you feel.",
@@ -129,7 +129,7 @@ export const brand = {
    this Next.js site is the brand frontend. Swap via env when the shop moves
    to its real domain (e.g. shop.thesmalltalkstore.com). */
 export const shopUrl =
-  process.env.NEXT_PUBLIC_SHOP_URL ?? "https://staging.smalltalks.sedawk.cloud";
+  process.env.NEXT_PUBLIC_SHOP_URL ?? "https://shop.thesmalltalkstore.com";
 
 /* ---------------- HERO ----------------
    The brand message lives HERE and nowhere else — one bold headline + one
