@@ -17,8 +17,8 @@ export default function Hero() {
         <Image
           src="/smalltalk-banner.webp"
           alt={ALT}
-          width={2560}
-          height={1441}
+          width={3840}
+          height={2161}
           priority
           sizes="100vw"
           className="hidden h-auto w-full md:block"
