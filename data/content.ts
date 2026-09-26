@@ -120,9 +120,20 @@ export const brand = {
   enquiriesEmail: "info@thesmalltalkstore.com",
   hours: "9:00 AM – 5:00 PM",
   gstin: "07AFXFS8211B1ZS",
+  // Google Search Console → Add property → "HTML tag" method. Paste ONLY the
+  // content="..." value here (e.g. "AbC123xyz..."). Leave empty to skip.
+  googleSiteVerification: "XKzqLPtmRTePWo1RWa1sEViJKFOc2mMW5vpXdtMGfa4",
   // Map embed (Pitampura, New Delhi). Replace with the exact pin when available.
   mapEmbedSrc:
     "https://www.google.com/maps?q=Pushpanjali+Enclave+Pitampura+New+Delhi+110034&output=embed",
+};
+
+/* Default search-result title & description (home page + fallback). Keep the
+   brand name first so searches for "small talk store" match the title. */
+export const seo = {
+  title: `${brand.name} | Premium T-Shirts & Polos Online in India`,
+  description:
+    "Shop The Small Talk Store (Small Talk) for premium oversized tees, cotton t-shirts and polos for men, women & kids. Premium fabric, honest prices, made in India.",
 };
 
 /* The WooCommerce shop — all commerce (shop, cart, checkout) lives there;

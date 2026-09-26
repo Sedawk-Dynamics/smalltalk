@@ -4,6 +4,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import ShopClient from "@/components/shop/ShopClient";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/shop" },
   title: "Shop",
   description:
     "Shop premium everyday tees and polos from The Small Talk Store. Quality fabrics, honest pricing.",

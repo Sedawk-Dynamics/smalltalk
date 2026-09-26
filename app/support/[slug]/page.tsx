@@ -14,7 +14,11 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: Params): Metadata {
   const page = supportPages[params.slug as SupportSlug];
   if (!page) return { title: "Not found" };
-  return { title: page.title, description: page.subtitle };
+  return {
+    title: page.title,
+    description: page.subtitle,
+    alternates: { canonical: `/support/${params.slug}` },
+  };
 }
 
 export default function SupportPage({ params }: Params) {

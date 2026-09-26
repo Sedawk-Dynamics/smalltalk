@@ -16,13 +16,17 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: Params): Metadata {
   const product = getProduct(params.slug);
   if (!product) return { title: "Product not found" };
+  const url = `/shop/${product.slug}`;
   return {
     title: product.name,
-    description: product.shortDescription,
+    description: `${product.shortDescription} Buy online at ${brand.name} — ${formatINR(product.price)}.`,
+    alternates: { canonical: url },
     openGraph: {
-      title: `${product.name} · ${brand.name}`,
+      type: "website",
+      url,
+      title: `${product.name} | ${brand.name}`,
       description: product.shortDescription,
-      images: [{ url: product.images[0] }],
+      images: [{ url: encodeURI(product.images[0]), alt: product.name }],
     },
   };
 }
@@ -37,19 +41,28 @@ export default function ProductPage({ params }: Params) {
     "@type": "Product",
     name: product.name,
     description: product.shortDescription,
-    image: product.images.map((i) => `${brand.url}${i}`),
+    image: product.images.map((i) => encodeURI(`${brand.url}${i}`)),
+    sku: product.slug,
+    category: product.category,
+    material: product.fabric,
     brand: { "@type": "Brand", name: brand.name },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: product.rating,
-      reviewCount: product.reviews,
-    },
+    // Google rejects a rating with zero reviews, so only emit it once real
+    // reviews exist.
+    ...(product.reviews > 0 && {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: product.rating,
+        reviewCount: product.reviews,
+      },
+    }),
     offers: {
       "@type": "Offer",
       price: product.price,
       priceCurrency: "INR",
       availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
       url: `${brand.url}/shop/${product.slug}`,
+      seller: { "@id": `${brand.url}/#organization` },
     },
   };
 

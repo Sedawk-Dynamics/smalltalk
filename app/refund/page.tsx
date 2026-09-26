@@ -3,6 +3,7 @@ import LegalPage from "@/components/legal/LegalPage";
 import { refund } from "@/data/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/refund" },
   title: "Refund & Cancellation Policy",
   description:
     "Cancellations, returns, exchanges and refunds at The Small Talk Store.",

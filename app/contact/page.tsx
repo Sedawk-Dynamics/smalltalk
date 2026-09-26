@@ -6,6 +6,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { brand } from "@/data/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
   title: "Contact",
   description:
     "Get in touch with The Small Talk Store — Pitampura, New Delhi. Call, WhatsApp, or send us a message.",

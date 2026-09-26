@@ -3,6 +3,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import CartPageClient from "@/components/cart/CartPageClient";
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: true },
   title: "Cart",
   description: "Review your bag and check out.",
 };

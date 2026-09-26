@@ -19,6 +19,7 @@ import {
 } from "@/data/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About",
   description:
     "The story, values and reason for being behind The Small Talk Store — premium everyday apparel without the premium price.",

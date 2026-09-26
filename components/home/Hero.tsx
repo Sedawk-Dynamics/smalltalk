@@ -12,6 +12,11 @@ const ALT =
 export default function Hero() {
   return (
     <section className="relative -mt-20 bg-[#F5F3EF]">
+      {/* The headline is baked into the banner art, so give search engines and
+          screen readers a real page heading. */}
+      <h1 className="sr-only">
+        The Small Talk Store — Premium T-Shirts, Oversized Tees &amp; Polos Online in India
+      </h1>
       <a href={hero.ctaPrimary.href} aria-label={hero.ctaPrimary.label}>
         {/* Desktop / tablet banner (16:9) */}
         <Image

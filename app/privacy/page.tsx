@@ -3,6 +3,7 @@ import LegalPage from "@/components/legal/LegalPage";
 import { privacy } from "@/data/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/privacy" },
   title: "Privacy Policy",
   description:
     "How The Small Talk Store collects, uses and protects your personal data.",

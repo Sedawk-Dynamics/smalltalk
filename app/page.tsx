@@ -10,7 +10,13 @@ import Lookbook from "@/components/home/Lookbook";
 import Testimonials from "@/components/home/Testimonials";
 import NewsletterBand from "@/components/home/NewsletterBand";
 import CTABanner from "@/components/home/CTABanner";
-import { marqueeItems } from "@/data/content";
+import type { Metadata } from "next";
+import { marqueeItems, seo } from "@/data/content";
+
+export const metadata: Metadata = {
+  title: { absolute: seo.title },
+  alternates: { canonical: "/" },
+};
 
 /**
  * HOME — cinematic brand hero fused with modern D2C e-commerce sections
